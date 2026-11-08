@@ -57,6 +57,10 @@
             {
               "name": "Large text",
               "value": "text-large"
+            },
+            {
+              "name": "Eyebrow title (small h1 above a large h2)",
+              "value": "eyebrow-title"
             }
           ]
         }

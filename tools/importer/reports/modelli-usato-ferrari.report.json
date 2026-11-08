@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/modelli-usato-ferrari",
+  "path": "modelli-usato-ferrari",
+  "timestamp": "2026-11-08T15:53:07.162Z",
+  "title": "Esplora i modelli | Ferrari Approved",
+  "template": "model-index",
+  "blocks": [
+    "model-filter",
+    "cards-model"
+  ]
+}

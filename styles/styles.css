@@ -587,3 +587,59 @@ main .section:is(.dark, .dark-grey) .default-content-wrapper a.button.secondary:
     padding-left: 0;
   }
 }
+
+/*
+ * section metadata: eyebrow-title (source SearchByModels index header)
+ * h1 renders as a small uppercase eyebrow above a sentence-case h2 title; the section clears the
+ * overlaid channel bar and caps its content at 1216px on every desktop width.
+ */
+main > .section.eyebrow-title {
+  padding: 112px 0 128px;
+}
+
+main > .section.eyebrow-title > div {
+  max-width: 1312px;
+}
+
+main .section.eyebrow-title .default-content-wrapper > * {
+  max-width: none;
+  margin-left: 0;
+  margin-right: 0;
+  text-align: left;
+}
+
+main .section.eyebrow-title .default-content-wrapper > h1 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-family: var(--body-font-family);
+  font-size: var(--label-font-size);
+  line-height: 1.15;
+}
+
+main .section.eyebrow-title .default-content-wrapper > h2 {
+  margin-top: 16px;
+  margin-bottom: 0;
+  font-size: var(--heading-font-size-xl);
+  line-height: 1.15;
+  text-transform: none;
+}
+
+main .section.eyebrow-title .default-content-wrapper > h1 + h2 {
+  margin-top: 0;
+}
+
+@media (width >= 601px) {
+  main > .section.eyebrow-title {
+    padding-top: 136px;
+  }
+
+  main .section.eyebrow-title .default-content-wrapper > h2 {
+    font-size: 26px;
+  }
+}
+
+@media (width >= 961px) {
+  main .section.eyebrow-title .default-content-wrapper > h2 {
+    font-size: 36px;
+  }
+}

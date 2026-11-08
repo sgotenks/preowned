@@ -49,13 +49,6 @@
           "label": "Alt"
         },
         {
-          "component": "text",
-          "valueType": "string",
-          "name": "category",
-          "label": "Categories (comma-separated)",
-          "value": ""
-        },
-        {
           "component": "richtext",
           "name": "text",
           "value": "",

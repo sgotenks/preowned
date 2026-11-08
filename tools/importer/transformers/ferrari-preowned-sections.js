@@ -27,7 +27,8 @@ function findSectionElement(root, section) {
 export default function transform(hookName, element, payload) {
   const template = payload && payload.template;
   const sections = template && Array.isArray(template.sections) ? template.sections : [];
-  if (sections.length < 2) return;
+  // One unstyled section needs neither breaks nor metadata
+  if (!sections.length || (sections.length === 1 && !sections[0].style)) return;
   const document = element.ownerDocument;
 
   if (hookName === 'beforeTransform') {

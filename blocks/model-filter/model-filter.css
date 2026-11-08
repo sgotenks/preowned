@@ -1,76 +1,200 @@
-.model-filter {
+/* source SearchByModels tabs bar: underline tabs, search toggle and search row; on mobile the
+   tabs scroll edge to edge */
+main > .section > .model-filter-wrapper {
+  margin-top: 32px;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.model-filter .model-filter-bar {
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
-  gap: 16px;
 }
 
 .model-filter .model-filter-tabs {
   display: flex;
   flex: 1;
-  gap: 8px;
+  min-width: 0;
+  padding: 16px 24px;
   overflow-x: auto;
   scrollbar-width: none;
+}
+
+.model-filter .model-filter-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .model-filter .model-filter-tab {
   flex: 0 0 auto;
   margin: 0;
-  padding: 8px 24px;
+  padding: 8px 16px;
   border: 0;
   border-bottom: 2px solid transparent;
   border-radius: 0;
   background: none;
-  color: inherit;
-  font: inherit;
-  cursor: pointer;
+  color: #8f8f8f;
+  font-family: var(--body-font-family);
+  font-size: var(--label-font-size);
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.15;
+  text-transform: uppercase;
   white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.model-filter .model-filter-tab:hover {
+  color: var(--text-color);
 }
 
 .model-filter .model-filter-tab[aria-selected='true'] {
-  border-bottom-color: currentcolor;
+  border-bottom-color: var(--brand-red);
+  color: var(--brand-red);
 }
 
-.model-filter .model-filter-search {
+.model-filter .model-filter-tab:focus-visible,
+.model-filter button:focus-visible {
+  outline: 1px solid var(--focus-color);
+  outline-offset: -1px;
+}
+
+/* search toggle: a round button fixed bottom-right on mobile, a magnifier at the bar's end above */
+.model-filter .model-filter-search-toggle {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 1;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 2px solid #8f8f8f;
+  border-radius: 50%;
+  background: var(--background-color);
+  color: var(--text-color);
+  cursor: pointer;
 }
 
-.model-filter .model-filter-input[hidden] {
+.model-filter .model-filter-search-toggle[hidden] {
   display: none;
 }
 
-.model-filter .model-filter-search-toggle {
-  width: 32px;
-  height: 32px;
+.model-filter .model-filter-search-toggle svg {
+  width: 16px;
+  height: 16px;
+  fill: currentcolor;
+}
+
+/* search row: magnifier, input and close button, above the tabs */
+.model-filter .model-filter-search {
+  display: flex;
+  align-items: stretch;
+  height: 44px;
+
+  /* 24px below the title (the wrapper adds 32px) and 16px above the tabs */
+  margin: -8px 24px 16px;
+}
+
+.model-filter .model-filter-search[hidden] {
+  display: none;
+}
+
+.model-filter .model-filter-search-icon {
+  display: flex;
+  flex: 0 0 20px;
+  align-items: center;
+  color: #8f8f8f;
+}
+
+.model-filter .model-filter-search-icon svg {
+  width: 16px;
+  height: 16px;
+  fill: currentcolor;
+}
+
+.model-filter .model-filter-input {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  padding: 12px 0 8px 8px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text-color);
+  font-family: var(--heading-font-family);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.model-filter .model-filter-input::placeholder {
+  color: #757575;
+  opacity: 1;
+}
+
+.model-filter .model-filter-input:focus {
+  outline: 1px solid var(--focus-color);
+  box-shadow: 0 0 15px 5px rgb(137 137 137 / 40%);
+}
+
+.model-filter .model-filter-search-close {
+  display: flex;
+  flex: 0 0 44px;
+  align-items: center;
+  justify-content: center;
   margin: 0;
   padding: 0;
   border: 0;
   background: none;
+  color: var(--text-color);
   cursor: pointer;
-  position: relative;
 }
 
-/* magnifier glyph drawn in CSS so the block needs no icon asset */
-.model-filter .model-filter-search-toggle::before {
-  content: '';
-  position: absolute;
-  top: 6px;
-  left: 6px;
-  width: 14px;
-  height: 14px;
-  border: 2px solid currentcolor;
-  border-radius: 50%;
+.model-filter .model-filter-search-close svg {
+  width: 12px;
+  height: 12px;
 }
 
-.model-filter .model-filter-search-toggle::after {
-  content: '';
-  position: absolute;
-  top: 22px;
-  left: 20px;
-  width: 8px;
-  height: 2px;
-  background: currentcolor;
-  transform: rotate(45deg);
+@media (width >= 601px) {
+  main > .section > .model-filter-wrapper {
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
+  }
+
+  .model-filter .model-filter-tabs {
+    padding-right: 0;
+  }
+
+  .model-filter .model-filter-search {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .model-filter .model-filter-search-toggle {
+    position: static;
+    width: 28px;
+    height: auto;
+    border: 0;
+    border-radius: 0;
+    background: none;
+  }
+
+  .model-filter .model-filter-search-toggle svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (width >= 961px) {
+  .model-filter .model-filter-tabs {
+    padding-left: 0;
+  }
+
+  .model-filter .model-filter-tab {
+    padding: 8px 24px;
+  }
 }

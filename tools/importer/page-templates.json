@@ -129,7 +129,38 @@
       ],
       "coverageGaps": [],
       "description": "Index page with a category filter row above a grid of image tiles, one per model",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "model-filter",
+          "instances": [
+            "[class*=\"SearchByModels__tabsbar\"]"
+          ]
+        },
+        {
+          "name": "cards-model",
+          "instances": [
+            "[class*=\"SearchByModels__content\"]"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Model index: heading, category filter and model tiles",
+          "selector": [
+            "[class*=\"SearchByModels__wrapper\"]",
+            "#__next > div:nth-of-type(1) > div.page-menu-hook > div > div:nth-of-type(1)"
+          ],
+          "style": "eyebrow-title",
+          "blocks": [
+            "model-filter",
+            "cards-model"
+          ],
+          "defaultContent": [
+            "[class*=\"SearchByModels__wrapper\"] .heading"
+          ]
+        }
+      ]
     },
     {
       "name": "form-page",
