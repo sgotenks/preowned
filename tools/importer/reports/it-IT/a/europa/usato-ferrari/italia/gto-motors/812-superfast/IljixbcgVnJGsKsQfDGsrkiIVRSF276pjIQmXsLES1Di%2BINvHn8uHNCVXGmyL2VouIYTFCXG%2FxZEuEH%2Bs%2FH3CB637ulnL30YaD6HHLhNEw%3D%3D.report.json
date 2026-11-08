@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "url": "https://preowned.ferrari.com/it-IT/a/europa/usato-ferrari/italia/gto-motors/812-superfast/IljixbcgVnJGsKsQfDGsrkiIVRSF276pjIQmXsLES1Di%2BINvHn8uHNCVXGmyL2VouIYTFCXG%2FxZEuEH%2Bs%2FH3CB637ulnL30YaD6HHLhNEw%3D%3D",
+  "path": "it-IT/a/europa/usato-ferrari/italia/gto-motors/812-superfast/IljixbcgVnJGsKsQfDGsrkiIVRSF276pjIQmXsLES1Di%2BINvHn8uHNCVXGmyL2VouIYTFCXG%2FxZEuEH%2Bs%2FH3CB637ulnL30YaD6HHLhNEw%3D%3D",
+  "timestamp": "2026-11-08T19:09:47.660Z",
+  "error": "page.evaluate: Error: Failed to import page: Invalid string length\n    at eval (eval at evaluate (:290:30), <anonymous>:29:15)\n    at async <anonymous>:316:30",
+  "errorStack": "page.evaluate: Error: Failed to import page: Invalid string length\n    at eval (eval at evaluate (:290:30), <anonymous>:29:15)\n    at async <anonymous>:316:30\n    at processUrl (/home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:687:31)\n    at async main (/home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:950:22)"
+}

@@ -1,0 +1,83 @@
+/* vehicle-360: source ADHotspotPlayer + BtnBigIcon (Click and Drag) */
+
+main > .section > .vehicle-360-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.vehicle-360 .vehicle-360-media {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  overflow: hidden;
+  background: var(--dark-color);
+}
+
+.vehicle-360 .vehicle-360-poster,
+.vehicle-360 .vehicle-360-player {
+  position: absolute;
+  inset: 0;
+}
+
+.vehicle-360 .vehicle-360-poster picture,
+.vehicle-360 .vehicle-360-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.vehicle-360 .vehicle-360-media.is-playing .vehicle-360-poster {
+  display: none;
+}
+
+.vehicle-360 .vehicle-360-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(24 24 24 / 50%);
+  cursor: pointer;
+}
+
+.vehicle-360 .vehicle-360-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 60px;
+  height: 60px;
+  margin: 0 0 30px;
+  padding: 0;
+  border: 1px solid rgb(143 143 143);
+  border-radius: 50%;
+  background: var(--dark-color);
+  color: #fff;
+  cursor: pointer;
+}
+
+.vehicle-360 .vehicle-360-button svg {
+  width: 100%;
+  height: 100%;
+  padding: 16px 12px;
+  box-sizing: border-box;
+}
+
+.vehicle-360 .vehicle-360-label {
+  position: absolute;
+  bottom: -32px;
+  left: 50%;
+  display: block;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: var(--label-font-size);
+  letter-spacing: var(--label-letter-spacing);
+  line-height: var(--label-line-height);
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transform: translateX(-50%);
+}

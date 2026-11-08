@@ -14,7 +14,9 @@
 // BEGIN migrated-paths
 const migratedPaths = [
   '/',
-  '/ad',
+  '/a/europa/usato-ferrari/italia/gto-motors/812-gts/IljixbcgVnJGsKsQfDGsrpHUFx%2F7vEAuVIMGbLb8sD24YK%2FU3P5Vh8W9YLoU%2BSkLuIYTFSHG%2FxZEuEH%2BsfH5Ahy37ulmL38WaDWGFrxIGQ%3D%3D',
+  '/a/europa/usato-ferrari/italia/gto-motors/812-superfast/IljixbcgVnJGsKsQfDGsrkiIVRSF276pjIQmXsLES1Di%2BINvHn8uHNCVXGmyL2VouIYTFCXG%2FxZEuEH%2Bs%2FH3CB637ulnL30YaD6HHLhNEw%3D%3D',
+  '/a/europa/usato-ferrari/italia/gto-motors/ferrari-portofino/IljixbcgVnJGsKsQfDGsrr0PHybHs2emaMHOcg0rBWJrycRqjlroCNWMD4H7s1UauIYTFC%2FD4hZEuEH%2BsvT1CRy37ulnJXoeYD6DEbhJGA%3D%3D',
   '/favorites',
   '/ferrari-approved',
   '/modelli-usato-ferrari',
@@ -33,6 +35,16 @@ const migratedPaths = [
 ];
 // END migrated-paths
 
+// Vehicle ads: source path (after /it-IT, as in the URL, ID still encoded) -> migrated page, named
+// after the car's chassis number. Generated from migration-work/vehicle-detail/ads.json (ads-crawl.js).
+// BEGIN ad-paths
+const adPaths = {
+  "/a/europa/usato-ferrari/italia/gto-motors/812-gts/IljixbcgVnJGsKsQfDGsrpHUFx%2F7vEAuVIMGbLb8sD24YK%2FU3P5Vh8W9YLoU%2BSkLuIYTFSHG%2FxZEuEH%2BsfH5Ahy37ulmL38WaDWGFrxIGQ%3D%3D": "/a/europa/usato-ferrari/italia/gto-motors/812-gts/264983",
+  "/a/europa/usato-ferrari/italia/gto-motors/812-superfast/IljixbcgVnJGsKsQfDGsrkiIVRSF276pjIQmXsLES1Di%2BINvHn8uHNCVXGmyL2VouIYTFCXG%2FxZEuEH%2Bs%2FH3CB637ulnL30YaD6HHLhNEw%3D%3D": "/a/europa/usato-ferrari/italia/gto-motors/812-superfast/244721",
+  "/a/europa/usato-ferrari/italia/gto-motors/ferrari-portofino/IljixbcgVnJGsKsQfDGsrr0PHybHs2emaMHOcg0rBWJrycRqjlroCNWMD4H7s1UauIYTFC%2FD4hZEuEH%2BsvT1CRy37ulnJXoeYD6DEbhJGA%3D%3D": "/a/europa/usato-ferrari/italia/gto-motors/ferrari-portofino/251533"
+};
+// END ad-paths
+
 const SOURCE_HOST = 'preowned.ferrari.com';
 const LOCALE_PREFIX = /^\/it-IT(?=\/|$)/i;
 const MIGRATED = new Set(migratedPaths.map((p) => p.toLowerCase()));
@@ -45,6 +57,7 @@ const pagePath = (local) => (local === '/' ? '/' : `/${local.split('/').filter(B
 
 function toMigratedPath(path) {
   const local = path.replace(LOCALE_PREFIX, '').replace(/\/$/, '') || '/';
+  if (adPaths[local]) return adPaths[local];
   // Share deep links open a chapter of the Ferrari Approved page
   if (/^\/ferrari-approved\/share\//i.test(local)) return '/ferrari-approved';
   return MIGRATED.has(local.toLowerCase()) ? pagePath(local) : null;

@@ -47,4 +47,22 @@ if (fs.existsSync(hintsParser) && fs.existsSync(hintsFile)
     `const SNAPSHOT_DATE = '${new Date().toISOString().slice(0, 10)}';\nconst SNAPSHOT = ${JSON.stringify(hints, null, 2)};`);
   console.log('link-directory pages', Object.keys(hints).length);
 }
+// Vehicle ads (ads-crawl.js): migrated page per ad, full gallery and equipment tabs
+const adsFile = `${R}/migration-work/vehicle-detail/ads.json`;
+if (fs.existsSync(adsFile)) {
+  const ads = JSON.parse(fs.readFileSync(adsFile, 'utf8'));
+  const adPaths = Object.fromEntries(Object.values(ads).map((a) => [a.sourcePath, a.path]));
+  replaceBlock(`${R}/tools/importer/transformers/ferrari-preowned-links.js`, 'ad-paths',
+    `const adPaths = ${JSON.stringify(adPaths, null, 2)};`);
+  const gallery = Object.fromEntries(Object.entries(ads).map(([id, a]) => [id, a.gallery]));
+  replaceBlock(`${R}/tools/importer/parsers/vehicle-gallery.js`, 'vehicle-gallery-snapshot',
+    `// crawled ${Object.values(ads).map((a) => a.crawled).sort().pop()}\nconst SNAPSHOT = ${JSON.stringify(gallery, null, 2)};`);
+  const detailsParser = `${R}/tools/importer/parsers/vehicle-details.js`;
+  if (fs.existsSync(detailsParser)) {
+    const tabs = Object.fromEntries(Object.entries(ads).map(([id, a]) => [id, a.tabs]));
+    replaceBlock(detailsParser, 'vehicle-details-snapshot',
+      `// crawled ${Object.values(ads).map((a) => a.crawled).sort().pop()}\nconst SNAPSHOT = ${JSON.stringify(tabs, null, 1)};`);
+  }
+  console.log('ads', Object.keys(ads).length);
+}
 console.log('paths', paths.length);

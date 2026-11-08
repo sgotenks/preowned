@@ -130,6 +130,36 @@
           }
         },
         {
+          "title": "Cards Accessory",
+          "id": "cards-accessory",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards Accessory",
+                  "filter": "cards-accessory"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Cards Accessory Card",
+          "id": "cards-accessory-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Cards Accessory Card",
+                  "model": "cards-accessory-card"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Cards Car Listing",
           "id": "cards-car-listing",
           "plugins": {
@@ -319,6 +349,21 @@
                 "template": {
                   "columns": "2",
                   "rows": "1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Dealer Card",
+          "id": "dealer-card",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Dealer Card",
+                  "model": "dealer-card"
                 }
               }
             }
@@ -663,6 +708,126 @@
                   "model": "tabs-item",
                   "title": "Tab Name",
                   "content_headingType": "h3"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Vehicle 360",
+          "id": "vehicle-360",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Vehicle 360",
+                  "model": "vehicle-360"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Vehicle Details",
+          "id": "vehicle-details",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Vehicle Details",
+                  "filter": "vehicle-details"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Vehicle Details Group",
+          "id": "vehicle-details-group",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Vehicle Details Group",
+                  "model": "vehicle-details-group"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Vehicle Gallery",
+          "id": "vehicle-gallery",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Vehicle Gallery",
+                  "filter": "vehicle-gallery"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Vehicle Gallery Photo",
+          "id": "vehicle-gallery-photo",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Vehicle Gallery Photo",
+                  "model": "vehicle-gallery-photo"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Vehicle Specs",
+          "id": "vehicle-specs",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Vehicle Specs",
+                  "filter": "vehicle-specs"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Vehicle Spec",
+          "id": "vehicle-spec",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Vehicle Spec",
+                  "model": "vehicle-spec"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Vehicle Summary",
+          "id": "vehicle-summary",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Vehicle Summary",
+                  "model": "vehicle-summary"
                 }
               }
             }

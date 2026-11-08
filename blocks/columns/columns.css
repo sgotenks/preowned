@@ -1,6 +1,33 @@
+/*
+ * columns: source ParagraphGrid (ad pages, "Ferrari Approved" band): a centred title above
+ * three columns of uppercase title + copy, then a centred outline CTA
+ */
+
+main > .section:has(> .columns-wrapper) {
+  padding: 48px 0 32px;
+}
+
+main .section:has(> .columns-wrapper) .default-content-wrapper > h2 {
+  margin: 0 auto 48px;
+  padding: 0 16px;
+  font-size: 26px;
+  line-height: 1.25em;
+  text-transform: none;
+}
+
+main .section:has(> .columns-wrapper) .columns-wrapper + .default-content-wrapper > p.button-container {
+  display: block;
+  margin: 0;
+  padding: 0 16px 24px;
+}
+
+main .section:has(> .columns-wrapper) .columns-wrapper + .default-content-wrapper a.button:any-link {
+  width: 100%;
+}
+
 .columns > div {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .columns img {
@@ -8,26 +35,62 @@
 }
 
 .columns > div > div {
-  order: 1;
-}
-
-.columns > div > .columns-img-col {
-  order: 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 16px 48px;
 }
 
 .columns > div > .columns-img-col img {
   display: block;
 }
 
-@media (width >= 900px) {
-  .columns > div {
-    align-items: center;
-    flex-direction: unset;
-    gap: 24px;
+.columns > div > div > :is(h2, h3, h4) {
+  margin: 16px 0 0;
+  font-family: var(--heading-font-family);
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 1.23em;
+  text-transform: uppercase;
+}
+
+.columns > div > div > p {
+  margin: 8px 0 0;
+  font-family: var(--body-font-family);
+  font-size: 13px;
+  line-height: 1.7em;
+}
+
+@media (width >= 601px) {
+  main .section:has(> .columns-wrapper) .default-content-wrapper > h2 {
+    font-size: 28px;
+  }
+}
+
+@media (width >= 961px) {
+  main > .section:has(> .columns-wrapper) {
+    padding: 128px 0 96px;
+    text-align: center;
+  }
+
+  main .section:has(> .columns-wrapper) .default-content-wrapper > h2 {
+    max-width: 768px;
+    text-align: center;
+  }
+
+  main .section:has(> .columns-wrapper) .columns-wrapper + .default-content-wrapper > p.button-container {
+    text-align: center;
+  }
+
+  main .section:has(> .columns-wrapper) .columns-wrapper + .default-content-wrapper a.button:any-link {
+    width: auto;
   }
 
   .columns > div > div {
-    flex: 1;
-    order: unset;
+    width: 33%;
+    padding-bottom: 64px;
+  }
+
+  .columns > div > div > :is(h2, h3, h4) {
+    font-size: 16px;
   }
 }

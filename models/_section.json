@@ -73,6 +73,14 @@
             {
               "name": "Call to action (centered heading, text and side-by-side buttons)",
               "value": "cta"
+            },
+            {
+              "name": "Vehicle hero (full-height dark band with the blurred first photo)",
+              "value": "vehicle-hero"
+            },
+            {
+              "name": "Related carousel (left heading, carousel with arrows and \"view all\" link)",
+              "value": "related"
             }
           ]
         }
@@ -111,7 +119,14 @@
         "hero-search",
         "model-filter",
         "results-toolbar",
-        "link-directory"
+        "link-directory",
+        "vehicle-gallery",
+        "vehicle-summary",
+        "vehicle-specs",
+        "vehicle-360",
+        "vehicle-details",
+        "dealer-card",
+        "cards-accessory"
       ]
     }
   ]

@@ -278,6 +278,23 @@ function decorateLoadMore(block) {
   first.after(progress);
 }
 
+/**
+ * Related vehicles on an ad page (section style "related", source ADRelated VehicleCarousel):
+ * arrows under the row, with the "Visualizza tutto" link authored after the block between them.
+ */
+async function decorateRelated(block, ul) {
+  if (!block.closest('.section.related')) return;
+  const { carouselControls } = await import('../../scripts/vehicle.js');
+  const wrapper = block.closest('.cards-car-listing-wrapper');
+  const next = wrapper?.nextElementSibling;
+  const link = next?.classList.contains('default-content-wrapper') ? next.querySelector('p:has(> a)') : null;
+  if (link) {
+    link.classList.add('cards-car-listing-view-all');
+    if (!next.querySelector(':scope > :not(.cards-car-listing-view-all)')) next.remove();
+  }
+  block.append(carouselControls(ul, { center: link }));
+}
+
 export default function decorate(block) {
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => ul.append(buildCard(row)));
@@ -286,4 +303,5 @@ export default function decorate(block) {
   block.append(ul);
   enableSorting(ul);
   decorateLoadMore(block);
+  decorateRelated(block, ul);
 }

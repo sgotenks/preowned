@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/a/europa/usato-ferrari/italia/gto-motors/ferrari-portofino/IljixbcgVnJGsKsQfDGsrr0PHybHs2emaMHOcg0rBWJrycRqjlroCNWMD4H7s1UauIYTFC%2FD4hZEuEH%2BsvT1CRy37ulnJXoeYD6DEbhJGA%3D%3D",
+  "path": "a/europa/usato-ferrari/italia/gto-motors/ferrari-portofino/251533",
+  "timestamp": "2026-11-08T20:19:40.551Z",
+  "title": "2019 Ferrari Portofino Usata in vendita a Gerenzano | Ferrari Approved",
+  "template": "vehicle-detail",
+  "blocks": [
+    "vehicle-gallery",
+    "vehicle-summary",
+    "vehicle-specs",
+    "vehicle-360",
+    "vehicle-details",
+    "vehicle-details",
+    "dealer-card",
+    "cards-accessory",
+    "cards-car-listing",
+    "hero-banner",
+    "columns"
+  ]
+}

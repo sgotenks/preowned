@@ -186,3 +186,46 @@
     font-size: 36px;
   }
 }
+
+/* CTA (source HeroLogoText__ctaWrapper, BtnAction): uppercase label + 40px ringed chevron */
+.hero-banner .hero-banner-content p.button-container:has(> em > a.button) {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0 0;
+}
+
+.hero-banner .hero-banner-content a.button.secondary:any-link {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: var(--label-font-size);
+  font-style: normal;
+  letter-spacing: var(--label-letter-spacing);
+  line-height: var(--label-line-height);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.hero-banner .hero-banner-content a.button.secondary::after {
+  content: '';
+  position: static;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  margin-left: 8px;
+  border: 2px solid rgb(143 143 143);
+  border-radius: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 16' width='8' height='16'%3E%3Cpath fill='%23fff' d='M7.268 9.547L0 16l4-8-4-8 7.268 6.453C7.715 6.82 8 7.377 8 8c0 .623-.285 1.18-.732 1.547z'/%3E%3C/svg%3E") center / 8px 16px no-repeat;
+  opacity: 1;
+  transition: border-color 0.2s;
+}
+
+.hero-banner .hero-banner-content a.button.secondary:hover::after {
+  border-color: #fff;
+}

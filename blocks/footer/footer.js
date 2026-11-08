@@ -12,8 +12,14 @@ async function fetchFooterFragment() {
   let resp = await fetch('/content/footer.plain.html');
   if (!resp.ok) resp = await fetch('/footer.plain.html');
   if (!resp.ok) return null;
+  // Parse without loading images, then resolve them against the fragment's URL:
+  // relative paths would otherwise point below the current page on nested pages.
+  const doc = new DOMParser().parseFromString(await resp.text(), 'text/html');
+  doc.querySelectorAll('img[src]').forEach((img) => {
+    img.src = new URL(img.getAttribute('src'), resp.url).href;
+  });
   const wrapper = document.createElement('div');
-  wrapper.innerHTML = await resp.text();
+  wrapper.append(...doc.body.childNodes);
   return wrapper;
 }
 

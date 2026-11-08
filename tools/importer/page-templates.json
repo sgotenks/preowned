@@ -96,11 +96,210 @@
     {
       "name": "vehicle-detail",
       "urls": [
-        "https://preowned.ferrari.com/it-IT/ad"
+        "https://preowned.ferrari.com/it-IT/a/europa/usato-ferrari/italia/gto-motors/812-gts/IljixbcgVnJGsKsQfDGsrpHUFx%2F7vEAuVIMGbLb8sD24YK%2FU3P5Vh8W9YLoU%2BSkLuIYTFSHG%2FxZEuEH%2BsfH5Ahy37ulmL38WaDWGFrxIGQ%3D%3D",
+        "https://preowned.ferrari.com/it-IT/a/europa/usato-ferrari/italia/gto-motors/812-superfast/IljixbcgVnJGsKsQfDGsrkiIVRSF276pjIQmXsLES1Di%2BINvHn8uHNCVXGmyL2VouIYTFCXG%2FxZEuEH%2Bs%2FH3CB637ulnL30YaD6HHLhNEw%3D%3D",
+        "https://preowned.ferrari.com/it-IT/a/europa/usato-ferrari/italia/gto-motors/ferrari-portofino/IljixbcgVnJGsKsQfDGsrr0PHybHs2emaMHOcg0rBWJrycRqjlroCNWMD4H7s1UauIYTFC%2FD4hZEuEH%2BsvT1CRy37ulnJXoeYD6DEbhJGA%3D%3D"
       ],
       "coverageGaps": [],
-      "description": "Single-item detail page with a media and specification column layout followed by related item cards",
-      "blocks": []
+      "description": "Vehicle ad: photo gallery and summary over a dark hero, key data, 360° viewer, equipment/spec tabs, consumption, dealer card, accessories carousel, related cars, model banner and Ferrari Approved band",
+      "blocks": [
+        {
+          "name": "vehicle-gallery",
+          "instances": [
+            "section[class*=\"HeroCarAD__wrapper\"] [class*=\"GridImages__center-content\"]"
+          ]
+        },
+        {
+          "name": "vehicle-summary",
+          "instances": [
+            "section[class*=\"HeroCarAD__wrapper\"] > [class*=\"HeroCarAD__content\"]"
+          ]
+        },
+        {
+          "name": "vehicle-specs",
+          "instances": [
+            "[class*=\"ADOverview__wrapper\"] [class*=\"OverviewData__list\"]"
+          ]
+        },
+        {
+          "name": "vehicle-360",
+          "instances": [
+            "[class*=\"ADHotspotPlayer__wrapper\"]"
+          ]
+        },
+        {
+          "name": "vehicle-details",
+          "instances": [
+            "[class*=\"TabCarADDetails__wrapper\"]",
+            "[class*=\"AccordionConsumption__wrapper\"] [class*=\"Accordion__accordion\"]"
+          ]
+        },
+        {
+          "name": "dealer-card",
+          "instances": [
+            "[class*=\"DealerFullInfo__container\"]"
+          ]
+        },
+        {
+          "name": "cards-accessory",
+          "instances": [
+            "[class*=\"AccessoriesCarousel__wrapper\"] [class*=\"SquareImgCarousel__wrapper\"]"
+          ]
+        },
+        {
+          "name": "cards-car-listing",
+          "instances": [
+            "[class*=\"ADRelated__wrapper\"] [class*=\"VehicleCarousel__wrapper\"]"
+          ]
+        },
+        {
+          "name": "hero-banner",
+          "instances": [
+            "[class*=\"ADRelatedBanner__wrapper\"] [class*=\"HeroLogoText__wrapper\"]"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            "[class*=\"ParagraphGrid__row\"]"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Vehicle hero (gallery + summary)",
+          "selector": [
+            "section[class*=\"HeroCarAD__wrapper\"]"
+          ],
+          "style": "vehicle-hero",
+          "blocks": [
+            "vehicle-gallery",
+            "vehicle-summary"
+          ],
+          "defaultContent": [
+            "[class*=\"HeroCarAD__navigation\"]"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "Overview (Panoramica)",
+          "selector": [
+            "[class*=\"ADOverview__wrapper\"]"
+          ],
+          "style": null,
+          "blocks": [
+            "vehicle-specs"
+          ],
+          "defaultContent": [
+            "[class*=\"OverviewData__title\"]"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "360 viewer",
+          "selector": [
+            "[class*=\"ADHotspotPlayer__wrapper\"]"
+          ],
+          "style": null,
+          "blocks": [
+            "vehicle-360"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Equipment and specification tabs",
+          "selector": [
+            "[class*=\"TabCarADDetails__wrapper\"]"
+          ],
+          "style": null,
+          "blocks": [
+            "vehicle-details"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-5",
+          "name": "Consumption and emissions",
+          "selector": [
+            "[class*=\"AccordionConsumption__wrapper\"]"
+          ],
+          "style": null,
+          "blocks": [
+            "vehicle-details"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-6",
+          "name": "Dealer",
+          "selector": [
+            "#ADDealer-anchor"
+          ],
+          "style": null,
+          "blocks": [
+            "dealer-card"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-7",
+          "name": "Genuine accessories",
+          "selector": [
+            "[class*=\"AccessoriesCarousel__wrapper\"]"
+          ],
+          "style": "dark",
+          "blocks": [
+            "cards-accessory"
+          ],
+          "defaultContent": [
+            "[class*=\"AccessoriesCarousel__title\"]"
+          ]
+        },
+        {
+          "id": "section-8",
+          "name": "Other cars at the dealer",
+          "selector": [
+            "[class*=\"ADRelated__wrapper\"]"
+          ],
+          "style": "related",
+          "blocks": [
+            "cards-car-listing"
+          ],
+          "defaultContent": [
+            "[class*=\"ADRelated__title\"]",
+            "[class*=\"Carousel__pagination-link\"]"
+          ]
+        },
+        {
+          "id": "section-9",
+          "name": "Model banner",
+          "selector": [
+            "[class*=\"ADRelatedBanner__wrapper\"]"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-10",
+          "name": "Ferrari Approved band",
+          "selector": [
+            "[class*=\"ParagraphGrid__wrapper\"]"
+          ],
+          "style": "dark",
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": [
+            "[class*=\"ParagraphGrid__title\"]",
+            "[class*=\"ParagraphGrid__ctaWrapper\"]"
+          ]
+        }
+      ]
     },
     {
       "name": "results-listing",

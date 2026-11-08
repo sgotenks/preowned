@@ -36,13 +36,26 @@
       "hero-search",
       "model-filter",
       "results-toolbar",
-      "link-directory"
+      "link-directory",
+      "vehicle-gallery",
+      "vehicle-summary",
+      "vehicle-specs",
+      "vehicle-360",
+      "vehicle-details",
+      "dealer-card",
+      "cards-accessory"
     ]
   },
   {
     "id": "accordion",
     "components": [
       "accordion-item"
+    ]
+  },
+  {
+    "id": "cards-accessory",
+    "components": [
+      "cards-accessory-card"
     ]
   },
   {
@@ -130,6 +143,24 @@
     "id": "tabs",
     "components": [
       "tabs-item"
+    ]
+  },
+  {
+    "id": "vehicle-details",
+    "components": [
+      "vehicle-details-group"
+    ]
+  },
+  {
+    "id": "vehicle-gallery",
+    "components": [
+      "vehicle-gallery-photo"
+    ]
+  },
+  {
+    "id": "vehicle-specs",
+    "components": [
+      "vehicle-spec"
     ]
   },
   {

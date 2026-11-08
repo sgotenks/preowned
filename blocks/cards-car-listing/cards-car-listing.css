@@ -491,6 +491,90 @@ main .section.centered .cards-car-listing > ul > li {
   }
 }
 
+/*
+ * related vehicles on an ad page (section style "related", source ADRelated VehicleCarousel):
+ * 384px cards running off the right edge, arrows either side of "—— Visualizza tutto"
+ */
+main .section.related .cards-car-listing {
+  padding: 48px 0;
+}
+
+main .section.related .cards-car-listing > ul {
+  display: flex;
+  gap: 16px;
+  margin: 0 calc(var(--gutter) * -1) 0 0;
+  overflow: auto hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+main .section.related .cards-car-listing > ul::-webkit-scrollbar {
+  display: none;
+}
+
+main .section.related .cards-car-listing > ul > li {
+  flex: 0 0 min(384px, calc(100% - var(--gutter)));
+  scroll-snap-align: start;
+}
+
+main .section.related .cards-car-listing .vehicle-carousel-nav {
+  margin-top: 24px;
+}
+
+main .section.related .cards-car-listing-view-all {
+  display: flex;
+  align-items: center;
+  margin: 0;
+}
+
+main .section.related .cards-car-listing .vehicle-carousel-middle:has(> .cards-car-listing-view-all) {
+  justify-content: flex-end;
+}
+
+main .section.related .cards-car-listing-view-all a.button:any-link {
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: var(--label-font-size);
+  letter-spacing: var(--label-letter-spacing);
+  line-height: var(--label-line-height);
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+main .section.related .cards-car-listing-view-all a.button::after {
+  content: none;
+}
+
+@media (width >= 961px) {
+  main .section.related .cards-car-listing {
+    padding: 64px 0 48px;
+  }
+
+  main .section.related .cards-car-listing > ul {
+    gap: 32px;
+    margin-right: calc((100vw - 100%) / -2);
+  }
+
+  main .section.related .cards-car-listing .vehicle-carousel-middle:has(> .cards-car-listing-view-all) {
+    justify-content: center;
+  }
+
+  main .section.related .cards-car-listing-view-all::before {
+    content: '';
+    width: 50px;
+    height: 1px;
+    margin: 0 32px 0 10px;
+    background: currentcolor;
+  }
+}
+
 /* list view, toggled site-wide by the results-toolbar block (source VehicleCard__horizontal) */
 body[data-results-view='list'] main .section:not(.centered) .cards-car-listing > ul {
   grid-template-columns: 1fr;

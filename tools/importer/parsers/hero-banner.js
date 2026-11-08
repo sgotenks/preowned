@@ -59,6 +59,19 @@ export default function parse(element, { document }) {
         nodes.push(p);
       });
     }
+    // Vehicle ads' model banner: "Scopri di più" (label + ringed arrow) -> <p><em><a></a></em></p>
+    const cta = element.querySelector('[class*="HeroLogoText__ctaWrapper"] a[href]');
+    const ctaText = cta ? clean(cta.querySelector('[class*="BtnAction__text"]')?.textContent || cta.textContent) : '';
+    if (ctaText) {
+      const p = document.createElement('p');
+      const em = document.createElement('em');
+      const a = document.createElement('a');
+      a.setAttribute('href', cta.getAttribute('href'));
+      a.textContent = ctaText;
+      em.append(a);
+      p.append(em);
+      nodes.push(p);
+    }
     const block = WebImporter.Blocks.createBlock(document, {
       name: 'hero-banner',
       cells: [[img ? hinted('image', img) : ''], [nodes.length ? hinted('text', ...nodes) : '']],

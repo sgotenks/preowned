@@ -1,0 +1,79 @@
+/* vehicle-specs: source ADOverview + OverviewData (forceUppercaseTitles) */
+
+main > .section:has(.vehicle-specs) {
+  padding: 32px 0;
+}
+
+main .section:has(.vehicle-specs) .default-content-wrapper > h2 {
+  max-width: none;
+  margin: 0 0 32px;
+  color: var(--text-color);
+  font-size: 26px;
+  line-height: 1.2em;
+  text-transform: none;
+}
+
+main .section:has(.vehicle-specs) .default-content-wrapper:has(> h2) {
+  max-width: var(--content-max-width);
+}
+
+.vehicle-specs .vehicle-specs-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(auto, calc(50% - 12px)));
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vehicle-specs .vehicle-specs-item {
+  padding: 8px 0;
+  overflow-wrap: anywhere;
+}
+
+.vehicle-specs .vehicle-specs-label,
+.vehicle-specs .vehicle-specs-value {
+  margin: 0;
+  font-family: var(--body-font-family);
+  text-transform: uppercase;
+}
+
+.vehicle-specs .vehicle-specs-label {
+  overflow: hidden;
+  color: rgb(143 143 143);
+  font-size: var(--label-font-size);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  letter-spacing: var(--label-letter-spacing);
+  line-height: var(--label-line-height);
+}
+
+.vehicle-specs .vehicle-specs-value {
+  font-size: 13px;
+  letter-spacing: normal;
+  line-height: 1.6em;
+}
+
+@media (width >= 601px) {
+  main > .section:has(.vehicle-specs) {
+    padding-top: 84px;
+  }
+
+  main .section:has(.vehicle-specs) .default-content-wrapper > h2 {
+    font-size: 32px;
+  }
+
+  .vehicle-specs .vehicle-specs-item {
+    padding: 24px 0;
+  }
+}
+
+@media (width >= 961px) {
+  main .section:has(.vehicle-specs) .default-content-wrapper > h2 {
+    font-size: 36px;
+  }
+
+  .vehicle-specs .vehicle-specs-list {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
