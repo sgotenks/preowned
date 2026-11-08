@@ -82,3 +82,100 @@ body.modal-open {
 .modal dialog .section {
   padding: 0;
 }
+
+/*
+ * form drawer (source PopupAdobeForm): full-height white panel on the right holding the form iframe,
+ * over a dark veil; the round close button sits outside the panel
+ */
+.modal.form-drawer dialog {
+  inset: 0 0 0 auto;
+  overflow: visible;
+  width: 100%;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  margin: 0;
+  border: 0;
+  background-color: #fff;
+  animation: form-drawer-in 0.4s ease-out;
+}
+
+.modal.form-drawer dialog::backdrop {
+  background-color: rgb(24 24 24 / 80%);
+}
+
+.modal.form-drawer dialog .modal-content {
+  overflow: hidden;
+  height: 100%;
+  max-height: none;
+  margin: 0;
+  padding: 0;
+}
+
+.modal.form-drawer iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.modal.form-drawer .close-button {
+  position: fixed;
+  z-index: 4;
+  top: 24px;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: #303030;
+  color: #fff;
+  opacity: 0.6;
+  transform: translateX(-50%);
+}
+
+.modal.form-drawer .close-button .icon.icon-close::before,
+.modal.form-drawer .close-button .icon.icon-close::after {
+  width: 16px;
+  height: 1.5px;
+}
+
+@keyframes form-drawer-in {
+  from { transform: translateX(100%); }
+  to { transform: none; }
+}
+
+@media (width >= 961px) {
+  .modal.form-drawer dialog {
+    width: 64%;
+  }
+
+  .modal.form-drawer .close-button {
+    top: 50%;
+    right: calc(64% + 84px);
+    left: auto;
+    background-color: #fff;
+    color: var(--dark-color);
+    opacity: 0.8;
+    transform: none;
+  }
+}
+
+@media (width >= 1281px) {
+  .modal.form-drawer dialog {
+    width: 56%;
+  }
+
+  .modal.form-drawer .close-button {
+    right: calc(56% + 84px);
+  }
+}
+
+@media (width >= 1601px) {
+  .modal.form-drawer dialog {
+    width: 60%;
+  }
+
+  .modal.form-drawer .close-button {
+    right: calc(60% + 84px);
+  }
+}

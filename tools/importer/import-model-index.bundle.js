@@ -716,7 +716,46 @@ var CustomImportScript = (() => {
       chapter.replaceWith(p);
     });
   }
-  function normalizeTextBlocks(element, document) {
+  var FORM_FALLBACK = {
+    "Form-enquiry-approved-valuemycar": "https://forms.ferrari.com/content/forms/af/ferrari/af/dws/service.html"
+  };
+  function formUrls(document) {
+    var _a;
+    const urls = __spreadValues({}, FORM_FALLBACK);
+    try {
+      const data = JSON.parse(((_a = document.getElementById("__NEXT_DATA__")) == null ? void 0 : _a.textContent) || "{}");
+      const walk = (o) => {
+        var _a2, _b;
+        if (!o || typeof o !== "object") return;
+        if (Array.isArray(o)) {
+          o.forEach(walk);
+          return;
+        }
+        if (o.type === "AdobeForm" && ((_a2 = o.content) == null ? void 0 : _a2.slug) && ((_b = o.content) == null ? void 0 : _b.url)) urls[o.content.slug] = o.content.url.trim();
+        Object.values(o).forEach(walk);
+      };
+      walk(data.props);
+    } catch (e) {
+    }
+    return urls;
+  }
+  function formUrl(target, urls, lang) {
+    const m = (target || "").match(/^#form-([^?&]+)/);
+    if (!m || !urls[m[1]]) return null;
+    const url = new URL(urls[m[1]].replace(/(\.[a-z]{2})?\.html$/, `.${lang}.html`));
+    url.searchParams.set("form-slug", m[1]);
+    return url.href;
+  }
+  function normalizeTextBlocks(element, document, lang) {
+    const urls = formUrls(document);
+    element.querySelectorAll('[class*="TextBlock__ctas"] button[data-event-target^="#form-"]').forEach((button) => {
+      const href = formUrl(button.getAttribute("data-event-target"), urls, lang);
+      if (!href) return;
+      const a = document.createElement("a");
+      a.setAttribute("href", href);
+      a.innerHTML = button.innerHTML;
+      button.replaceWith(a);
+    });
     element.querySelectorAll('[class*="TextBlock__ctas"]').forEach((ctas) => {
       const links = [...ctas.querySelectorAll("a[href]")];
       if (!links.length) return;
@@ -774,7 +813,8 @@ var CustomImportScript = (() => {
       WebImporter.DOMUtils.remove(element, CHROME_BEFORE);
       removeAccessibilityHints(element);
       normalizeChapterLabels(element, payload.document);
-      normalizeTextBlocks(element, payload.document);
+      const pageLang = (payload.document.documentElement.getAttribute("lang") || "it").slice(0, 2).toLowerCase();
+      normalizeTextBlocks(element, payload.document, pageLang);
     }
     if (hookName === "afterTransform") {
       WebImporter.DOMUtils.remove(element, CHROME_AFTER);

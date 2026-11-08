@@ -108,7 +108,49 @@ function normalizeChapterLabels(element, document) {
   });
 }
 
-function normalizeTextBlocks(element, document) {
+// Ferrari Adaptive Forms opened by "#form-<slug>" CTAs. The page data (__NEXT_DATA__) maps each
+// slug to its form URL; the fallback covers the forms seen on the site.
+const FORM_FALLBACK = {
+  'Form-enquiry-approved-valuemycar': 'https://forms.ferrari.com/content/forms/af/ferrari/af/dws/service.html',
+};
+
+function formUrls(document) {
+  const urls = { ...FORM_FALLBACK };
+  try {
+    const data = JSON.parse(document.getElementById('__NEXT_DATA__')?.textContent || '{}');
+    const walk = (o) => {
+      if (!o || typeof o !== 'object') return;
+      if (Array.isArray(o)) { o.forEach(walk); return; }
+      if (o.type === 'AdobeForm' && o.content?.slug && o.content?.url) urls[o.content.slug] = o.content.url.trim();
+      Object.values(o).forEach(walk);
+    };
+    walk(data.props);
+  } catch (e) { /* no page data: fallback only */ }
+  return urls;
+}
+
+// "#form-<slug>?..." -> https://forms.ferrari.com/.../<form>.<lang>.html?form-slug=<slug>,
+// the same URL the source popup loads
+function formUrl(target, urls, lang) {
+  const m = (target || '').match(/^#form-([^?&]+)/);
+  if (!m || !urls[m[1]]) return null;
+  const url = new URL(urls[m[1]].replace(/(\.[a-z]{2})?\.html$/, `.${lang}.html`));
+  url.searchParams.set('form-slug', m[1]);
+  return url.href;
+}
+
+function normalizeTextBlocks(element, document, lang) {
+  // TextBlock CTA buttons that open an Adaptive Form popup -> links to the form (opened in a modal)
+  const urls = formUrls(document);
+  element.querySelectorAll('[class*="TextBlock__ctas"] button[data-event-target^="#form-"]').forEach((button) => {
+    const href = formUrl(button.getAttribute('data-event-target'), urls, lang);
+    if (!href) return;
+    const a = document.createElement('a');
+    a.setAttribute('href', href);
+    a.innerHTML = button.innerHTML;
+    button.replaceWith(a);
+  });
+
   // TextBlock CTAs (BtnAction: label + ringed chevron) -> <p><em><a>Label</a></em></p> (secondary button)
   element.querySelectorAll('[class*="TextBlock__ctas"]').forEach((ctas) => {
     const links = [...ctas.querySelectorAll('a[href]')];
@@ -167,7 +209,8 @@ export default function transform(hookName, element, payload) {
     WebImporter.DOMUtils.remove(element, CHROME_BEFORE);
     removeAccessibilityHints(element);
     normalizeChapterLabels(element, payload.document);
-    normalizeTextBlocks(element, payload.document);
+    const pageLang = (payload.document.documentElement.getAttribute('lang') || 'it').slice(0, 2).toLowerCase();
+    normalizeTextBlocks(element, payload.document, pageLang);
   }
 
   if (hookName === 'afterTransform') {

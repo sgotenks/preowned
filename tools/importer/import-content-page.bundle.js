@@ -285,7 +285,46 @@ var CustomImportScript = (() => {
       chapter.replaceWith(p);
     });
   }
-  function normalizeTextBlocks(element, document) {
+  var FORM_FALLBACK = {
+    "Form-enquiry-approved-valuemycar": "https://forms.ferrari.com/content/forms/af/ferrari/af/dws/service.html"
+  };
+  function formUrls(document) {
+    var _a;
+    const urls = __spreadValues({}, FORM_FALLBACK);
+    try {
+      const data = JSON.parse(((_a = document.getElementById("__NEXT_DATA__")) == null ? void 0 : _a.textContent) || "{}");
+      const walk = (o) => {
+        var _a2, _b;
+        if (!o || typeof o !== "object") return;
+        if (Array.isArray(o)) {
+          o.forEach(walk);
+          return;
+        }
+        if (o.type === "AdobeForm" && ((_a2 = o.content) == null ? void 0 : _a2.slug) && ((_b = o.content) == null ? void 0 : _b.url)) urls[o.content.slug] = o.content.url.trim();
+        Object.values(o).forEach(walk);
+      };
+      walk(data.props);
+    } catch (e) {
+    }
+    return urls;
+  }
+  function formUrl(target, urls, lang) {
+    const m = (target || "").match(/^#form-([^?&]+)/);
+    if (!m || !urls[m[1]]) return null;
+    const url = new URL(urls[m[1]].replace(/(\.[a-z]{2})?\.html$/, `.${lang}.html`));
+    url.searchParams.set("form-slug", m[1]);
+    return url.href;
+  }
+  function normalizeTextBlocks(element, document, lang) {
+    const urls = formUrls(document);
+    element.querySelectorAll('[class*="TextBlock__ctas"] button[data-event-target^="#form-"]').forEach((button) => {
+      const href = formUrl(button.getAttribute("data-event-target"), urls, lang);
+      if (!href) return;
+      const a = document.createElement("a");
+      a.setAttribute("href", href);
+      a.innerHTML = button.innerHTML;
+      button.replaceWith(a);
+    });
     element.querySelectorAll('[class*="TextBlock__ctas"]').forEach((ctas) => {
       const links = [...ctas.querySelectorAll("a[href]")];
       if (!links.length) return;
@@ -343,7 +382,8 @@ var CustomImportScript = (() => {
       WebImporter.DOMUtils.remove(element, CHROME_BEFORE);
       removeAccessibilityHints(element);
       normalizeChapterLabels(element, payload.document);
-      normalizeTextBlocks(element, payload.document);
+      const pageLang = (payload.document.documentElement.getAttribute("lang") || "it").slice(0, 2).toLowerCase();
+      normalizeTextBlocks(element, payload.document, pageLang);
     }
     if (hookName === "afterTransform") {
       WebImporter.DOMUtils.remove(element, CHROME_AFTER);
@@ -375,7 +415,7 @@ var CustomImportScript = (() => {
   function transform2(hookName, element, payload) {
     const template = payload && payload.template;
     const sections = template && Array.isArray(template.sections) ? template.sections : [];
-    if (sections.length < 2) return;
+    if (!sections.length || sections.length === 1 && !sections[0].style) return;
     const document = element.ownerDocument;
     if (hookName === "beforeTransform") {
       for (let i = sections.length - 1; i >= 0; i -= 1) {
@@ -418,14 +458,37 @@ var CustomImportScript = (() => {
   }
 
   // tools/importer/transformers/ferrari-preowned-links.js
+  var migratedPaths = [
+    "/",
+    "/ad",
+    "/favorites",
+    "/ferrari-approved",
+    "/modelli-usato-ferrari",
+    "/r/asia-pacifico/usato-ferrari/giappone/rfc",
+    "/r/europa/usato-ferrari/germania/rfc",
+    "/r/europa/usato-ferrari/gran-bretagna/812-superfast/rfcm",
+    "/r/europa/usato-ferrari/italia/296-gtb/rfcm",
+    "/r/europa/usato-ferrari/italia/c-d-p-/rfcd",
+    "/r/europa/usato-ferrari/italia/ferrari-modena/rfcd",
+    "/r/europa/usato-ferrari/italia/ferrari-roma/rfcm",
+    "/r/europa/usato-ferrari/italia/rfc",
+    "/r/europa/usato-ferrari/italia/sf90-stradale/rfcm",
+    "/r/nord-america/usato-ferrari/u-s-a-/cauley-ferrari-of-detroit/rfcd",
+    "/r/nord-america/usato-ferrari/u-s-a-/rfc",
+    "/value-your-car"
+  ];
   var SOURCE_HOST = "preowned.ferrari.com";
   var LOCALE_PREFIX = /^\/it-IT(?=\/|$)/i;
-  var MIGRATED = /^\/(|ferrari-approved(\/share\/.*)?|modelli-usato-ferrari|value-your-car|favorites|ad|r\/.+)$/i;
+  var MIGRATED = new Set(migratedPaths.map((p) => p.toLowerCase()));
   function toMigratedPath(path) {
     const local = path.replace(LOCALE_PREFIX, "").replace(/\/$/, "") || "/";
-    if (!MIGRATED.test(local)) return null;
     if (/^\/ferrari-approved\/share\//i.test(local)) return "/ferrari-approved";
-    return local.toLowerCase();
+    return MIGRATED.has(local.toLowerCase()) ? local.toLowerCase() : null;
+  }
+  function toLiveUrl(u) {
+    const live = new URL(u.href);
+    if (!LOCALE_PREFIX.test(live.pathname)) live.pathname = `/it-IT${live.pathname === "/" ? "" : live.pathname}`;
+    return live.href;
   }
   function transform3(hookName, element, payload) {
     var _a;
@@ -442,7 +505,7 @@ var CustomImportScript = (() => {
       }
       if (u.hostname !== SOURCE_HOST) return;
       const migrated = toMigratedPath(u.pathname);
-      a.setAttribute("href", migrated ? `${migrated}${u.search}${u.hash}` : u.href);
+      a.setAttribute("href", migrated ? `${migrated}${u.search}${u.hash}` : toLiveUrl(u));
     });
   }
 

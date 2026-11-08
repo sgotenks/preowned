@@ -168,8 +168,59 @@
         "https://preowned.ferrari.com/it-IT/value-your-car"
       ],
       "coverageGaps": [],
-      "description": "Page opening with a hero banner followed by an intro and a multi-column form layout with supporting cards",
-      "blocks": []
+      "description": "Request page: left-aligned hero banner, a dark intro band with a call to action that opens a Ferrari Adaptive Form in a side drawer, and teaser cards on a dark-grey band",
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            "[class*=\"HeroInfo__wrapper\"]"
+          ]
+        },
+        {
+          "name": "cards-teaser",
+          "instances": [
+            "[class*=\"BoxGrid__wrapper\"]"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero",
+          "selector": [
+            "[class*=\"HeroInfo__wrapper\"]"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Intro with valuation request",
+          "selector": [
+            "[class*=\"TextBlock__container\"][class*=\"theme-ferrari-dark\"]"
+          ],
+          "style": "dark, spacious, lead",
+          "blocks": [],
+          "defaultContent": [
+            "[class*=\"TextBlock__content\"]"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Teasers",
+          "selector": [
+            "[class*=\"BoxGrid__wrapper\"]"
+          ],
+          "style": "dark-grey",
+          "blocks": [
+            "cards-teaser"
+          ],
+          "defaultContent": []
+        }
+      ]
     },
     {
       "name": "content-page",

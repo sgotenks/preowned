@@ -58,6 +58,16 @@ async function loadFonts() {
   }
 }
 
+// links to a Ferrari Adaptive Form (e.g. the "Valutazione usato" request) open it in a side drawer
+function isFormLink(href) {
+  try {
+    const url = new URL(href);
+    return url.hostname === 'forms.ferrari.com' && url.pathname.startsWith('/content/forms/af/');
+  } catch (e) {
+    return false;
+  }
+}
+
 function autolinkModals(doc) {
   doc.addEventListener('click', async (e) => {
     const origin = e.target.closest('a');
@@ -65,6 +75,10 @@ function autolinkModals(doc) {
       e.preventDefault();
       const { openModal } = await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
       openModal(origin.href);
+    } else if (origin && origin.href && isFormLink(origin.href)) {
+      e.preventDefault();
+      const { openFormModal } = await import(`${window.hlx.codeBasePath}/blocks/modal/modal.js`);
+      openFormModal(origin.href, origin.textContent.trim());
     }
   });
 }

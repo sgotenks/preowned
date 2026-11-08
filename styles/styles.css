@@ -469,6 +469,14 @@ main .section.light-grey .default-content-wrapper > h2 + p {
   line-height: 1.6em;
 }
 
+/* section metadata: lead (source TextBlock Headline subtitle: opening paragraph in the lead size, no title) */
+main .section.lead .default-content-wrapper > p:first-child {
+  margin-top: 0;
+  margin-bottom: 30.4px;
+  font-size: var(--body-font-size-l);
+  line-height: 1.6em;
+}
+
 /* section metadata: text-large (source TextBlock body copy: 16px/18.4px, blank line between blocks) */
 main .section.text-large .default-content-wrapper > p:not(.chapter, .button-container) {
   margin-top: 0;

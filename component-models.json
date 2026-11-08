@@ -164,6 +164,10 @@
           {
             "name": "Eyebrow title (small h1 above a large h2)",
             "value": "eyebrow-title"
+          },
+          {
+            "name": "Lead paragraph (opening paragraph in the large size)",
+            "value": "lead"
           }
         ]
       }

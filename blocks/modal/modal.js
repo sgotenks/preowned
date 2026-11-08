@@ -60,6 +60,23 @@ export async function createModal(contentNodes) {
   };
 }
 
+/**
+ * Opens an external form (a Ferrari Adaptive Form) in a side drawer, inside an iframe.
+ * The form submits to its own backend; nothing is posted from this site.
+ * @param {string} formUrl absolute URL of the form page
+ * @param {string} title accessible name of the frame
+ */
+export async function openFormModal(formUrl, title = '') {
+  const frame = document.createElement('iframe');
+  frame.src = formUrl;
+  frame.title = title;
+  frame.loading = 'eager';
+  frame.setAttribute('allow', 'clipboard-write');
+  const { block, showModal } = await createModal([frame]);
+  block.classList.add('form-drawer');
+  showModal();
+}
+
 export async function openModal(fragmentUrl) {
   const path = fragmentUrl.startsWith('http')
     ? new URL(fragmentUrl, window.location).pathname

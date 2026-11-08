@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/value-your-car",
+  "path": "value-your-car",
+  "timestamp": "2026-11-08T16:30:02.421Z",
+  "title": "Valutazione Usato | Ferrari Approved",
+  "template": "form-page",
+  "blocks": [
+    "hero-banner",
+    "cards-teaser"
+  ]
+}
