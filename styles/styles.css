@@ -443,3 +443,147 @@ main .section.centered .default-content-wrapper > p.button-container {
   margin: 0;
   padding: 48px 0;
 }
+
+/* section metadata: dark-grey (source theme-ferrari-scuderia-dark) */
+main .section.dark-grey {
+  --text-color: #fff;
+  --link-color: #fff;
+  --link-hover-color: #fff;
+  --border-color: var(--border-color-inverse);
+
+  background-color: var(--text-color-secondary);
+  color: var(--text-color);
+}
+
+/* section metadata: light-grey (source theme-ferrari-812-gts TextBlock, 48px spacers) */
+main > .section.light-grey {
+  padding: 48px 0;
+  background-color: #f6f7f8;
+}
+
+/* plain TextBlock copy: no lead paragraph after the title */
+main .section.light-grey .default-content-wrapper > h2 + p {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  font-size: var(--body-font-size-m);
+  line-height: 1.6em;
+}
+
+/* section metadata: text-large (source TextBlock body copy: 16px/18.4px, blank line between blocks) */
+main .section.text-large .default-content-wrapper > p:not(.chapter, .button-container) {
+  margin-top: 0;
+  margin-bottom: 18.4px;
+  font-size: 16px;
+  line-height: 18.4px;
+}
+
+main .section.text-large .default-content-wrapper > p:not(.chapter, .button-container):has(+ ul) {
+  margin-bottom: 10px;
+}
+
+main .section.light-grey.centered .default-content-wrapper > h2 + p {
+  margin-top: 0;
+}
+
+/* section metadata: spacious (source Spacer--tall above and below) */
+main > .section.spacious {
+  padding: 96px 0;
+}
+
+main > .section.spacious > .default-content-wrapper > :last-child {
+  margin-bottom: 0;
+}
+
+/* default-content lists (source TextBlock: "•" bullets) */
+main .default-content-wrapper > ul {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  padding-left: 4px;
+  list-style: '•';
+}
+
+main .section.text-large .default-content-wrapper > ul {
+  margin-top: 10px;
+}
+
+main .default-content-wrapper > ul > li {
+  padding-left: 8px;
+  font-size: var(--body-font-size-m);
+  line-height: 1.6em;
+}
+
+/*
+ * secondary CTA (source BtnAction "Cerca ora"): uppercase label + 40px ringed chevron
+ * authored as an emphasised link: <p><em><a>Cerca ora</a></em></p>
+ * the row uses padding, not margin: the source CTA row does not collapse with the copy above it
+ */
+main .default-content-wrapper > p.button-container:has(> em > a.button.secondary) {
+  display: flex;
+  margin-top: 0;
+  margin-bottom: 24px;
+  padding-top: 25px;
+  padding-left: 16px;
+}
+
+main .default-content-wrapper a.button.secondary:any-link {
+  --cta-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 16' width='8' height='16'%3E%3Cpath fill='%23181818' d='M7.268 9.547L0 16l4-8-4-8 7.268 6.453C7.715 6.82 8 7.377 8 8c0 .623-.285 1.18-.732 1.547z'/%3E%3C/svg%3E");
+
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--text-color);
+  text-align: start;
+}
+
+main .default-content-wrapper a.button.secondary::after {
+  content: '';
+  position: static;
+  z-index: auto;
+  flex: 0 0 auto;
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  margin-left: 8px;
+  border: 2px solid rgb(143 143 143);
+  border-radius: 100%;
+  background: var(--cta-chevron) center / 8px 16px no-repeat;
+  opacity: 1;
+  transition: border-color 0.2s;
+}
+
+main .default-content-wrapper a.button.secondary:hover,
+main .default-content-wrapper a.button.secondary:focus-visible {
+  border: 0;
+  color: var(--text-color);
+}
+
+main .default-content-wrapper a.button.secondary:hover::after,
+main .default-content-wrapper a.button.secondary:focus-visible::after {
+  border-color: currentcolor;
+}
+
+main .default-content-wrapper a.button.secondary:active {
+  box-shadow: none;
+}
+
+/* white chevron on dark bands */
+main .section:is(.dark, .dark-grey) .default-content-wrapper a.button.secondary:any-link {
+  --cta-chevron: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 16' width='8' height='16'%3E%3Cpath fill='%23fff' d='M7.268 9.547L0 16l4-8-4-8 7.268 6.453C7.715 6.82 8 7.377 8 8c0 .623-.285 1.18-.732 1.547z'/%3E%3C/svg%3E");
+}
+
+@media (width >= 601px) {
+  main .default-content-wrapper > p.button-container:has(> em > a.button.secondary) {
+    padding-left: 8px;
+  }
+}
+
+@media (width >= 1281px) {
+  main .default-content-wrapper > p.button-container:has(> em > a.button.secondary) {
+    justify-content: center;
+    padding-top: 40px;
+    padding-left: 0;
+  }
+}

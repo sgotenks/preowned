@@ -108,12 +108,66 @@ function normalizeChapterLabels(element, document) {
   });
 }
 
+function normalizeTextBlocks(element, document) {
+  // TextBlock CTAs (BtnAction: label + ringed chevron) -> <p><em><a>Label</a></em></p> (secondary button)
+  element.querySelectorAll('[class*="TextBlock__ctas"]').forEach((ctas) => {
+    const links = [...ctas.querySelectorAll('a[href]')];
+    if (!links.length) return;
+    const frag = document.createDocumentFragment();
+    links.forEach((link) => {
+      const labelEl = link.querySelector('[class*="BtnAction__text"]') || link;
+      const label = (labelEl.textContent || link.getAttribute('title') || '').replace(/\s+/g, ' ').trim();
+      if (!label) return;
+      const p = document.createElement('p');
+      const em = document.createElement('em');
+      const a = document.createElement('a');
+      a.setAttribute('href', link.getAttribute('href'));
+      a.textContent = label;
+      em.append(a);
+      p.append(em);
+      frag.append(p);
+    });
+    ctas.replaceWith(frag);
+  });
+
+  // TextBlock body copy authored as bare text + <br><br> + lists -> paragraphs and lists
+  element.querySelectorAll('[class*="TextBlock__content"] div').forEach((div) => {
+    const hasText = [...div.childNodes].some((n) => n.nodeType === 3 && n.textContent.trim());
+    if (!hasText) return;
+    const out = document.createDocumentFragment();
+    let p = null;
+    let brRun = 0;
+    const flush = () => { if (p && p.textContent.trim()) out.append(p); p = null; };
+    [...div.childNodes].forEach((node) => {
+      if (node.nodeName === 'BR') {
+        brRun += 1;
+        if (brRun >= 2) flush();
+        else if (p) p.append(document.createElement('br'));
+        return;
+      }
+      if (node.nodeType === 3 && !node.textContent.trim()) return;
+      if (brRun === 1 && p && p.lastChild && p.lastChild.nodeName === 'BR' && node.nodeType === 1 && /^(UL|OL|P|DIV|H\d)$/.test(node.nodeName)) p.lastChild.remove();
+      brRun = 0;
+      if (node.nodeType === 1 && /^(UL|OL|P|H\d|TABLE)$/.test(node.nodeName)) {
+        flush();
+        out.append(node);
+        return;
+      }
+      if (!p) p = document.createElement('p');
+      p.append(node.nodeType === 3 ? node.textContent.replace(/^\s+/, p.childNodes.length ? ' ' : '') : node);
+    });
+    flush();
+    div.replaceWith(out);
+  });
+}
+
 export default function transform(hookName, element, payload) {
   if (hookName === 'beforeTransform') {
     removeEmptyPreloader(element);
     WebImporter.DOMUtils.remove(element, CHROME_BEFORE);
     removeAccessibilityHints(element);
     normalizeChapterLabels(element, payload.document);
+    normalizeTextBlocks(element, payload.document);
   }
 
   if (hookName === 'afterTransform') {

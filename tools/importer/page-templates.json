@@ -147,7 +147,145 @@
       ],
       "coverageGaps": [],
       "description": "Editorial page opening with a left-aligned hero banner, then numbered chapter sections of image + text with expandable copy, and a closing list",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            "[class*=\"HeroInfo__wrapper\"]"
+          ]
+        },
+        {
+          "name": "editorial",
+          "instances": [
+            "[class*=\"Editorial__wrapper\"]"
+          ]
+        },
+        {
+          "name": "cards-photo-overlay",
+          "instances": [
+            "[class*=\"SplitBanner__wrapper\"]"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero",
+          "selector": [
+            "[class*=\"HeroInfo__wrapper\"]"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Welcome to uniqueness",
+          "selector": [
+            "[class*=\"TextBlock__container\"][class*=\"theme-ferrari-812-gts\"]:not([class*=\"text_centered\"])"
+          ],
+          "style": "light-grey",
+          "blocks": [],
+          "defaultContent": [
+            "[class*=\"TextBlock__content\"]"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "1 Dettagli",
+          "selector": [
+            ".page-menu-hook > div > div:nth-child(2)"
+          ],
+          "style": "dark, text-large, spacious",
+          "blocks": [],
+          "defaultContent": [
+            "[class*=\"TextBlock__chapterTitle\"]",
+            "[class*=\"TextBlock__content\"]"
+          ]
+        },
+        {
+          "id": "section-4",
+          "name": "2 Ispezione tecnica",
+          "selector": [
+            ".page-menu-hook > div > div:nth-child(3)"
+          ],
+          "style": "dark-grey",
+          "blocks": [
+            "editorial"
+          ],
+          "defaultContent": [
+            "[class*=\"Editorial__chapterTitle\"]"
+          ]
+        },
+        {
+          "id": "section-5",
+          "name": "3 Provenienza e preparazione",
+          "selector": [
+            ".page-menu-hook > div > div:nth-child(4)"
+          ],
+          "style": "dark",
+          "blocks": [
+            "editorial"
+          ],
+          "defaultContent": [
+            "[class*=\"Editorial__chapterTitle\"]"
+          ]
+        },
+        {
+          "id": "section-6",
+          "name": "4 Garanzia e assistenza",
+          "selector": [
+            ".page-menu-hook > div > div:nth-child(5)"
+          ],
+          "style": "dark-grey",
+          "blocks": [
+            "editorial"
+          ],
+          "defaultContent": [
+            "[class*=\"Editorial__chapterTitle\"]"
+          ]
+        },
+        {
+          "id": "section-7",
+          "name": "5 Servizi finanziari",
+          "selector": [
+            ".page-menu-hook > div > div:nth-child(6) > div > div:first-child"
+          ],
+          "style": "dark",
+          "blocks": [
+            "editorial"
+          ],
+          "defaultContent": [
+            "[class*=\"Editorial__chapterTitle\"]"
+          ]
+        },
+        {
+          "id": "section-8",
+          "name": "Disclaimer",
+          "selector": [
+            "[class*=\"TextBlock__text_centered\"]"
+          ],
+          "style": "light-grey, centered, spacious",
+          "blocks": [],
+          "defaultContent": [
+            "[class*=\"TextBlock__content\"]"
+          ]
+        },
+        {
+          "id": "section-9",
+          "name": "Programma Ferrari Approved",
+          "selector": [
+            "[class*=\"SplitBanner__wrapper\"]"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-photo-overlay"
+          ],
+          "defaultContent": []
+        }
+      ]
     }
   ],
   "metadata": {

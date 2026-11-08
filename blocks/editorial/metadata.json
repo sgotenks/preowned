@@ -1,0 +1,30 @@
+{
+  "variantName": "editorial",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "medium",
+    "hasGrid": false,
+    "imagePattern": "img-left",
+    "structure": "image + text + expandable more",
+    "purpose": "editorial chapter: photo beside copy, optional expandable extra copy"
+  },
+  "contentPattern": {
+    "structure": "image | text | more (optional)"
+  },
+  "options": [
+    {
+      "class": "image-right",
+      "label": "Image right"
+    }
+  ],
+  "memberVariantIds": [
+    "v_4f04acaa77f0"
+  ],
+  "sourceUrl": "https://preowned.ferrari.com/it-IT/ferrari-approved",
+  "sourceContext": {
+    "originUrl": "https://preowned.ferrari.com/it-IT/ferrari-approved",
+    "selector": "[class*=\"Editorial__wrapper\"]"
+  }
+}

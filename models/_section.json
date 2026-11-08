@@ -33,6 +33,30 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Dark",
+              "value": "dark"
+            },
+            {
+              "name": "Dark grey",
+              "value": "dark-grey"
+            },
+            {
+              "name": "Light grey",
+              "value": "light-grey"
+            },
+            {
+              "name": "Centered",
+              "value": "centered"
+            },
+            {
+              "name": "Spacious (96px top and bottom)",
+              "value": "spacious"
+            },
+            {
+              "name": "Large text",
+              "value": "text-large"
             }
           ]
         }
@@ -65,6 +89,7 @@
         "cards-model",
         "cards-teaser",
         "cards-photo-overlay",
+        "editorial",
         "global-header",
         "hero-banner",
         "hero-search",

@@ -47,18 +47,74 @@
   height: auto;
 }
 
-.hero-banner.text-left .hero-banner-content {
-  max-width: 1200px;
-  text-align: start;
-}
-
-.hero-banner.text-left .hero-banner-content > * {
-  max-width: 600px;
-}
-
 @media (width >= 900px) {
   .hero-banner {
     min-height: 480px;
     padding: 80px 32px;
+  }
+}
+
+/*
+ * text-left (source HeroInfo, theme-ferrari-dark): photo band with a vertically centred
+ * title + subtitle aligned to the start; no scrim, title in sentence case
+ * breakpoints follow the source: 601px, 961px, 1281px
+ */
+.hero-banner.text-left {
+  box-sizing: border-box;
+  height: 400px;
+  min-height: 0;
+  padding: 0 0 0 34px;
+  background-color: var(--dark-color);
+}
+
+.hero-banner.text-left .hero-banner-media::after {
+  content: none;
+}
+
+/* 14px top padding stands in for the source's empty h4 eyebrow slot (keeps the centring) */
+.hero-banner.text-left .hero-banner-content {
+  max-width: 480px;
+  margin: 0;
+  padding-top: 14px;
+  color: var(--text-color-inverse);
+  text-align: start;
+}
+
+.hero-banner.text-left .hero-banner-content h1 {
+  margin: 5px 0 24px;
+  color: inherit;
+  font-size: var(--heading-font-size-xxl);
+  line-height: 1.2em;
+  text-transform: none;
+}
+
+/* subtitle (source h3 in the body font, bold) */
+.hero-banner.text-left .hero-banner-content :is(h2, h3, h4, p) {
+  margin: 15px 0;
+  color: inherit;
+  font-family: var(--body-font-family);
+  font-size: 15.21px;
+  font-weight: 700;
+  letter-spacing: normal;
+  line-height: 20.8px;
+  text-transform: none;
+}
+
+@media (width >= 601px) {
+  .hero-banner.text-left {
+    height: 326px;
+  }
+}
+
+@media (width >= 961px) {
+  .hero-banner.text-left {
+    height: 496px;
+  }
+}
+
+@media (width >= 1281px) {
+  .hero-banner.text-left {
+    height: 543px;
+    padding-left: calc((100% - 1200px) / 2 + 74px);
   }
 }

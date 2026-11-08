@@ -204,6 +204,44 @@ main .cards-photo-overlay a.cards-photo-overlay-card-cta:any-link::after {
   }
 }
 
+/*
+ * single tile (source SplitBanner, item without --double): split band with the
+ * text on a dark panel at the start and the photo at the end, no overlay
+ */
+@media (width >= 601px) {
+  .cards-photo-overlay > ul > li:only-child {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background-color: var(--dark-color);
+  }
+
+  .cards-photo-overlay > ul > li:only-child .cards-photo-overlay-card-image {
+    position: relative;
+    inset: auto;
+    grid-area: 1 / 2;
+  }
+
+  .cards-photo-overlay > ul > li:only-child .cards-photo-overlay-card-image::after {
+    content: none;
+  }
+
+  .cards-photo-overlay > ul > li:only-child .cards-photo-overlay-card-body {
+    grid-area: 1 / 1;
+    justify-content: center;
+    align-items: center;
+    text-align: start;
+  }
+
+  .cards-photo-overlay > ul > li:only-child .cards-photo-overlay-card-body > * {
+    max-width: 450px;
+  }
+
+  main .cards-photo-overlay > ul > li:only-child .cards-photo-overlay-card-body > .button-container,
+  .cards-photo-overlay > ul > li:only-child .cards-photo-overlay-card-body > p:has(> .cards-photo-overlay-card-cta) {
+    justify-content: flex-start;
+  }
+}
+
 @media (width >= 1281px) {
   .cards-photo-overlay > ul > li {
     height: 650px;

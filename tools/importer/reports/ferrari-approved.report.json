@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/ferrari-approved",
+  "path": "ferrari-approved",
+  "timestamp": "2026-11-08T15:17:55.310Z",
+  "title": "Ferrari Approved: il programma ufficiale di certificazione dell’usato.",
+  "template": "content-page",
+  "blocks": [
+    "hero-banner",
+    "editorial",
+    "editorial",
+    "editorial",
+    "editorial",
+    "cards-photo-overlay"
+  ]
+}
