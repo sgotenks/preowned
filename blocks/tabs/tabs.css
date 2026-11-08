@@ -1,56 +1,64 @@
+/*
+ * tabs (source Favorites Tabs / ContentSwitcher): 12px uppercase labels with 86px side
+ * padding, the selected tab red with a 2px red underline; the list scrolls sideways when it
+ * is wider than the page. Panels hold plain copy (e.g. an empty state).
+ */
 .tabs .tabs-list {
   display: flex;
-  gap: 0.5ch;
   max-width: 100%;
-  font-size: var(--body-font-size-xs);
   overflow-x: auto;
+  scrollbar-width: none;
 }
 
-@media (width >= 600px) {
-  .tabs .tabs-list {
-    font-size: var(--body-font-size-s);
-  }
-}
-
-@media (width >= 900px) {
-  .tabs .tabs-list {
-    font-size: var(--body-font-size-m);
-  }
+.tabs .tabs-list::-webkit-scrollbar {
+  display: none;
 }
 
 .tabs .tabs-list button {
   flex: 0 0 max-content;
   margin: 0;
-  border: 1px solid #dadada;
+  padding: 5px 86px;
+  border: 0;
+  border-bottom: 2px solid transparent;
   border-radius: 0;
-  padding: 0.5em;
-  background-color: var(--light-color);
-  color: initial;
-  font-weight: bold;
-  line-height: unset;
-  text-align: initial;
-  text-overflow: unset;
-  overflow: unset;
-  white-space: unset;
-  transition: background-color 0.2s;
+  background: none;
+  color: rgb(143 143 143);
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 15.24px;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
 }
 
 .tabs .tabs-list button p {
   margin: 0;
 }
 
+.tabs .tabs-list button:hover {
+  color: var(--dark-color);
+}
 
 .tabs .tabs-list button[aria-selected='true'] {
-  border-bottom: 1px solid var(--background-color);
-  background-color: var(--background-color);
-  cursor: initial;
+  border-bottom-color: var(--brand-red);
+  color: var(--brand-red);
+  cursor: default;
 }
 
 .tabs .tabs-panel {
-  margin-top: -1px;
-  padding: 24px;
-  border: 1px solid #dadada;
-  overflow: auto;
+  min-height: 495px;
+  padding: 32px 0 0;
+  color: var(--dark-color);
+}
+
+.tabs .tabs-panel[role="tabpanel"] p {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 18.4px;
 }
 
 .tabs .tabs-panel[aria-hidden='true'] {

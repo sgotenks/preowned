@@ -118,3 +118,71 @@
     padding-left: calc((100% - 1200px) / 2 + 74px);
   }
 }
+
+/*
+ * default (source HeroLogoText, results listings): dark band with a cover photo and a
+ * left-to-right dark gradient; centred model logo or title (36px uppercase) and a 13px
+ * description in an 800px column. breakpoints follow the source: 961px
+ */
+.hero-banner:not(.text-left) {
+  box-sizing: border-box;
+  min-height: 0;
+  padding: 100px 34px 110px;
+  background-color: var(--dark-color);
+}
+
+.hero-banner:not(.text-left) .hero-banner-media::after {
+  background: linear-gradient(270deg, rgb(24 24 24 / 0%), rgb(24 24 24 / 60%));
+}
+
+.hero-banner:not(.text-left) .hero-banner-content {
+  box-sizing: border-box;
+  max-width: 800px;
+  padding: 10px 0;
+  color: #fff;
+}
+
+.hero-banner:not(.text-left) .hero-banner-content picture img {
+  display: inline-block;
+  width: 320px;
+  max-width: 100%;
+  height: auto;
+}
+
+.hero-banner:not(.text-left) .hero-banner-content :is(h1, h2) {
+  margin: 24px 0;
+  color: inherit;
+  font-family: var(--heading-font-family);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.2em;
+  text-transform: uppercase;
+}
+
+.hero-banner:not(.text-left) .hero-banner-content p:not(:has(> picture)) {
+  margin: 5px 0 0;
+  color: inherit;
+  font-family: var(--body-font-family);
+  font-size: 13px;
+  line-height: 20.8px;
+}
+
+/* model logo paragraph */
+.hero-banner:not(.text-left) .hero-banner-content p:has(> picture:only-child) {
+  margin: 0;
+  padding-bottom: 3px;
+}
+
+@media (width >= 961px) {
+  .hero-banner:not(.text-left) {
+    padding: 130px 120px 140px;
+  }
+
+  .hero-banner:not(.text-left) .hero-banner-content {
+    padding: 10px;
+  }
+
+  .hero-banner:not(.text-left) .hero-banner-content :is(h1, h2) {
+    font-size: 36px;
+  }
+}

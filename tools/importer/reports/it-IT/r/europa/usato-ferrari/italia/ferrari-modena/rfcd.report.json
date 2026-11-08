@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-modena/rfcd",
+  "path": "it-IT/r/europa/usato-ferrari/italia/ferrari-modena/rfcd",
+  "timestamp": "2026-11-08T17:36:45.109Z",
+  "error": "page.evaluate: Target page, context or browser has been closed",
+  "errorStack": "page.evaluate: Target page, context or browser has been closed\n    at processUrl (/home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:687:31)\n    at async main (/home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:950:22)"
+}

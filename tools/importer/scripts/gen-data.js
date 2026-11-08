@@ -3,6 +3,8 @@
 //  - parsers/cards-model.js "model-index-snapshot": every model tile (all pagination pages) with categories,
 //    from migration-work/model-index/models.json (crawled with models-crawl.js)
 //  - transformers/ferrari-preowned-links.js "migrated-paths": source paths of every page in page-templates.json
+//  - parsers/link-directory.js "link-directory-snapshot": the full ("Mostra tutti") SearchHints link
+//    lists of every results-listing page, from migration-work/results-listing/hints.json (hints-crawl.js)
 // Lists are inlined because the parser/transformer validation hooks load each file standalone (no imports).
 const fs = require('fs');
 
@@ -35,5 +37,14 @@ if (fs.existsSync(parser) && fs.readFileSync(parser, 'utf8').includes('BEGIN mod
   replaceBlock(parser, 'model-index-snapshot',
     `const SNAPSHOT_DATE = '${new Date().toISOString().slice(0, 10)}';\nconst SNAPSHOT = ${JSON.stringify(models, null, 2)};`);
   console.log('models', models.length);
+}
+const hintsParser = `${R}/tools/importer/parsers/link-directory.js`;
+const hintsFile = `${R}/migration-work/results-listing/hints.json`;
+if (fs.existsSync(hintsParser) && fs.existsSync(hintsFile)
+  && fs.readFileSync(hintsParser, 'utf8').includes('BEGIN link-directory-snapshot')) {
+  const hints = JSON.parse(fs.readFileSync(hintsFile, 'utf8'));
+  replaceBlock(hintsParser, 'link-directory-snapshot',
+    `const SNAPSHOT_DATE = '${new Date().toISOString().slice(0, 10)}';\nconst SNAPSHOT = ${JSON.stringify(hints, null, 2)};`);
+  console.log('link-directory pages', Object.keys(hints).length);
 }
 console.log('paths', paths.length);

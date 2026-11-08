@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/germania/rfc",
+  "path": "r/europa/usato-ferrari/germania/rfc",
+  "timestamp": "2026-11-08T18:14:35.237Z",
+  "title": "Offerte Ferrari usata in vendita in Germania | Ferrari Approved",
+  "template": "results-listing",
+  "blocks": [
+    "results-toolbar",
+    "cards-car-listing",
+    "link-directory"
+  ]
+}

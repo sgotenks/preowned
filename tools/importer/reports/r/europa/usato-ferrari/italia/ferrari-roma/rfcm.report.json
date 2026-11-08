@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-roma/rfcm",
+  "path": "r/europa/usato-ferrari/italia/ferrari-roma/rfcm",
+  "timestamp": "2026-11-08T18:12:43.144Z",
+  "title": "Ferrari Roma usata in vendita vicino a me | Ferrari Approved",
+  "template": "results-listing",
+  "blocks": [
+    "hero-banner",
+    "results-toolbar",
+    "active-filters",
+    "cards-car-listing",
+    "link-directory"
+  ]
+}

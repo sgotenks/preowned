@@ -1,0 +1,19 @@
+{
+  "variantName": "link-directory",
+  "baseBlock": "custom",
+  "canonicalModel": "container",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "dense",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "heading + link list",
+    "purpose": "centred directory of dealer, model and country links with a show-all toggle"
+  },
+  "contentPattern": {
+    "structure": "one row per group: title | links (list) | show-all label"
+  },
+  "options": [],
+  "sourceUrl": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-roma/rfcm",
+  "sourceSelector": "[class*=\"SearchHints__wrapper\"]"
+}

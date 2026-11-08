@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/c-d-p-/rfcd",
+  "path": "r/europa/usato-ferrari/italia/c-d-p/rfcd",
+  "timestamp": "2026-11-08T18:19:48.159Z",
+  "title": "Offerte Ferrari in vendita a Ellera di Corciano | Ferrari Approved",
+  "template": "results-listing",
+  "blocks": [
+    "hero-banner",
+    "results-toolbar",
+    "active-filters",
+    "cards-car-listing"
+  ]
+}

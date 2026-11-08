@@ -33,6 +33,40 @@ export default function parse(element, { document }) {
     }
   }
 
+  // Results listings (HeroLogoText): centred model logo or title + description, default variant.
+  // The page's h1 is the results heading, so the hero title is an h2.
+  if (/HeroLogoText__wrapper/.test(element.className || '')) {
+    const nodes = [];
+    const logo = element.querySelector('img[class*="HeroLogoText__logo"]');
+    if (logo) {
+      const p = document.createElement('p');
+      p.appendChild(logo);
+      nodes.push(p);
+    }
+    const title = clean(element.querySelector('[class*="HeroLogoText__title"]')?.textContent);
+    if (title) {
+      const h = document.createElement('h2');
+      h.textContent = title;
+      nodes.push(h);
+    }
+    const textEl = element.querySelector('[class*="HeroLogoText__text"]');
+    if (textEl) {
+      const blocks = [...textEl.querySelectorAll('div, p')].filter((el) => !el.querySelector('div, p'));
+      const texts = (blocks.length ? blocks : [textEl]).map((el) => clean(el.textContent)).filter(Boolean);
+      texts.forEach((t) => {
+        const p = document.createElement('p');
+        p.textContent = t;
+        nodes.push(p);
+      });
+    }
+    const block = WebImporter.Blocks.createBlock(document, {
+      name: 'hero-banner',
+      cells: [[img ? hinted('image', img) : ''], [nodes.length ? hinted('text', ...nodes) : '']],
+    });
+    element.replaceWith(block);
+    return;
+  }
+
   // title + subtitle (the source keeps an empty h4 eyebrow slot)
   const content = element.querySelector('[class*="HeroInfo__content"]') || element;
   const nodes = [];

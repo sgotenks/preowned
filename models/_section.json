@@ -65,6 +65,14 @@
             {
               "name": "Lead paragraph (opening paragraph in the large size)",
               "value": "lead"
+            },
+            {
+              "name": "Search results (left-aligned results heading, load-more bar)",
+              "value": "results"
+            },
+            {
+              "name": "Call to action (centered heading, text and side-by-side buttons)",
+              "value": "cta"
             }
           ]
         }
@@ -102,7 +110,8 @@
         "hero-banner",
         "hero-search",
         "model-filter",
-        "results-toolbar"
+        "results-toolbar",
+        "link-directory"
       ]
     }
   ]

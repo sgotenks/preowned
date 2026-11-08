@@ -35,7 +35,8 @@
       "hero-banner",
       "hero-search",
       "model-filter",
-      "results-toolbar"
+      "results-toolbar",
+      "link-directory"
     ]
   },
   {
@@ -93,6 +94,12 @@
       "image",
       "button",
       "title"
+    ]
+  },
+  {
+    "id": "link-directory",
+    "components": [
+      "link-directory-group"
     ]
   },
   {

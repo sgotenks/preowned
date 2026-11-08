@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/r/nord-america/usato-ferrari/u-s-a-/cauley-ferrari-of-detroit/rfcd",
+  "path": "r/nord-america/usato-ferrari/u-s-a/cauley-ferrari-of-detroit/rfcd",
+  "timestamp": "2026-11-08T18:21:33.729Z",
+  "title": "Offerte Ferrari in vendita a Detroit | Ferrari Approved",
+  "template": "results-listing",
+  "blocks": [
+    "hero-banner",
+    "results-toolbar",
+    "active-filters",
+    "cards-car-listing"
+  ]
+}

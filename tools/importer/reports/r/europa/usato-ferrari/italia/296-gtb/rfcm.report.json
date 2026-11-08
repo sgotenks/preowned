@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/296-gtb/rfcm",
+  "path": "r/europa/usato-ferrari/italia/296-gtb/rfcm",
+  "timestamp": "2026-11-08T18:15:28.673Z",
+  "title": "296 GTB usata in vendita vicino a me | Ferrari Approved",
+  "template": "results-listing",
+  "blocks": [
+    "results-toolbar",
+    "active-filters",
+    "cards-car-listing",
+    "link-directory"
+  ]
+}

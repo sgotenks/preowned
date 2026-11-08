@@ -1,22 +1,35 @@
+/*
+ * active-filters (source SearchResults__resultsWrapper / FilterTag / SaveCurrentSearch)
+ * "Filtri attivi:" label, dark pill chips with a ringed remove button, outline save button.
+ * Below 961px the label is hidden and the save button drops under the chips, as on the source.
+ */
 .active-filters {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  padding: 34px 0 30px;
+  color: var(--dark-color);
 }
 
 .active-filters .active-filters-list {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 16px 32px;
+  gap: 10px 32px;
+}
+
+.active-filters .active-filters-label {
+  display: none;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 18.4px;
 }
 
 .active-filters .active-filters-chips {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 10px;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -25,22 +38,40 @@
 .active-filters .active-filters-chip {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
-  padding: 8px 8px 8px 20px;
-  border-radius: 999px;
+  box-sizing: border-box;
+  height: 42px;
+  padding: 0 7px 0 20px;
+  border-radius: 100px;
+  background: var(--dark-color);
+  color: #fff;
+}
+
+.active-filters .active-filters-chip-label {
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 15.24px;
+  text-transform: uppercase;
 }
 
 .active-filters .active-filters-chip-remove {
   position: relative;
-  width: 24px;
-  height: 24px;
-  margin: 0;
+  box-sizing: border-box;
+  width: 28px;
+  height: 28px;
+  margin: 0 0 0 16px;
   padding: 0;
-  border: 1px solid currentcolor;
+  border: 2px solid rgb(255 255 255 / 40%);
   border-radius: 50%;
-  background: none;
-  color: inherit;
+  background: var(--text-color-secondary);
+  color: #fff;
   cursor: pointer;
+  transition: border-color 0.3s ease;
+}
+
+.active-filters .active-filters-chip-remove:hover,
+.active-filters .active-filters-chip-remove:focus-visible {
+  border-color: #fff;
 }
 
 /* "x" glyph */
@@ -60,10 +91,53 @@
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
-.active-filters.is-empty .active-filters-label {
+.active-filters.is-empty .active-filters-list {
   display: none;
 }
 
-.active-filters .active-filters-actions a {
+.active-filters .active-filters-actions {
+  align-self: stretch;
+}
+
+.active-filters .active-filters-save:any-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: 250px;
+  min-height: 57px;
   margin: 0;
+  padding: 18px 21px 22px;
+  border: 1px solid rgb(24 24 24 / 40%);
+  color: var(--dark-color);
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 15.24px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: border-color 0.3s ease;
+}
+
+.active-filters .active-filters-save:hover {
+  border-color: var(--dark-color);
+  text-decoration: none;
+}
+
+@media (width >= 961px) {
+  .active-filters {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 0 23px;
+  }
+
+  .active-filters .active-filters-label {
+    display: block;
+  }
+
+  .active-filters .active-filters-actions {
+    align-self: auto;
+  }
 }

@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/rfc",
+  "path": "r/europa/usato-ferrari/italia/rfc",
+  "timestamp": "2026-11-08T18:16:20.151Z",
+  "title": "Offerte Ferrari usata in vendita in Italia | Ferrari Approved",
+  "template": "results-listing",
+  "blocks": [
+    "results-toolbar",
+    "cards-car-listing",
+    "link-directory"
+  ]
+}

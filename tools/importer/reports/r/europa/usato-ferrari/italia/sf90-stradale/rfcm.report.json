@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/sf90-stradale/rfcm",
+  "path": "r/europa/usato-ferrari/italia/sf90-stradale/rfcm",
+  "timestamp": "2026-11-08T18:18:56.242Z",
+  "title": "SF90 Stradale usata in vendita vicino a me | Ferrari Approved",
+  "template": "results-listing",
+  "blocks": [
+    "hero-banner",
+    "results-toolbar",
+    "active-filters",
+    "cards-car-listing",
+    "link-directory"
+  ]
+}

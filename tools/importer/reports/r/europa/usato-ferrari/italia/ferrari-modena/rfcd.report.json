@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-modena/rfcd",
+  "path": "r/europa/usato-ferrari/italia/ferrari-modena/rfcd",
+  "timestamp": "2026-11-08T18:20:40.393Z",
+  "title": "Offerte Ferrari in vendita a Modena | Ferrari Approved",
+  "template": "results-listing",
+  "blocks": [
+    "hero-banner",
+    "results-toolbar",
+    "active-filters",
+    "cards-car-listing"
+  ]
+}

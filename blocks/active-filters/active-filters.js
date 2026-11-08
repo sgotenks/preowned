@@ -5,9 +5,12 @@
  *    at runtime with the `active-filters:set` event, detail: { filters: [{ label, value }] })
  * 3. save-search call to action link (e.g. "Salva la ricerca")
  *
- * Removing a chip dispatches `active-filters:remove` ({ label, value }) on document.
+ * Removing a chip dispatches `active-filters:remove` ({ label, value }) on document. A chip
+ * authored as a link (the search without that filter) navigates there instead.
  */
-function createChip(label, value) {
+const REMOVE_LABEL = document.documentElement.lang === 'it' ? 'Rimuovi' : 'Remove';
+
+function createChip(label, value, href) {
   const li = document.createElement('li');
   li.className = 'active-filters-chip';
   li.dataset.value = value || label;
@@ -19,8 +22,12 @@ function createChip(label, value) {
   const remove = document.createElement('button');
   remove.type = 'button';
   remove.className = 'active-filters-chip-remove';
-  remove.setAttribute('aria-label', `Remove ${label}`);
+  remove.setAttribute('aria-label', `${REMOVE_LABEL} ${label}`);
   remove.addEventListener('click', () => {
+    if (href) {
+      window.location.href = href;
+      return;
+    }
     const list = li.parentElement;
     li.remove();
     document.dispatchEvent(new CustomEvent('active-filters:remove', {
@@ -35,10 +42,9 @@ function createChip(label, value) {
 
 export default function decorate(block) {
   const rows = [...block.children];
-  const ctaRow = rows.find((r) => r.querySelector('a'));
-  const textRows = rows.filter((r) => r !== ctaRow);
-  const labelRow = textRows.find((r) => !r.querySelector('ul, ol'));
-  const listRow = textRows.find((r) => r.querySelector('ul, ol'));
+  const listRow = rows.find((r) => r.querySelector('ul, ol'));
+  const ctaRow = rows.find((r) => r !== listRow && r.querySelector('a'));
+  const labelRow = rows.find((r) => r !== listRow && r !== ctaRow);
 
   const filters = document.createElement('div');
   filters.className = 'active-filters-list';
@@ -54,7 +60,7 @@ export default function decorate(block) {
   chips.className = 'active-filters-chips';
   listRow?.querySelectorAll('li').forEach((item) => {
     const text = item.textContent.trim();
-    if (text) chips.append(createChip(text));
+    if (text) chips.append(createChip(text, text, item.querySelector('a')?.href));
   });
   filters.append(chips);
 

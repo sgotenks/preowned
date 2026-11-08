@@ -651,3 +651,138 @@ main .section.eyebrow-title .default-content-wrapper > h1 + h2 {
     font-size: 36px;
   }
 }
+
+/*
+ * section metadata: results (source SearchResults / Favorites): toolbar, separator + results
+ * heading, active filters, vehicle grid and load-more bar. A page without a hero clears the
+ * overlaid channel bar; with a hero the toolbar sits 96px below it.
+ */
+
+/* 116px + the 40px corporate bar = the source 156px */
+main > .section.results {
+  padding: 116px 0 130px;
+}
+
+/* favorites: toolbar 158px (mobile) / 180px (desktop) from the top */
+main > .section.results:has(.tabs-wrapper) {
+  padding-top: 118px;
+}
+
+main > .section.results:has(> .hero-banner-wrapper:first-child) {
+  padding-top: 0;
+}
+
+main > .section.results > .hero-banner-wrapper + .results-toolbar-wrapper {
+  margin-top: 36px;
+}
+
+/* default content (heading, load-more bar) keeps the content column, like the blocks */
+main > .section.results > .default-content-wrapper {
+  max-width: var(--content-max-width);
+}
+
+/* results heading: 2px rule 32px below the toolbar, heading 32px below the rule */
+main .section.results .default-content-wrapper > h1 {
+  max-width: none;
+  margin: 32px 0 0;
+  color: #000;
+  font-size: var(--heading-font-size-xl);
+  line-height: 1.23em;
+  text-align: left;
+  text-transform: none;
+}
+
+main .section.results .default-content-wrapper > h1::before {
+  content: '';
+  display: block;
+  height: 0;
+  margin-bottom: 32px;
+  border-top: 1px solid rgb(143 143 143);
+  border-bottom: 1px solid rgb(143 143 143);
+}
+
+main .section.results .active-filters-wrapper {
+  margin-top: 18px;
+}
+
+main .section.results .cards-car-listing-wrapper {
+  margin-top: 32px;
+}
+
+/* favorites: tabs 48px (64px from 601px) below the toolbar */
+main .section.results .tabs-wrapper {
+  margin-top: 48px;
+}
+
+/*
+ * section metadata: cta (source SearchResultsFooter): centred 28px heading, 18px lead and
+ * side-by-side light outline + red buttons (stacked on mobile)
+ */
+main > .section.cta {
+  padding: 40px 0 72px;
+  text-align: center;
+}
+
+main .section.cta .default-content-wrapper > h2:not(:empty) {
+  margin: 0 auto;
+  color: var(--text-color);
+  font-size: var(--heading-font-size-xl);
+  line-height: 1.23em;
+  text-transform: none;
+}
+
+main .section.cta .default-content-wrapper > h2 + p:not(.button-container) {
+  margin: 19px auto 53px;
+  font-size: var(--body-font-size-l);
+  line-height: 1.6em;
+}
+
+main .section.cta .default-content-wrapper > p.button-container:not(:empty) {
+  display: flex;
+  justify-content: center;
+  max-width: none;
+  margin: 0 0 24px;
+}
+
+main .section.cta .default-content-wrapper > p.button-container a.button:any-link {
+  box-sizing: border-box;
+  min-width: 200px;
+}
+
+main .section.cta .default-content-wrapper > p.button-container a.button:not(.primary):any-link {
+  border-color: rgb(212 210 210);
+  color: rgb(64 64 64);
+}
+
+@media (width >= 601px) {
+  main > .section.cta {
+    padding-bottom: 128px;
+  }
+
+  main .section.results .tabs-wrapper {
+    margin-top: 64px;
+  }
+
+  main .section.cta .default-content-wrapper > p.button-container:not(:empty) {
+    display: inline-flex;
+    margin: 0 12px;
+  }
+
+  main .section.cta .default-content-wrapper > p.button-container a.button:any-link {
+    min-width: 250px;
+  }
+}
+
+@media (width >= 961px) {
+  main > .section.results:has(.tabs-wrapper) {
+    padding-top: 140px;
+  }
+
+  main > .section.results > .hero-banner-wrapper + .results-toolbar-wrapper {
+    margin-top: 96px;
+  }
+
+  main .section.results .active-filters-wrapper {
+    margin-top: 32px;
+  }
+}

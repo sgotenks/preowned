@@ -105,6 +105,7 @@
     {
       "name": "results-listing",
       "urls": [
+        "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-roma/rfcm",
         "https://preowned.ferrari.com/it-IT/favorites",
         "https://preowned.ferrari.com/it-IT/r/asia-pacifico/usato-ferrari/giappone/rfc",
         "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/germania/rfc",
@@ -112,15 +113,98 @@
         "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/rfc",
         "https://preowned.ferrari.com/it-IT/r/nord-america/usato-ferrari/u-s-a-/rfc",
         "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/gran-bretagna/812-superfast/rfcm",
-        "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-roma/rfcm",
         "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/sf90-stradale/rfcm",
         "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/c-d-p-/rfcd",
         "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-modena/rfcd",
         "https://preowned.ferrari.com/it-IT/r/nord-america/usato-ferrari/u-s-a-/cauley-ferrari-of-detroit/rfcd"
       ],
       "coverageGaps": [],
-      "description": "Vehicle search results page: optional hero banner (model or dealer), refine/sort and view toolbar, results heading, active filter chips and a grid of vehicle cards with a promo tile, closed by a contact call-to-action and link lists",
-      "blocks": []
+      "description": "Vehicle search results (country, dealer and model listings) and the favorites page: optional hero banner, results toolbar, results heading, active filter chips, a grid of vehicle cards with promo tiles and a load-more bar, a contact call-to-action and a dark link directory of dealers, models and countries",
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            "[class*=\"SearchResults__hero\"]:not([class*=\"isEmpty\"]) [class*=\"HeroLogoText__wrapper\"]"
+          ]
+        },
+        {
+          "name": "results-toolbar",
+          "instances": [
+            "[class*=\"SearchRefine__wrapper\"]:not([class*=\"SearchRefine__sticky\"])",
+            "[class*=\"FavoritesHeader__wrapper\"]"
+          ]
+        },
+        {
+          "name": "active-filters",
+          "instances": [
+            "[class*=\"SearchResults__resultsWrapper\"]"
+          ]
+        },
+        {
+          "name": "cards-car-listing",
+          "instances": [
+            ".search-result-listing"
+          ]
+        },
+        {
+          "name": "tabs",
+          "instances": [
+            "[class*=\"Favorites__tabs\"]"
+          ]
+        },
+        {
+          "name": "link-directory",
+          "instances": [
+            "[class*=\"SearchHints__wrapper\"]"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Results",
+          "selector": [
+            "[class*=\"SearchResults__wrapper\"]",
+            "[class*=\"Favorites__wrapper\"]"
+          ],
+          "style": "results",
+          "blocks": [
+            "hero-banner",
+            "results-toolbar",
+            "active-filters",
+            "cards-car-listing",
+            "tabs"
+          ],
+          "defaultContent": [
+            "[class*=\"SearchResults__title\"]",
+            "[class*=\"SearchResultListing__loadMore\"]"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "Contact call to action",
+          "selector": [
+            "[class*=\"SearchResultsFooter__wrapper\"]"
+          ],
+          "style": "cta",
+          "blocks": [],
+          "defaultContent": [
+            "[class*=\"SearchResultsFooter__wrapper\"]"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Link directory",
+          "selector": [
+            "[class*=\"SearchHints__wrapper\"]"
+          ],
+          "style": "dark-grey",
+          "blocks": [
+            "link-directory"
+          ],
+          "defaultContent": []
+        }
+      ]
     },
     {
       "name": "model-index",

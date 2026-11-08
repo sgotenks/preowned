@@ -30,7 +30,8 @@ const CHROME_BEFORE = [
   '#sf-ntw-ferrari',
   '.fa-superfooter',
   'footer',
-  '[class*="Footer__wrapper"]',
+  // (not the results listing "Stai ancora cercando…" call to action, SearchResultsFooter__wrapper)
+  '[class*="Footer__wrapper"]:not([class*="SearchResultsFooter__"])',
   '[class*="ChannelFooter__"]',
   // Cookie banner / OneTrust
   '#onetrust-consent-sdk',

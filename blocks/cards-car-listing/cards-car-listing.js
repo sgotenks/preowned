@@ -64,8 +64,25 @@ function decorateMeta(p) {
  * Price paragraph plus optional breakdown (e.g. "IVA esposta", financing link)
  * authored as the paragraphs between the price and the spec list.
  */
+/**
+ * "Label: value" paragraph -> small label above the value (e.g. "Prezzo totale", "Altre tasse").
+ */
+function splitLabel(p, cls) {
+  const text = p.textContent;
+  const idx = text.indexOf(':');
+  if (idx < 0 || p.children.length) return;
+  const label = document.createElement('span');
+  label.className = `${cls}-label`;
+  label.textContent = text.slice(0, idx).trim();
+  const value = document.createElement('span');
+  value.className = `${cls}-value`;
+  value.textContent = text.slice(idx + 1).trim();
+  p.replaceChildren(label, value);
+}
+
 function decoratePrice(price) {
   price.classList.add('cards-car-listing-card-price');
+  splitLabel(price, 'cards-car-listing-card-price');
   const row = document.createElement('div');
   row.className = 'cards-car-listing-card-price-row';
   price.before(row);
@@ -80,7 +97,10 @@ function decoratePrice(price) {
   const extra = document.createElement('div');
   extra.className = 'cards-car-listing-card-price-extra';
   extras.forEach((p) => {
-    if (isPlainParagraph(p)) p.classList.add('cards-car-listing-card-price-note');
+    if (isPlainParagraph(p)) {
+      p.classList.add('cards-car-listing-card-price-note');
+      splitLabel(p, 'cards-car-listing-card-price-note');
+    }
     p.classList.remove('button-container');
     p.querySelectorAll('a').forEach((a) => {
       a.classList.remove('button', 'primary', 'secondary');
@@ -183,10 +203,87 @@ function buildCard(row) {
   return li;
 }
 
+const numberIn = (text) => {
+  const digits = (text || '').replace(/[^\d]/g, '');
+  return digits ? Number(digits) : null;
+};
+
+/**
+ * Sort values read from a decorated vehicle card: price, year (first meta item), mileage
+ * (second meta item, km or mi).
+ */
+function cardValues(li) {
+  const meta = [...li.querySelectorAll('.cards-car-listing-card-meta-item')].map((s) => s.textContent);
+  const price = li.querySelector('.cards-car-listing-card-price-value, .cards-car-listing-card-price');
+  return { price: numberIn(price?.textContent), year: numberIn(meta[0]), km: numberIn(meta[1]) };
+}
+
+/**
+ * Re-order the vehicle cards for a `results-toolbar:sort` choice. Promo tiles keep their slots;
+ * cards without the value go last; "default" restores the authored order.
+ */
+function enableSorting(ul) {
+  const items = [...ul.children];
+  const promoSlots = items.map((li, i) => (li.classList.contains('cards-car-listing-promo') ? i : -1))
+    .filter((i) => i >= 0);
+  const vehicles = items.filter((li) => li.classList.contains('cards-car-listing-vehicle'));
+  if (vehicles.length < 2) return;
+  document.addEventListener('results-toolbar:sort', (e) => {
+    const { field, dir } = e.detail || {};
+    const sorted = [...vehicles];
+    if (field && field !== 'default') {
+      sorted.sort((a, b) => {
+        const va = cardValues(a)[field];
+        const vb = cardValues(b)[field];
+        if (va === null && vb === null) return vehicles.indexOf(a) - vehicles.indexOf(b);
+        if (va === null) return 1;
+        if (vb === null) return -1;
+        return dir === 'desc' ? vb - va : va - vb;
+      });
+    }
+    const order = [];
+    let v = 0;
+    for (let i = 0; i < items.length; i += 1) {
+      order.push(promoSlots.includes(i) ? items[i] : sorted[v]);
+      if (!promoSlots.includes(i)) v += 1;
+    }
+    ul.append(...order.filter(Boolean));
+  });
+}
+
+/**
+ * Load-more bar authored as default content right after the block: "Hai visto 11 di 23 veicoli"
+ * plus the "Mostra altri" link. Adds the progress bar the source draws between them.
+ */
+function decorateLoadMore(block) {
+  // only search results pages have the bar (the homepage carousel is followed by a plain CTA)
+  if (!block.closest('.section.results')) return;
+  const wrapper = block.closest('.cards-car-listing-wrapper')?.nextElementSibling;
+  if (!wrapper?.classList.contains('default-content-wrapper')) return;
+  const children = [...wrapper.children];
+  const last = children[children.length - 1];
+  // the bar is a link paragraph, optionally preceded by the counts paragraph
+  if (children.length > 2 || !last?.querySelector('a')) return;
+  wrapper.classList.add('cards-car-listing-more');
+  const first = children.length === 2 ? children[0] : null;
+  const counts = first?.textContent.match(/(\d[\d.]*)\D+(\d[\d.]*)/);
+  if (!counts) return;
+  const seen = numberIn(counts[1]);
+  const total = numberIn(counts[2]);
+  const progress = document.createElement('progress');
+  progress.className = 'cards-car-listing-more-progress';
+  progress.max = total || 1;
+  progress.value = Math.min(seen, total || seen);
+  progress.setAttribute('aria-hidden', 'true');
+  first.after(progress);
+}
+
 export default function decorate(block) {
   const ul = document.createElement('ul');
   [...block.children].forEach((row) => ul.append(buildCard(row)));
   optimizeImages(ul);
   block.textContent = '';
   block.append(ul);
+  enableSorting(ul);
+  decorateLoadMore(block);
 }

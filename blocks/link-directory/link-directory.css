@@ -1,0 +1,95 @@
+/*
+ * link-directory (source SearchHints): centred groups of small links on the dark-grey band.
+ * Title 13px uppercase, links in a 2-column (mobile) / 4-column grid, "Mostra tutti" toggle
+ * with a chevron below a group that has more than 12 links.
+ * breakpoints follow the source: 601px (4 columns), 961px (1008px column)
+ */
+.link-directory-container .link-directory-wrapper {
+  padding-top: 40px;
+  padding-bottom: 8px;
+}
+
+.link-directory {
+  max-width: 1008px;
+  margin: 0 auto;
+  color: #fff;
+  text-align: center;
+}
+
+.link-directory .link-directory-group {
+  padding-bottom: 32px;
+}
+
+.link-directory .link-directory-title {
+  margin: 0 0 20px;
+  color: inherit;
+  font-family: var(--body-font-family);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 16.51px;
+  text-transform: uppercase;
+}
+
+.link-directory .link-directory-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.link-directory .link-directory-list li {
+  line-height: 18.4px;
+}
+
+.link-directory .link-directory-list li[hidden] {
+  display: none;
+}
+
+.link-directory .link-directory-list a:any-link {
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 9px;
+  line-height: 10.35px;
+  text-decoration: none;
+}
+
+.link-directory .link-directory-list a:hover {
+  text-decoration: underline;
+}
+
+.link-directory .link-directory-more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 35px 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 15.24px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* chevron down */
+.link-directory .link-directory-more::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  margin: -4px 9px 0;
+  border-right: 1.5px solid currentcolor;
+  border-bottom: 1.5px solid currentcolor;
+  transform: rotate(45deg);
+}
+
+@media (width >= 601px) {
+  .link-directory .link-directory-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}

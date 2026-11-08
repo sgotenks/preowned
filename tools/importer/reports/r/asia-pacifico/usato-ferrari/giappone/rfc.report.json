@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/r/asia-pacifico/usato-ferrari/giappone/rfc",
+  "path": "r/asia-pacifico/usato-ferrari/giappone/rfc",
+  "timestamp": "2026-11-08T18:13:42.821Z",
+  "title": "Offerte Ferrari usata in vendita in Giappone | Ferrari Approved",
+  "template": "results-listing",
+  "blocks": [
+    "results-toolbar",
+    "cards-car-listing",
+    "link-directory"
+  ]
+}

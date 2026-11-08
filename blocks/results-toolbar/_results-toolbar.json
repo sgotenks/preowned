@@ -24,26 +24,40 @@
           "component": "aem-content",
           "valueType": "string",
           "name": "link",
-          "label": "Back link"
+          "label": "Main link (back to search, or refine search)"
         },
         {
           "component": "text",
           "valueType": "string",
           "name": "linkText",
-          "label": "Back link text",
+          "label": "Main link text",
           "value": ""
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "listLabel",
+          "name": "linkTitle",
+          "label": "Main link short label (mobile)",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "actions",
+          "label": "Actions (compare link; sort label and a list of sort options)",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "views_listLabel",
           "label": "List view label",
           "value": ""
         },
         {
           "component": "text",
           "valueType": "string",
-          "name": "gridLabel",
+          "name": "views_gridLabel",
           "label": "Grid view label",
           "value": ""
         }

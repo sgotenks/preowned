@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/gran-bretagna/812-superfast/rfcm",
+  "path": "r/europa/usato-ferrari/gran-bretagna/812-superfast/rfcm",
+  "timestamp": "2026-11-08T18:18:03.633Z",
+  "title": "812 Superfast usata in vendita vicino a me | Ferrari Approved",
+  "template": "results-listing",
+  "blocks": [
+    "hero-banner",
+    "results-toolbar",
+    "active-filters",
+    "cards-car-listing",
+    "link-directory"
+  ]
+}

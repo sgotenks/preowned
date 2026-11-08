@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/favorites",
+  "path": "favorites",
+  "timestamp": "2026-11-08T18:12:51.340Z",
+  "title": "Favorites | Ferrari Approved",
+  "template": "results-listing",
+  "blocks": [
+    "results-toolbar",
+    "cards-car-listing",
+    "tabs"
+  ]
+}

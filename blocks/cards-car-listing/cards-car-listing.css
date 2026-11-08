@@ -536,3 +536,84 @@ body[data-results-view='list'] main .section:not(.centered) .cards-car-listing >
     width: 88%;
   }
 }
+
+/* labelled price ("Prezzo totale" above the price, markets that show taxes separately) */
+.cards-car-listing .cards-car-listing-card-price-label,
+.cards-car-listing .cards-car-listing-card-price-note-label {
+  display: block;
+  color: rgb(143 143 143);
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1.27em;
+  text-transform: uppercase;
+}
+
+.cards-car-listing .cards-car-listing-card-price-value {
+  display: block;
+}
+
+/* tax breakdown rows ("Prezzo vettura", "Altre tasse"): label above a small value */
+.cards-car-listing .cards-car-listing-card-price-note-value {
+  display: block;
+  color: var(--text-color);
+  font-size: 12px;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/*
+ * load-more bar after the listing (source SearchResultListing__loadMore): counts line,
+ * 200x2 progress bar, light outline button to the next results page
+ */
+main .default-content-wrapper.cards-car-listing-more {
+  margin-top: 56px;
+  text-align: center;
+}
+
+main .section .default-content-wrapper.cards-car-listing-more > p:not(.button-container) {
+  margin: 11px auto;
+  color: #000;
+  font-size: 11px;
+  line-height: 12.65px;
+}
+
+main .section .default-content-wrapper.cards-car-listing-more > .cards-car-listing-more-progress {
+  display: block;
+  width: 200px;
+  height: 2px;
+  margin: 8px auto 16px;
+  border: 0;
+  background: rgb(212 210 210);
+  color: var(--text-color-secondary);
+  appearance: none;
+}
+
+main .section .default-content-wrapper.cards-car-listing-more > .cards-car-listing-more-progress::-webkit-progress-bar {
+  background: rgb(212 210 210);
+}
+
+main .section .default-content-wrapper.cards-car-listing-more > .cards-car-listing-more-progress::-webkit-progress-value {
+  background: var(--text-color-secondary);
+}
+
+main .section .default-content-wrapper.cards-car-listing-more > .cards-car-listing-more-progress::-moz-progress-bar {
+  background: var(--text-color-secondary);
+}
+
+main .section .default-content-wrapper.cards-car-listing-more > p.button-container {
+  margin: 0 auto;
+}
+
+main .section .default-content-wrapper.cards-car-listing-more a.button:any-link {
+  box-sizing: border-box;
+  width: 200px;
+  border-color: rgb(212 210 210);
+  color: rgb(64 64 64);
+}
+
+@media (width >= 961px) {
+  main .section .default-content-wrapper.cards-car-listing-more a.button:any-link {
+    width: 250px;
+  }
+}

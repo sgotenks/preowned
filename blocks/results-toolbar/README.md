@@ -1,12 +1,12 @@
 # results-toolbar
 
-Custom **custom** block. Purpose: back-to-search link with a list/grid view toggle for result listings.
+Custom **custom** block. Purpose: results toolbar: back link (favorites) or refine-search link, compare link, sort dropdown (re-orders the cards-car-listing block on the page) and a list/grid view toggle.
 
 ## Authoring (Document Authoring)
 
 Model: `standalone`
 
-Single block table. Content: back link | list view label (optional) | grid view label (optional).
+Single block table. Rows: main link (its title is the short mobile label, e.g. "Filtri") | actions (compare link; sort label paragraph + list of sort options, the selected one in bold; omit on favorites) | list and grid view labels (grouped).
 
 ## Supported variations
 
@@ -14,4 +14,4 @@ No variations.
 
 ## Universal Editor fields
 
-- Content fields derived from the block's decorate contract.
+- `link` (+ `linkText`, `linkTitle`), `actions` (rich text), `views_listLabel` + `views_gridLabel` (grouped).

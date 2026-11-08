@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/rfc",
+  "path": "it-IT/r/europa/usato-ferrari/italia/rfc",
+  "timestamp": "2026-11-08T17:42:20.169Z",
+  "error": "page.goto: Target page, context or browser has been closed",
+  "errorStack": "page.goto: Target page, context or browser has been closed\n    at processUrl (/home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:603:20)\n    at async main (/home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:950:22)"
+}

@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT/r/nord-america/usato-ferrari/u-s-a-/rfc",
+  "path": "r/nord-america/usato-ferrari/u-s-a/rfc",
+  "timestamp": "2026-11-08T18:17:11.889Z",
+  "title": "Offerte Ferrari usata in vendita in U.S.A. | Ferrari Approved",
+  "template": "results-listing",
+  "blocks": [
+    "results-toolbar",
+    "cards-car-listing",
+    "link-directory"
+  ]
+}

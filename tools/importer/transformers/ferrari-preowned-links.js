@@ -37,11 +37,17 @@ const SOURCE_HOST = 'preowned.ferrari.com';
 const LOCALE_PREFIX = /^\/it-IT(?=\/|$)/i;
 const MIGRATED = new Set(migratedPaths.map((p) => p.toLowerCase()));
 
+// Same per-segment rule as WebImporter.FileUtils.sanitizeFilename, which names the imported
+// pages: "/u-s-a-/rfc" is saved as "/u-s-a/rfc"
+const sanitizeSegment = (s) => decodeURIComponent(s).toLowerCase().normalize('NFD')
+  .replace(/[̀-ͯ]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const pagePath = (local) => (local === '/' ? '/' : `/${local.split('/').filter(Boolean).map(sanitizeSegment).join('/')}`);
+
 function toMigratedPath(path) {
   const local = path.replace(LOCALE_PREFIX, '').replace(/\/$/, '') || '/';
   // Share deep links open a chapter of the Ferrari Approved page
   if (/^\/ferrari-approved\/share\//i.test(local)) return '/ferrari-approved';
-  return MIGRATED.has(local.toLowerCase()) ? local.toLowerCase() : null;
+  return MIGRATED.has(local.toLowerCase()) ? pagePath(local) : null;
 }
 
 // Links that stay on the live site keep its Italian locale prefix
@@ -59,9 +65,12 @@ export default function transform(hookName, element, payload) {
     if (!raw || raw.startsWith('#') || /^(mailto|tel|javascript):/i.test(raw)) return;
     let u;
     try { u = new URL(raw, base); } catch (e) { return; }
+    // data-keep-live: a search-app action (filters, next page, compare, save) only the live site has
+    const keepLive = a.hasAttribute('data-keep-live');
+    a.removeAttribute('data-keep-live');
     if (u.hostname !== SOURCE_HOST) return;
     // Relative source links ("ferrari-approved/share/...") resolve without the locale prefix
-    const migrated = toMigratedPath(u.pathname);
+    const migrated = keepLive ? null : toMigratedPath(u.pathname);
     a.setAttribute('href', migrated ? `${migrated}${u.search}${u.hash}` : toLiveUrl(u));
   });
 }
