@@ -1,0 +1,156 @@
+{
+  "templates": [
+    {
+      "name": "hero-landing",
+      "urls": [
+        "https://preowned.ferrari.com/it-IT"
+      ],
+      "coverageGaps": [],
+      "description": "Homepage: full-width hero with an embedded vehicle search form, followed by a dark overview band with teaser cards, a featured-vehicles grid and full-bleed photo promo tiles",
+      "blocks": [
+        {
+          "name": "hero-search",
+          "instances": [
+            "[class*=\"SearchModelsBox__wrapper\"]"
+          ]
+        },
+        {
+          "name": "cards-teaser",
+          "instances": [
+            "[class*=\"BoxGrid__wrapper\"]"
+          ]
+        },
+        {
+          "name": "cards-car-listing",
+          "instances": [
+            "[class*=\"VehicleCarousel__wrapper\"]"
+          ]
+        },
+        {
+          "name": "cards-photo-overlay",
+          "instances": [
+            "[class*=\"SplitBanner__wrapper\"]"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero with car search",
+          "selector": [
+            ".page-menu-hook > div > div:has([class*=\"SearchModelsBox__wrapper\"])",
+            "#__next > div:nth-of-type(1) > div.page-menu-hook > div > div:nth-of-type(1)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-search"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Panoramica (overview) with teasers",
+          "selector": [
+            ".page-menu-hook > div > div:has([class*=\"BoxGrid__wrapper\"])",
+            "#__next > div:nth-of-type(1) > div.page-menu-hook > div > div:nth-of-type(2)"
+          ],
+          "style": "dark",
+          "blocks": [
+            "cards-teaser"
+          ],
+          "defaultContent": [
+            "[class*=\"TextBlock__container\"]"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Veicoli in evidenza (featured vehicles)",
+          "selector": [
+            ".page-menu-hook > div > div > div > div:has([class*=\"VehicleCarousel__wrapper\"])",
+            "#__next > div:nth-of-type(1) > div.page-menu-hook > div > div:nth-of-type(3) > div > div:nth-of-type(1)"
+          ],
+          "style": "centered",
+          "blocks": [
+            "cards-car-listing"
+          ],
+          "defaultContent": [
+            "[class*=\"TextBlock__text_centered\"]",
+            "[class*=\"style__footer\"]"
+          ]
+        },
+        {
+          "id": "section-4",
+          "name": "Dealer and accessories promo tiles",
+          "selector": [
+            ".page-menu-hook > div > div > div > div:has(> [class*=\"SplitBanner__wrapper\"])",
+            "#__next > div:nth-of-type(1) > div.page-menu-hook > div > div:nth-of-type(3) > div > div:nth-of-type(2)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-photo-overlay"
+          ],
+          "defaultContent": []
+        }
+      ]
+    },
+    {
+      "name": "vehicle-detail",
+      "urls": [
+        "https://preowned.ferrari.com/it-IT/ad"
+      ],
+      "coverageGaps": [],
+      "description": "Single-item detail page with a media and specification column layout followed by related item cards",
+      "blocks": []
+    },
+    {
+      "name": "results-listing",
+      "urls": [
+        "https://preowned.ferrari.com/it-IT/favorites",
+        "https://preowned.ferrari.com/it-IT/r/asia-pacifico/usato-ferrari/giappone/rfc",
+        "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/germania/rfc",
+        "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/296-gtb/rfcm",
+        "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/rfc",
+        "https://preowned.ferrari.com/it-IT/r/nord-america/usato-ferrari/u-s-a-/rfc",
+        "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/gran-bretagna/812-superfast/rfcm",
+        "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-roma/rfcm",
+        "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/sf90-stradale/rfcm",
+        "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/c-d-p-/rfcd",
+        "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-modena/rfcd",
+        "https://preowned.ferrari.com/it-IT/r/nord-america/usato-ferrari/u-s-a-/cauley-ferrari-of-detroit/rfcd"
+      ],
+      "coverageGaps": [],
+      "description": "Vehicle search results page: optional hero banner (model or dealer), refine/sort and view toolbar, results heading, active filter chips and a grid of vehicle cards with a promo tile, closed by a contact call-to-action and link lists",
+      "blocks": []
+    },
+    {
+      "name": "model-index",
+      "urls": [
+        "https://preowned.ferrari.com/it-IT/modelli-usato-ferrari"
+      ],
+      "coverageGaps": [],
+      "description": "Index page with a category filter row above a grid of image tiles, one per model",
+      "blocks": []
+    },
+    {
+      "name": "form-page",
+      "urls": [
+        "https://preowned.ferrari.com/it-IT/value-your-car"
+      ],
+      "coverageGaps": [],
+      "description": "Page opening with a hero banner followed by an intro and a multi-column form layout with supporting cards",
+      "blocks": []
+    },
+    {
+      "name": "content-page",
+      "urls": [
+        "https://preowned.ferrari.com/it-IT/ferrari-approved"
+      ],
+      "coverageGaps": [],
+      "description": "Editorial page opening with a left-aligned hero banner, then numbered chapter sections of image + text with expandable copy, and a closing list",
+      "blocks": []
+    }
+  ],
+  "metadata": {
+    "projectType": "xwalk"
+  }
+}

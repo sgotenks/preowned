@@ -1,0 +1,69 @@
+.active-filters {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.active-filters .active-filters-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 32px;
+}
+
+.active-filters .active-filters-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.active-filters .active-filters-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 8px 8px 8px 20px;
+  border-radius: 999px;
+}
+
+.active-filters .active-filters-chip-remove {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* "x" glyph */
+.active-filters .active-filters-chip-remove::before,
+.active-filters .active-filters-chip-remove::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 1px;
+  background: currentcolor;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.active-filters .active-filters-chip-remove::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.active-filters.is-empty .active-filters-label {
+  display: none;
+}
+
+.active-filters .active-filters-actions a {
+  margin: 0;
+}

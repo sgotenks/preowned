@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://preowned.ferrari.com/it-IT",
+  "path": "index",
+  "timestamp": "2026-11-08T11:09:47.086Z",
+  "title": "Usato Ferrari: Scopri il Sito Ufficiale | Ferrari Approved",
+  "template": "hero-landing",
+  "blocks": [
+    "hero-search",
+    "cards-teaser",
+    "cards-car-listing",
+    "cards-photo-overlay"
+  ]
+}

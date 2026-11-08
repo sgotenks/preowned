@@ -1,0 +1,83 @@
+{
+  "variantName": "active-filters",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "button",
+    "purpose": "row of active search-filter chips with remove buttons and a save-search action"
+  },
+  "contentPattern": {
+    "structure": "label | list of active filters (one item per chip) | save-search link"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_c79b91696450"
+  ],
+  "sourceUrl": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/gran-bretagna/812-superfast/rfcm",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/gran-bretagna/812-superfast/rfcm",
+        "instanceId": "a7f12bb5270d",
+        "instanceIds": [
+          "a7f12bb5270d"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_gran-bretagna_812-superfast_rfcm--4f84a1c4/blocks/a7f12bb5270d.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/296-gtb/rfcm",
+        "instanceId": "4f186c6975ee",
+        "instanceIds": [
+          "4f186c6975ee"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_296-gtb_rfcm--cc2f0e78/blocks/4f186c6975ee.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/c-d-p-/rfcd",
+        "instanceId": "4f186c6975ee",
+        "instanceIds": [
+          "4f186c6975ee"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_c-d-p-_rfcd--8abbc795/blocks/4f186c6975ee.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-modena/rfcd",
+        "instanceId": "4f186c6975ee",
+        "instanceIds": [
+          "4f186c6975ee"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_ferrari-modena_rfcd--81ed38e3/blocks/4f186c6975ee.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-roma/rfcm",
+        "instanceId": "4f186c6975ee",
+        "instanceIds": [
+          "4f186c6975ee"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_ferrari-roma_rfcm--9d57a36c/blocks/4f186c6975ee.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/sf90-stradale/rfcm",
+        "instanceId": "4f186c6975ee",
+        "instanceIds": [
+          "4f186c6975ee"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_sf90-stradale_rfcm--88c4b389/blocks/4f186c6975ee.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/nord-america/usato-ferrari/u-s-a-/cauley-ferrari-of-detroit/rfcd",
+        "instanceId": "4f186c6975ee",
+        "instanceIds": [
+          "4f186c6975ee"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_nord-america_usato-ferrari_u-s-a-_cauley-ferrari-of-detroit_rfcd--7174ce5a/blocks/4f186c6975ee.jpg"
+      }
+    ],
+    "reuseCount": 7
+  },
+  "reuseGuidance": "Use above vehicle results. Chips can also be set at runtime via the active-filters:set event."
+}

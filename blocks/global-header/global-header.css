@@ -1,0 +1,140 @@
+.global-header {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: 64px;
+  padding: 0 24px;
+}
+
+.global-header .global-header-brand {
+  flex: 0 0 auto;
+}
+
+.global-header .global-header-brand p {
+  margin: 0;
+}
+
+.global-header .global-header-brand img {
+  display: block;
+  height: 32px;
+  width: auto;
+}
+
+.global-header .global-header-menu {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* three-bar menu glyph */
+.global-header .global-header-menu span,
+.global-header .global-header-menu span::before,
+.global-header .global-header-menu span::after {
+  position: absolute;
+  left: 4px;
+  width: 16px;
+  height: 2px;
+  background: currentcolor;
+}
+
+.global-header .global-header-menu span {
+  top: 11px;
+}
+
+.global-header .global-header-menu span::before,
+.global-header .global-header-menu span::after {
+  content: '';
+  left: 0;
+}
+
+.global-header .global-header-menu span::before {
+  top: -5px;
+}
+
+.global-header .global-header-menu span::after {
+  top: 5px;
+}
+
+.global-header .global-header-tools {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-left: auto;
+}
+
+.global-header .global-header-links {
+  display: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* narrow viewports: the menu button reveals the links as a panel */
+.global-header.is-open .global-header-links {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  background: var(--background-color, #fff);
+}
+
+.global-header .global-header-share {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid currentcolor;
+  border-radius: 50%;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* share glyph: three dots */
+.global-header .global-header-share::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: currentcolor;
+  transform: translate(-50%, -50%);
+  box-shadow: 6px -5px 0 currentcolor, 6px 5px 0 currentcolor;
+  margin-left: -3px;
+}
+
+.global-header .global-header-share[data-copied='true'] {
+  outline: 2px solid currentcolor;
+  outline-offset: 2px;
+}
+
+@media (width >= 900px) {
+  .global-header {
+    padding: 0 40px;
+  }
+
+  .global-header .global-header-links,
+  .global-header.is-open .global-header-links {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 0;
+    background: none;
+  }
+}

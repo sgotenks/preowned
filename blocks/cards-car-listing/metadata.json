@@ -1,0 +1,84 @@
+{
+  "variantName": "cards-car-listing",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "dense",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "list + button + link + text + image",
+    "purpose": "results grid of vehicle cards (photo, badge, year/mileage, model, price, colours, dealer, contact/details actions) with optional promo tiles"
+  },
+  "contentPattern": {
+    "structure": "one row per card: image | badge (optional, e.g. \"Nuovo\") | text. Vehicle text: meta paragraph (year, km), heading (model), price paragraph, list of \"Label: Value\" specs (Esterni, Interni, Concessionaria), links (Contattaci, Dettagli). A card without a spec list renders as a promo tile (heading, paragraph, link over the image)"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_5e712dc332cd",
+    "v_4f5d4da034a8",
+    "v_4f5d4da034a8-1",
+    "v_5e712dc332cd-1",
+    "v_4f5d4da034a8-2",
+    "v_4f5d4da034a8-3",
+    "v_4f5d4da034a8-4",
+    "v_4f5d4da034a8-5",
+    "v_4f5d4da034a8-6",
+    "v_5e712dc332cd-2",
+    "v_5e712dc332cd-3",
+    "v_5e712dc332cd-4",
+    "v_f9404ece9d87"
+  ],
+  "sourceUrl": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-roma/rfcm",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/c-d-p-/rfcd",
+        "instanceId": "56cf49cee6b6",
+        "instanceIds": [
+          "56cf49cee6b6"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_c-d-p-_rfcd--8abbc795/blocks/56cf49cee6b6.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-modena/rfcd",
+        "instanceId": "56cf49cee6b6",
+        "instanceIds": [
+          "56cf49cee6b6"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_ferrari-modena_rfcd--81ed38e3/blocks/56cf49cee6b6.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-roma/rfcm",
+        "instanceId": "56cf49cee6b6",
+        "instanceIds": [
+          "56cf49cee6b6"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_ferrari-roma_rfcm--9d57a36c/blocks/56cf49cee6b6.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/rfc",
+        "instanceId": "56cf49cee6b6",
+        "instanceIds": [
+          "56cf49cee6b6"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_rfc--6a64f1d7/blocks/56cf49cee6b6.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/nord-america/usato-ferrari/u-s-a-/rfc",
+        "instanceId": "56cf49cee6b6",
+        "instanceIds": [
+          "56cf49cee6b6"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_nord-america_usato-ferrari_u-s-a-_rfc--708439b8/blocks/56cf49cee6b6.jpg"
+      },
+      {
+        "url": "/it-it",
+        "sourceUrl": "https://preowned.ferrari.com/it-IT"
+      }
+    ],
+    "reuseCount": 6,
+    "lastUsed": "2026-11-07T23:49:54Z"
+  },
+  "reuseGuidance": "Use for search results and favourites listings of vehicles. Responds to results-toolbar list/grid toggle."
+}

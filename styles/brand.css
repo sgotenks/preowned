@@ -1,0 +1,92 @@
+/*
+ * Brand tokens extracted from https://preowned.ferrari.com/it-IT
+ * (computed styles, see migration-work/brand.json)
+ */
+
+:root {
+  /* colors */
+  --background-color: #fff;
+  --light-color: #f6f6f6;
+  --dark-color: #181818;
+  --text-color: #181818;
+  --text-color-secondary: #303030;
+  --text-color-inverse: #fff;
+  --link-color: #181818;
+  --link-hover-color: #181818;
+  --brand-red: #da291c;
+  --brand-red-light: #ed786f;
+  --overlay-background-color: rgb(24 24 24 / 60%);
+  --border-color: rgb(24 24 24 / 40%);
+  --border-color-inverse: rgb(255 255 255 / 40%);
+  --focus-color: #898989;
+
+  /* fonts: source "Body-Font" = Ferrari Sans Regular, "Title-Font" = Ferrari Sans Medium */
+  --body-font-family: ferrari-sans, ferrari-sans-fallback, arial, sans-serif;
+  --heading-font-family: ferrari-sans-medium, ferrari-sans-medium-fallback, arial, sans-serif;
+
+  /* body sizes */
+  --body-font-size-l: 16px;
+  --body-font-size-m: 13px;
+  --body-font-size-s: 12px;
+  --body-font-size-xs: 12px;
+  --body-line-height: 1.6;
+
+  /* label (chapter, cta) */
+  --label-font-size: 12px;
+  --label-line-height: 1.27em;
+  --label-letter-spacing: 1px;
+
+  /* heading sizes (mobile first) */
+  --heading-font-size-xxl: 26px;
+  --heading-font-size-xl: 26px;
+  --heading-font-size-l: 26px;
+  --heading-font-size-m: 18px;
+  --heading-font-size-s: 16px;
+  --heading-font-size-xs: 13px;
+
+  /* layout */
+  --content-max-width: none;
+  --text-max-width: 800px;
+  --gutter: 24px;
+  --chapter-padding: 24px;
+  --section-padding: 0;
+
+  /* nav heights */
+  --nav-height: 40px;
+  --breadcrumbs-height: 34px;
+  --header-height: var(--nav-height);
+}
+
+/* >= 601px (source 37.5625em) */
+@media (width >= 601px) {
+  :root {
+    --body-font-size-l: 18px;
+    --heading-font-size-xxl: 32px;
+    --heading-font-size-xl: 28px;
+    --heading-font-size-l: 28px;
+    --gutter: 48px;
+    --chapter-padding: 48px;
+  }
+}
+
+/* >= 961px (source 60.0625em) */
+@media (width >= 961px) {
+  :root {
+    --heading-font-size-xxl: 36px;
+    --content-max-width: 1056px;
+  }
+}
+
+/* >= 1281px (source 80.0625em) */
+@media (width >= 1281px) {
+  :root {
+    --content-max-width: 1312px;
+  }
+}
+
+/* >= 1601px (source 100.062em) */
+@media (width >= 1601px) {
+  :root {
+    --content-max-width: 1472px;
+  }
+}

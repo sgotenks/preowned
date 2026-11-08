@@ -1,0 +1,64 @@
+.hero-banner-container .hero-banner-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 360px;
+  padding: 64px 24px;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.hero-banner .hero-banner-media {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.hero-banner .hero-banner-media picture,
+.hero-banner .hero-banner-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* scrim keeps overlaid text readable on any photo */
+.hero-banner .hero-banner-media::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgb(0 0 0 / 40%);
+}
+
+.hero-banner .hero-banner-content {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hero-banner .hero-banner-content img {
+  max-width: 100%;
+  height: auto;
+}
+
+.hero-banner.text-left .hero-banner-content {
+  max-width: 1200px;
+  text-align: start;
+}
+
+.hero-banner.text-left .hero-banner-content > * {
+  max-width: 600px;
+}
+
+@media (width >= 900px) {
+  .hero-banner {
+    min-height: 480px;
+    padding: 80px 32px;
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "variantName": "hero-banner",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "image",
+    "purpose": "page-opening background photo with a large title (text or logo image) and intro paragraph"
+  },
+  "contentPattern": {
+    "structure": "image (background) | text (title or logo image, paragraph)"
+  },
+  "options": [
+    {
+      "class": "text-left",
+      "label": "Text Left"
+    }
+  ],
+  "memberVariantIds": [
+    "v_0a6e9fd20045",
+    "v_a334e3a4208f"
+  ],
+  "sourceUrl": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/gran-bretagna/812-superfast/rfcm",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/gran-bretagna/812-superfast/rfcm",
+        "instanceId": "c6b2f27a5bb9",
+        "instanceIds": [
+          "c6b2f27a5bb9"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_gran-bretagna_812-superfast_rfcm--4f84a1c4/blocks/c6b2f27a5bb9.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/c-d-p-/rfcd",
+        "instanceId": "a2544b18820d",
+        "instanceIds": [
+          "a2544b18820d"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_c-d-p-_rfcd--8abbc795/blocks/a2544b18820d.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-modena/rfcd",
+        "instanceId": "a2544b18820d",
+        "instanceIds": [
+          "a2544b18820d"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_ferrari-modena_rfcd--81ed38e3/blocks/a2544b18820d.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/ferrari-roma/rfcm",
+        "instanceId": "a2544b18820d",
+        "instanceIds": [
+          "a2544b18820d"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_ferrari-roma_rfcm--9d57a36c/blocks/a2544b18820d.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/sf90-stradale/rfcm",
+        "instanceId": "a2544b18820d",
+        "instanceIds": [
+          "a2544b18820d"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_sf90-stradale_rfcm--88c4b389/blocks/a2544b18820d.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/nord-america/usato-ferrari/u-s-a-/cauley-ferrari-of-detroit/rfcd",
+        "instanceId": "a2544b18820d",
+        "instanceIds": [
+          "a2544b18820d"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_nord-america_usato-ferrari_u-s-a-_cauley-ferrari-of-detroit_rfcd--7174ce5a/blocks/a2544b18820d.jpg"
+      }
+    ],
+    "reuseCount": 6
+  },
+  "reuseGuidance": "Use as the first block of model and landing pages. Centered by default; add the text-left option for start-aligned copy."
+}

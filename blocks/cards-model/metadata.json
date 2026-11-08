@@ -1,0 +1,35 @@
+{
+  "variantName": "cards-model",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "link + image + heading",
+    "purpose": "grid of photo tiles, each showing a model name and availability count and linking to that model's results"
+  },
+  "contentPattern": {
+    "structure": "one row per tile: image | category (comma-separated filter tokens, e.g. \"v12, serie-speciali\") | text (model name, \"N disponibili\", link)"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_8251c2647528"
+  ],
+  "sourceUrl": "https://preowned.ferrari.com/it-IT/modelli-usato-ferrari",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://preowned.ferrari.com/it-IT/modelli-usato-ferrari",
+        "instanceId": "bb742271d7c8",
+        "instanceIds": [
+          "bb742271d7c8"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_modelli-usato-ferrari--deb2fe06/blocks/bb742271d7c8.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "reuseGuidance": "Use for the model catalogue grid; pair with model-filter, whose tab labels (slugified) must match the tile categories."
+}

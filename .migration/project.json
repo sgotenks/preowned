@@ -1,0 +1,15 @@
+{
+  "type": "xwalk",
+  "sites": {
+    "preowned": {
+      "previewOrg": "sgotenks",
+      "previewSite": "preowned",
+      "contentHostUrl": "author-p129757-e1266090.adobeaemcloud.com",
+      "aemSitePath": "/content/preowned",
+      "aemAssetsFolderPath": "/content/dam/preowned",
+      "aemSiteName": "preowned",
+      "aemSiteTitle": "Preowned",
+      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json"
+    }
+  }
+}

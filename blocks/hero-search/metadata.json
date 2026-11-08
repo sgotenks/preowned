@@ -1,0 +1,40 @@
+{
+  "variantName": "hero-search",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "large",
+    "structure": "",
+    "purpose": "homepage hero photo with heading, intro and an inline car search form (country, model, location, results CTA, expand-search toggle)"
+  },
+  "contentPattern": {
+    "structure": "image | text (heading, paragraph) | model placeholder | location placeholder | CTA link (results page URL + label) | countries (comma-separated, optional) | expand-search label (optional)"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_91d4a8704a6c"
+  ],
+  "sourceUrl": "https://preowned.ferrari.com/it-IT",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://preowned.ferrari.com/it-IT",
+        "instanceId": "0cedc56d7e2d",
+        "instanceIds": [
+          "0cedc56d7e2d"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT--f558e626/blocks/0cedc56d7e2d.jpg"
+      },
+      {
+        "url": "/it-it",
+        "sourceUrl": "https://preowned.ferrari.com/it-IT"
+      }
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-11-07T23:49:54Z"
+  },
+  "reuseGuidance": "Use once on the homepage as the search entry point. For a hero without a form use hero-banner."
+}

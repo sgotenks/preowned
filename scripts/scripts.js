@@ -133,6 +133,31 @@ export function decorateButtons(element) {
 }
 
 /**
+ * Decorates chapter labels in default content.
+ * Authored as <p><strong>1</strong> Label</p>, rendered as
+ * <p class="chapter"><strong>1</strong><span>Label</span></p>
+ * (red number, thin rule and uppercase label, styled in styles.css).
+ * @param {Element} main container element
+ */
+export function decorateChapters(main) {
+  main.querySelectorAll('.default-content-wrapper > p:not(.chapter)').forEach((p) => {
+    const [first, ...rest] = [...p.childNodes];
+    if (!first || first.nodeName !== 'STRONG' || first.children.length) return;
+    if (!/^\d+$/.test(first.textContent.trim())) return;
+    const media = 'a, img, picture';
+    if (rest.some((node) => node.nodeType === Node.ELEMENT_NODE
+      && (node.matches(media) || node.querySelector(media)))) return;
+    const label = rest.map((node) => node.textContent).join('').trim();
+    if (!label) return;
+    const span = document.createElement('span');
+    span.textContent = label;
+    rest.forEach((node) => node.remove());
+    p.append(span);
+    p.classList.add('chapter');
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -143,6 +168,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateChapters(main);
   decorateBlocks(main);
   // add aria-label to links
   a11yLinks(main);
@@ -153,7 +179,7 @@ export function decorateMain(main) {
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  document.documentElement.lang = 'en';
+  document.documentElement.lang = 'it';
   decorateTemplateAndTheme();
   if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
     doc.body.dataset.breadcrumbs = true;

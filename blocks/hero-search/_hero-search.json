@@ -1,0 +1,89 @@
+{
+  "definitions": [
+    {
+      "title": "Hero Search",
+      "id": "hero-search",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Hero Search",
+              "model": "hero-search"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "hero-search",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Alt",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "link",
+          "label": "Results page"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "linkText",
+          "label": "Results page text",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "search_modelPlaceholder",
+          "label": "Model search placeholder",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "search_locationPlaceholder",
+          "label": "Location search placeholder",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "search_countries",
+          "label": "Countries (comma-separated)",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "search_expandLabel",
+          "label": "Expand search label",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

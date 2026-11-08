@@ -1,0 +1,91 @@
+{
+  "variantName": "global-header",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "button + link + image + list",
+    "purpose": "top bar with menu button, wordmark, primary navigation links and share button"
+  },
+  "contentPattern": {
+    "structure": "brand (wordmark link or logo) | navigation (list of links) | share label (optional)"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_475337b5d2ff"
+  ],
+  "sourceUrl": "https://preowned.ferrari.com/it-IT/ad",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://preowned.ferrari.com/it-IT/ad",
+        "instanceId": "f7ef287551e0",
+        "instanceIds": [
+          "f7ef287551e0"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_ad--7b4a536f/blocks/f7ef287551e0.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/favorites",
+        "instanceId": "f7ef287551e0",
+        "instanceIds": [
+          "f7ef287551e0"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_favorites--18fad631/blocks/f7ef287551e0.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/modelli-usato-ferrari",
+        "instanceId": "f7ef287551e0",
+        "instanceIds": [
+          "f7ef287551e0"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_modelli-usato-ferrari--deb2fe06/blocks/f7ef287551e0.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/asia-pacifico/usato-ferrari/giappone/rfc",
+        "instanceId": "f7ef287551e0",
+        "instanceIds": [
+          "f7ef287551e0"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_asia-pacifico_usato-ferrari_giappone_rfc--f974188a/blocks/f7ef287551e0.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/germania/rfc",
+        "instanceId": "f7ef287551e0",
+        "instanceIds": [
+          "f7ef287551e0"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_germania_rfc--43f5182a/blocks/f7ef287551e0.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/296-gtb/rfcm",
+        "instanceId": "f7ef287551e0",
+        "instanceIds": [
+          "f7ef287551e0"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_296-gtb_rfcm--cc2f0e78/blocks/f7ef287551e0.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/europa/usato-ferrari/italia/rfc",
+        "instanceId": "f7ef287551e0",
+        "instanceIds": [
+          "f7ef287551e0"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_europa_usato-ferrari_italia_rfc--6a64f1d7/blocks/f7ef287551e0.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/r/nord-america/usato-ferrari/u-s-a-/rfc",
+        "instanceId": "f7ef287551e0",
+        "instanceIds": [
+          "f7ef287551e0"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_r_nord-america_usato-ferrari_u-s-a-_rfc--708439b8/blocks/f7ef287551e0.jpg"
+      }
+    ],
+    "reuseCount": 8
+  },
+  "reuseGuidance": "Use as an in-page top bar where the site header is authored as a block; the site-wide header itself is built by the navigation orchestrator."
+}

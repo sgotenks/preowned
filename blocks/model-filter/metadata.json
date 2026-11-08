@@ -1,0 +1,36 @@
+{
+  "variantName": "model-filter",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "list + button",
+    "purpose": "category filter tabs with a search toggle that filter the cards-model grid"
+  },
+  "contentPattern": {
+    "structure": "filter labels (list; the first shows all) | search placeholder (optional)"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_fb3f12a68dc0"
+  ],
+  "sourceUrl": "https://preowned.ferrari.com/it-IT/modelli-usato-ferrari",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://preowned.ferrari.com/it-IT/modelli-usato-ferrari",
+        "instanceId": "cf7eab1dbf24",
+        "instanceIds": [
+          "cf7eab1dbf24",
+          "16099abdf3d3"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_modelli-usato-ferrari--deb2fe06/blocks/cf7eab1dbf24.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "reuseGuidance": "Place directly above a cards-model block. Tab labels are slugified and matched against each tile's category tokens."
+}

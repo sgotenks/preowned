@@ -1,0 +1,17 @@
+{
+  "variantName": "cards-photo-overlay",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "layout": "Full-bleed band of two equal photo tiles side by side, no gutter, stacking on mobile",
+    "text": "centered white text over each photo: small eyebrow, large uppercase title, circled-arrow CTA",
+    "background": "photos belong to the block"
+  },
+  "contentPattern": {
+    "structure": "one row per tile: image | text (eyebrow, heading, link)"
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "sourceUrl": "https://preowned.ferrari.com/it-IT",
+  "reuseGuidance": "Use for 1-2 edge-to-edge link tiles with centered text over a photo. Not for editorial teasers with text below the image (cards-teaser)."
+}

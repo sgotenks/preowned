@@ -59,7 +59,17 @@
         "table",
         "text",
         "title",
-        "video"
+        "video",
+        "active-filters",
+        "cards-car-listing",
+        "cards-model",
+        "cards-teaser",
+        "cards-photo-overlay",
+        "global-header",
+        "hero-banner",
+        "hero-search",
+        "model-filter",
+        "results-toolbar"
       ]
     }
   ]

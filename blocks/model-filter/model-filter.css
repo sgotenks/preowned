@@ -1,0 +1,76 @@
+.model-filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.model-filter .model-filter-tabs {
+  display: flex;
+  flex: 1;
+  gap: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.model-filter .model-filter-tab {
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 8px 24px;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.model-filter .model-filter-tab[aria-selected='true'] {
+  border-bottom-color: currentcolor;
+}
+
+.model-filter .model-filter-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.model-filter .model-filter-input[hidden] {
+  display: none;
+}
+
+.model-filter .model-filter-search-toggle {
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* magnifier glyph drawn in CSS so the block needs no icon asset */
+.model-filter .model-filter-search-toggle::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid currentcolor;
+  border-radius: 50%;
+}
+
+.model-filter .model-filter-search-toggle::after {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 20px;
+  width: 8px;
+  height: 2px;
+  background: currentcolor;
+  transform: rotate(45deg);
+}

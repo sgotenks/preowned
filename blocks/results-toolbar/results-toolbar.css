@@ -1,0 +1,64 @@
+.results-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.results-toolbar .results-toolbar-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* chevron before the back link */
+.results-toolbar .results-toolbar-back-link::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 8px;
+  height: 8px;
+  margin: 0 4px 0 14px;
+  border-left: 2px solid currentcolor;
+  border-bottom: 2px solid currentcolor;
+  transform: rotate(45deg);
+}
+
+.results-toolbar .results-toolbar-views {
+  display: flex;
+}
+
+.results-toolbar .results-toolbar-view {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  margin: 0;
+  padding: 0;
+  border: 1px solid currentcolor;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+/* list / grid glyphs drawn in CSS so the block needs no icon assets */
+.results-toolbar .results-toolbar-view::before {
+  content: '';
+  position: absolute;
+  inset: 20px 18px;
+}
+
+.results-toolbar .results-toolbar-view-list::before {
+  background: repeating-linear-gradient(to bottom, currentcolor 0 2px, transparent 2px 6px);
+}
+
+.results-toolbar .results-toolbar-view-grid::before {
+  background-image:
+    repeating-linear-gradient(to right, currentcolor 0 4px, transparent 4px 8px),
+    repeating-linear-gradient(to bottom, currentcolor 0 4px, transparent 4px 8px);
+  background-blend-mode: multiply;
+}
+
+.results-toolbar .results-toolbar-view[aria-pressed='true'] {
+  outline: 2px solid currentcolor;
+  outline-offset: -4px;
+}

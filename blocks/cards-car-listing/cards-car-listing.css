@@ -1,0 +1,538 @@
+/*
+ * cards-car-listing
+ * source: VehicleCard (homepage VehicleCarousel + SearchResultListing grid)
+ * base = results grid; `.section.centered` = featured carousel (homepage)
+ */
+
+.cards-car-listing > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* card (source VehicleCard__wrapper) */
+.cards-car-listing > ul > li {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  border: 1px solid rgb(143 143 143 / 35%);
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 1.15;
+}
+
+/* photo (source VehicleCardCarousel: 77.5% ratio, grey placeholder, bottom shade) */
+.cards-car-listing .cards-car-listing-card-image {
+  position: relative;
+  aspect-ratio: 40 / 31;
+  overflow: hidden;
+  background-color: rgb(212 210 210);
+}
+
+.cards-car-listing .cards-car-listing-card-image > p,
+.cards-car-listing .cards-car-listing-card-image-link {
+  display: block;
+  height: 100%;
+  margin: 0;
+}
+
+.cards-car-listing .cards-car-listing-card-image picture {
+  display: block;
+  height: 100%;
+}
+
+.cards-car-listing .cards-car-listing-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.cards-car-listing .cards-car-listing-vehicle .cards-car-listing-card-image::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background: linear-gradient(transparent 0, rgb(0 0 0 / 60%));
+  pointer-events: none;
+}
+
+/* badges (source VehicleCard__topLabels): skewed tab in the top-left corner */
+.cards-car-listing .cards-car-listing-card-badges {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  display: flex;
+  overflow: hidden;
+  padding-right: 12px;
+  color: var(--dark-color);
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.cards-car-listing .cards-car-listing-card-badge {
+  position: relative;
+  left: -6px;
+  width: fit-content;
+  padding: 0 18px 1px 20px;
+  font-size: 11px;
+  line-height: 28px;
+  white-space: nowrap;
+  isolation: isolate;
+}
+
+.cards-car-listing .cards-car-listing-card-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  box-sizing: content-box;
+  width: calc(100% - 10px);
+  height: 100%;
+  padding: 0 6px;
+  border-radius: 0 0 3px;
+  background: var(--background-color);
+  transform: skewX(-20deg);
+}
+
+.cards-car-listing .cards-car-listing-card-badge-secondary {
+  color: var(--text-color-inverse);
+}
+
+.cards-car-listing .cards-car-listing-card-badge-secondary::before {
+  background-color: var(--brand-red);
+}
+
+/* content (source VehicleCard__content) */
+.cards-car-listing .cards-car-listing-card-body {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  padding: 16px 24px;
+}
+
+.cards-car-listing .cards-car-listing-card-body > * {
+  margin: 0;
+}
+
+/* year / mileage row (source VehicleCard__specsHead__regDetails) */
+.cards-car-listing .cards-car-listing-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 10px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 32px;
+  text-transform: uppercase;
+}
+
+.cards-car-listing .cards-car-listing-card-meta > :not(:last-child) {
+  padding-right: 12px;
+}
+
+/* "Ferrari Approved" pill (source VehicleCard__approved) */
+.cards-car-listing .cards-car-listing-card-approved {
+  padding: 0 16px;
+  border-radius: 120px;
+  background-color: var(--dark-color);
+  color: var(--text-color-inverse);
+  font-size: 9px;
+}
+
+/* source: odometer margin-right auto pushes the pill to the right edge */
+.cards-car-listing .cards-car-listing-card-meta > .cards-car-listing-card-approved {
+  margin-left: auto;
+}
+
+.cards-car-listing .cards-car-listing-card-meta > .cards-car-listing-card-approved:not(:last-child) {
+  padding-right: 16px;
+}
+
+/* model name (source VehicleCard__carName) */
+.cards-car-listing .cards-car-listing-card-body > .cards-car-listing-card-title {
+  margin-top: 16px;
+  color: var(--text-color);
+  font-family: var(--heading-font-family);
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 26px;
+  text-transform: uppercase;
+}
+
+/* price (source VehicleCard__specsHead__price) */
+.cards-car-listing .cards-car-listing-card-body > .cards-car-listing-card-price-row {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 11px 0;
+  color: rgb(143 143 143);
+  font-family: var(--body-font-family);
+  font-size: 9px;
+  font-weight: 500;
+  line-height: 27px;
+  text-transform: uppercase;
+}
+
+.cards-car-listing .cards-car-listing-card-price-row > .cards-car-listing-card-price {
+  display: inline-block;
+  min-width: 50%;
+  margin: 0;
+  padding: 0 16px 0 0;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+  white-space: normal;
+}
+
+.cards-car-listing .cards-car-listing-card-price-extra {
+  min-width: 50%;
+}
+
+.cards-car-listing .cards-car-listing-card-price-extra > p {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+/* "IVA esposta" (source VehicleCard__specsHead__priceVatMobile) */
+.cards-car-listing .cards-car-listing-card-price-extra > .cards-car-listing-card-price-note {
+  margin-top: 8px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  line-height: 1.27em;
+}
+
+/* financing link (source VehicleCard__specsHead__financingLink) */
+main .cards-car-listing .cards-car-listing-card-price-extra a:any-link {
+  position: relative;
+  z-index: 1;
+  display: block;
+  color: var(--text-color);
+  font-size: 13px;
+  font-weight: 400;
+  text-decoration: underline;
+  text-transform: none;
+}
+
+/* spec grid (source VehicleCard__specsList / specItem) */
+.cards-car-listing .cards-car-listing-card-body > .cards-car-listing-specs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 16px;
+  padding: 0;
+  list-style: none;
+  font-size: 16px;
+  line-height: 1.15;
+}
+
+.cards-car-listing .cards-car-listing-specs > li {
+  width: 50%;
+  min-height: 57px;
+  padding: 0 8px 16px 0;
+}
+
+.cards-car-listing .cards-car-listing-specs > li:last-child {
+  width: 100%;
+  min-height: 56px;
+}
+
+.cards-car-listing .cards-car-listing-specs > li.cards-car-listing-spec-dealer {
+  width: 100%;
+}
+
+.cards-car-listing .cards-car-listing-spec-label {
+  display: block;
+  min-width: 0;
+  margin-bottom: 2px;
+  color: rgb(143 143 143);
+  font-family: var(--body-font-family);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.56;
+  overflow-wrap: break-word;
+  text-transform: uppercase;
+}
+
+.cards-car-listing .cards-car-listing-spec-value {
+  display: block;
+  color: var(--text-color);
+  font-family: var(--body-font-family);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0;
+  line-height: 1.27;
+  text-transform: uppercase;
+}
+
+.cards-car-listing .cards-car-listing-spec-dealer .cards-car-listing-spec-value {
+  font-family: var(--heading-font-family);
+  font-size: 12px;
+  text-transform: none;
+}
+
+/* CTAs (source VehicleCard__content__ctas): stacked, side by side from 961px */
+.cards-car-listing .cards-car-listing-card-body > .cards-car-listing-card-actions {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: auto;
+}
+
+main .cards-car-listing .cards-car-listing-card-actions a.button:any-link {
+  display: block;
+  width: 100%;
+  min-width: auto;
+  max-width: none;
+  margin: 0;
+}
+
+/* promo tile (source SearchResultListing__bannerCard): copy over the photo */
+.cards-car-listing > ul > li.cards-car-listing-promo {
+  --text-color: var(--text-color-inverse);
+  --link-color: var(--text-color-inverse);
+  --border-color: var(--border-color-inverse);
+
+  justify-content: flex-end;
+  min-height: 440px;
+  padding: 14px 32px;
+  border: 0;
+  background-color: var(--dark-color);
+  color: var(--text-color-inverse);
+}
+
+.cards-car-listing .cards-car-listing-promo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(0deg, rgb(0 0 0 / 70%), transparent 85%);
+  pointer-events: none;
+}
+
+.cards-car-listing .cards-car-listing-promo .cards-car-listing-card-image {
+  position: absolute;
+  inset: 0;
+  aspect-ratio: auto;
+  background: none;
+}
+
+.cards-car-listing .cards-car-listing-promo .cards-car-listing-card-body {
+  z-index: 2;
+  flex: 0 0 auto;
+  padding: 0;
+}
+
+.cards-car-listing .cards-car-listing-promo .cards-car-listing-card-body > :is(h1, h2, h3, h4, h5, h6) {
+  margin: 18px 0;
+  color: inherit;
+  font-family: var(--body-font-family);
+  font-size: 18px;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.15;
+  text-transform: uppercase;
+}
+
+.cards-car-listing .cards-car-listing-promo .cards-car-listing-card-body > p {
+  margin: 13px 0;
+  font-size: 13px;
+  letter-spacing: normal;
+  line-height: 1.6em;
+}
+
+.cards-car-listing .cards-car-listing-promo .cards-car-listing-card-actions {
+  display: block;
+  margin: 0;
+}
+
+main .cards-car-listing .cards-car-listing-promo .cards-car-listing-card-actions a.button:any-link {
+  display: inline-block;
+  margin-top: 16px;
+}
+
+/* >= 601px (source 37.5625em) */
+@media (width >= 601px) {
+  .cards-car-listing .cards-car-listing-card-meta {
+    font-size: 11px;
+  }
+
+  .cards-car-listing .cards-car-listing-card-meta > :not(:last-child) {
+    padding-right: 20px;
+  }
+
+  .cards-car-listing .cards-car-listing-card-meta > .cards-car-listing-card-approved {
+    font-size: 9px;
+  }
+
+  .cards-car-listing .cards-car-listing-card-body > .cards-car-listing-card-price-row {
+    flex-wrap: nowrap;
+  }
+
+  .cards-car-listing .cards-car-listing-card-price-row > .cards-car-listing-card-price {
+    padding-right: 8px;
+  }
+}
+
+/* >= 961px (source 60.0625em) */
+@media (width >= 961px) {
+  .cards-car-listing > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards-car-listing .cards-car-listing-specs > li {
+    flex: 1 0 auto;
+  }
+
+  .cards-car-listing .cards-car-listing-specs > li:last-child {
+    width: 50%;
+  }
+
+  .cards-car-listing .cards-car-listing-specs > li.cards-car-listing-spec-dealer {
+    width: 100%;
+  }
+
+  main .cards-car-listing .cards-car-listing-card-price-extra a:any-link {
+    display: inline-block;
+  }
+
+  .cards-car-listing .cards-car-listing-card-body > .cards-car-listing-card-actions {
+    flex-direction: row;
+  }
+
+  main .cards-car-listing .cards-car-listing-card-actions a.button:any-link {
+    width: calc(50% - 5px);
+  }
+
+  main .cards-car-listing .cards-car-listing-promo .cards-car-listing-card-actions a.button:any-link {
+    width: auto;
+  }
+}
+
+/* >= 1281px (source 80.0625em) */
+@media (width >= 1281px) {
+  .cards-car-listing > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/*
+ * featured carousel (source VehicleCarousel, homepage "Veicoli in evidenza"):
+ * 1216px track, swipeable row of 1 / 2 / 3 cards per view
+ */
+main .section.centered .cards-car-listing {
+  max-width: 1216px;
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+main .section.centered .cards-car-listing > ul {
+  --cards-per-view: 1;
+  --cards-gap: 16px;
+
+  display: flex;
+  gap: var(--cards-gap);
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+main .section.centered .cards-car-listing > ul::-webkit-scrollbar {
+  display: none;
+}
+
+main .section.centered .cards-car-listing > ul > li {
+  flex: 0 0 calc((100% - (var(--cards-per-view) - 1) * var(--cards-gap)) / var(--cards-per-view));
+  scroll-snap-align: start;
+}
+
+@media (width >= 961px) {
+  main .section.centered .cards-car-listing {
+    padding: 64px 0;
+  }
+
+  main .section.centered .cards-car-listing > ul {
+    --cards-per-view: 2;
+    --cards-gap: 24px;
+  }
+}
+
+@media (width >= 1281px) {
+  main .section.centered .cards-car-listing > ul {
+    --cards-per-view: 3;
+    --cards-gap: 32px;
+  }
+}
+
+@media (width >= 1601px) {
+  main .section.centered .cards-car-listing > ul {
+    --cards-gap: 20px;
+  }
+}
+
+/* list view, toggled site-wide by the results-toolbar block (source VehicleCard__horizontal) */
+body[data-results-view='list'] main .section:not(.centered) .cards-car-listing > ul {
+  grid-template-columns: 1fr;
+  gap: 32px;
+}
+
+@media (width >= 961px) {
+  body[data-results-view='list'] main .section:not(.centered) .cards-car-listing > ul > li.cards-car-listing-vehicle {
+    flex-direction: row;
+  }
+
+  body[data-results-view='list'] main .section:not(.centered) .cards-car-listing .cards-car-listing-vehicle .cards-car-listing-card-image {
+    flex: 0 0 47%;
+    aspect-ratio: auto;
+    min-height: 100%;
+  }
+
+  body[data-results-view='list'] main .section:not(.centered) .cards-car-listing .cards-car-listing-vehicle .cards-car-listing-card-body {
+    padding: 28px 32px;
+  }
+
+  body[data-results-view='list'] main .section:not(.centered) .cards-car-listing .cards-car-listing-vehicle .cards-car-listing-card-title {
+    font-size: 24px;
+  }
+
+  body[data-results-view='list'] main .section:not(.centered) .cards-car-listing .cards-car-listing-card-meta > :not(:last-child) {
+    padding-right: 36px;
+  }
+
+  body[data-results-view='list'] main .section:not(.centered) .cards-car-listing .cards-car-listing-card-body > .cards-car-listing-specs {
+    margin-top: 22px;
+  }
+
+  body[data-results-view='list'] main .section:not(.centered) .cards-car-listing .cards-car-listing-specs > li,
+  body[data-results-view='list'] main .section:not(.centered) .cards-car-listing .cards-car-listing-specs > li:last-child,
+  body[data-results-view='list'] main .section:not(.centered) .cards-car-listing .cards-car-listing-specs > li.cards-car-listing-spec-dealer {
+    flex: 0 0 auto;
+    width: 33.333%;
+    padding-right: 14px;
+  }
+
+  body[data-results-view='list'] main .section:not(.centered) .cards-car-listing .cards-car-listing-vehicle .cards-car-listing-card-actions {
+    width: 88%;
+  }
+}

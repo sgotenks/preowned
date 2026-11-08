@@ -1,0 +1,48 @@
+{
+  "variantName": "cards-teaser",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "link + image + heading + button",
+    "purpose": "grid of image + heading + text teasers, each with a \"discover more\" link"
+  },
+  "contentPattern": {
+    "structure": "one row per teaser: image | text (heading, paragraph, link)"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_d17ad2114d0c"
+  ],
+  "sourceUrl": "https://preowned.ferrari.com/it-IT/value-your-car",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://preowned.ferrari.com/it-IT",
+        "instanceId": "02ac29dbbc0f",
+        "instanceIds": [
+          "02ac29dbbc0f"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT--f558e626/blocks/02ac29dbbc0f.jpg"
+      },
+      {
+        "url": "https://preowned.ferrari.com/it-IT/value-your-car",
+        "instanceId": "adda04ec785d",
+        "instanceIds": [
+          "adda04ec785d"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_value-your-car--15c49e0c/blocks/adda04ec785d.jpg"
+      },
+      {
+        "url": "/it-it",
+        "sourceUrl": "https://preowned.ferrari.com/it-IT"
+      }
+    ],
+    "reuseCount": 3,
+    "lastUsed": "2026-11-07T23:49:54Z"
+  },
+  "reuseGuidance": "Use for 2-4 editorial teasers linking to deeper pages. Not for car listings (cards-car-listing) or model tiles (cards-model)."
+}

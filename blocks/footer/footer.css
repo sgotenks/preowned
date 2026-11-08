@@ -1,20 +1,398 @@
+/* Ferrari super-footer: dark bands, measured from the source (mobile first, desktop from 961px) */
 footer {
-  background-color: var(--light-color);
-  font-size: var(--body-font-size-xs);
+  background-color: var(--dark-color);
+  color: var(--text-color-inverse);
+  font-family: var(--body-font-family);
+  font-weight: 400;
 }
 
 footer .footer > div {
-  margin: auto;
-  max-width: 1200px;
-  padding: 40px 24px 24px;
+  margin: 0;
+  max-width: none;
+  padding: 0;
 }
 
 footer .footer p {
   margin: 0;
 }
 
-@media (width >= 900px) {
-  footer .footer > div {
-    padding: 40px 32px 24px;
+footer .footer-row p {
+  margin: 0;
+}
+
+footer .footer-row ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+footer .footer-row a {
+  color: inherit;
+  text-decoration: none;
+}
+
+footer .footer-row img {
+  display: block;
+}
+
+footer .footer-content {
+  margin: 0 auto;
+  max-width: 1180px;
+}
+
+/* shared "+" toggle icon: rotates into an x when its list is open */
+footer .footer-col-icon,
+footer .footer-social-icon {
+  box-sizing: content-box;
+  display: block;
+  flex: 0 0 auto;
+  height: 16px;
+  padding: 10px;
+  width: 16px;
+}
+
+footer .footer-col-icon svg,
+footer .footer-social-icon svg {
+  display: block;
+  fill: currentcolor;
+  transition: transform 0.2s;
+}
+
+footer .is-open > .footer-col-title .footer-col-icon svg,
+footer .is-open > .footer-social-title .footer-social-icon svg {
+  transform: rotate(-45deg);
+}
+
+/* band 1: link columns (accordions on mobile) */
+footer .footer-links .footer-content {
+  border-bottom: 1px solid var(--text-color-secondary);
+  display: flex;
+  flex-direction: column;
+  padding: 32px 0;
+  text-align: left;
+}
+
+footer .footer-col {
+  padding: 0 20px;
+}
+
+footer .footer-col-title {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+
+footer .footer-col-title > span,
+footer .footer-col-title > a {
+  display: flex;
+  font-size: 11px;
+  letter-spacing: 1px;
+  line-height: 13.97px;
+  padding: 20px 0;
+  text-transform: uppercase;
+}
+
+footer .footer-links .footer-col ul {
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  min-width: 50%;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+footer .footer-links .footer-col.is-open ul {
+  max-height: 800px;
+  padding: 0 10px 10px 0;
+}
+
+footer .footer-col li {
+  font-size: 9px;
+  line-height: 16px;
+  margin: 10px 0;
+}
+
+footer .footer-col li a {
+  display: block;
+  width: fit-content;
+}
+
+/* band 2: social networks (one per row on mobile) */
+footer .footer-social .footer-content {
+  border-bottom: 1px solid var(--text-color-secondary);
+  display: flex;
+  flex-flow: column wrap;
+  padding: 50px 0;
+}
+
+footer .footer-social-item {
+  box-sizing: border-box;
+  padding: 0 20px;
+}
+
+footer .footer-social-title {
+  align-items: center;
+  cursor: pointer;
+  display: flex;
+  height: 56px;
+  justify-content: space-between;
+  position: relative;
+}
+
+footer .footer-social-label {
+  align-items: center;
+  display: flex;
+  font-size: 11px;
+  letter-spacing: 1px;
+  line-height: 13.97px;
+  text-transform: uppercase;
+}
+
+footer .footer-social-label img {
+  height: 16px;
+  max-width: 16px;
+  width: auto;
+}
+
+footer .footer-social-name {
+  margin-left: 16px;
+}
+
+footer .footer-social-accounts {
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+footer .footer-social-item.is-open .footer-social-accounts {
+  max-height: 800px;
+  padding: 0 10px 10px 0;
+}
+
+footer .footer-social-accounts li {
+  font-size: 9px;
+  line-height: 16px;
+  margin: 10px 0;
+}
+
+footer .footer-social-accounts li a {
+  display: block;
+  width: fit-content;
+}
+
+/* band 3: company disclaimers + copyright, opened by the source's 1x1 spacer image */
+footer .footer-legal .footer-content {
+  color: #8f8f8f;
+  font-size: 7px;
+  letter-spacing: 0.14px;
+  line-height: 14px;
+  max-width: 680px;
+  padding: 50px 25px;
+  text-align: center;
+}
+
+footer .footer-legal p {
+  font-size: 7px;
+  line-height: 14px;
+  margin-bottom: 14px;
+}
+
+footer .footer-legal p:first-child,
+footer .footer-legal p:nth-last-child(2),
+footer .footer-legal p:last-child {
+  margin-bottom: 0;
+}
+
+footer .footer-legal .footer-content img {
+  display: inline;
+  margin-bottom: 10px;
+  max-height: 52px;
+  max-width: 32px;
+}
+
+/* the spacer image's line is 15px tall on the source (1px image + 10px margin on a 14px line) */
+footer .footer-legal p:first-child {
+  height: 15px;
+}
+
+footer .footer-legal .footer-icp {
+  visibility: hidden;
+}
+
+/* band 4: service links + country chooser (centered above the links on mobile) */
+footer .footer-bottom {
+  background-color: var(--text-color-secondary);
+}
+
+footer .footer-bottom .footer-content {
+  align-items: center;
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 9px;
+  justify-content: space-between;
+  padding: 20px 0;
+}
+
+footer .footer-bottom .footer-service-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 16px;
+  width: 100%;
+}
+
+footer .footer-service-links li {
+  font-size: 9px;
+  line-height: 10.35px;
+  min-width: 33%;
+  padding: 16px;
+  text-align: center;
+}
+
+footer .footer-country {
+  display: flex;
+  justify-content: center;
+  order: -1;
+  padding-top: 24px;
+  width: 100%;
+}
+
+footer .footer-bottom .footer-country a {
+  align-items: center;
+  display: flex;
+  font-size: 12px;
+  letter-spacing: 1px;
+  line-height: 15.24px;
+  text-transform: uppercase;
+}
+
+footer .footer-country-arrow {
+  display: block;
+  fill: currentcolor;
+  margin-left: 10px;
+}
+
+/* band 5: partner logo */
+footer .footer-partner .footer-content {
+  align-items: center;
+  display: flex;
+  height: 48px;
+  justify-content: center;
+  max-width: none;
+  padding: 10px 0;
+}
+
+footer .footer-partner .footer-content img {
+  display: inline-block;
+  height: 28px;
+  margin: 0 10px;
+  width: 29px;
+}
+
+/* keyboard focus: yellow box, as on the source (focus-visible only) */
+footer .footer-row a:focus-visible,
+footer .footer-row [role="button"]:focus-visible {
+  outline: 2px solid #f6e500;
+  outline-offset: 2px;
+}
+
+/* breakpoint-exception: the source footer switches to its desktop layout at 60.0625em (961px) */
+@media (width >= 961px) {
+  footer .footer-links .footer-content {
+    flex-direction: row;
+    text-align: center;
+  }
+
+  footer .footer-col {
+    flex: 1 1 0;
+  }
+
+  footer .footer-col-title {
+    cursor: auto;
+    justify-content: center;
+  }
+
+  footer .footer-col-icon {
+    display: none;
+  }
+
+  /* desktop columns are always open; lists shrink to their widest link and center it */
+  footer .footer-links .footer-col ul,
+  footer .footer-links .footer-col.is-open ul {
+    margin: 0 auto;
+    max-height: none;
+    max-width: 100%;
+    min-width: 0;
+    padding: 0 15px 10px;
+    width: fit-content;
+  }
+
+  footer .footer-col li a {
+    margin: 0 auto;
+  }
+
+  footer .footer-social .footer-content {
+    flex-flow: row wrap;
+    padding: 50px 32px;
+  }
+
+  footer .footer-social-item {
+    flex: 0 0 25%;
+  }
+
+  footer .footer-social-title {
+    justify-content: flex-start;
+    width: fit-content;
+  }
+
+  footer .footer-social-label {
+    min-width: 130px;
+  }
+
+  footer .footer-social-item.is-open .footer-social-accounts {
+    padding: 0 15px 10px;
+  }
+
+  footer .footer-legal .footer-content img {
+    max-height: 65px;
+    max-width: 40px;
+  }
+
+  footer .footer-bottom .footer-content {
+    align-items: flex-start;
+    flex-wrap: nowrap;
+  }
+
+  footer .footer-bottom .footer-service-links {
+    flex: 1 1 auto;
+    justify-content: flex-start;
+    width: auto;
+  }
+
+  footer .footer-service-links li {
+    min-width: auto;
+  }
+
+  footer .footer-country {
+    display: block;
+    order: 0;
+    padding: 0 40px 0 0;
+    text-align: right;
+    width: auto;
+  }
+
+  footer .footer-bottom .footer-country a {
+    padding: 30px 0;
+  }
+}
+
+/* breakpoint-exception: the source drops the bottom-bar vertical padding at 80.0625em (1281px) */
+@media (width >= 1281px) {
+  footer .footer-bottom .footer-content {
+    padding: 0;
   }
 }

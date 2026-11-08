@@ -1,0 +1,35 @@
+{
+  "variantName": "results-toolbar",
+  "baseBlock": "custom",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "link + button",
+    "purpose": "back-to-search link with a list/grid view toggle for result listings"
+  },
+  "contentPattern": {
+    "structure": "back link | list view label (optional) | grid view label (optional)"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "v_f64e69de8a40"
+  ],
+  "sourceUrl": "https://preowned.ferrari.com/it-IT/favorites",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://preowned.ferrari.com/it-IT/favorites",
+        "instanceId": "da41412bdffd",
+        "instanceIds": [
+          "da41412bdffd"
+        ],
+        "screenshot": ".pages/preowned_ferrari_com_it-IT_favorites--18fad631/blocks/da41412bdffd.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "reuseGuidance": "Use above cards-car-listing on results and favourites pages; sets body[data-results-view]."
+}

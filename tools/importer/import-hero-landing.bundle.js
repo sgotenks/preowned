@@ -1,0 +1,642 @@
+/* eslint-disable */
+var CustomImportScript = (() => {
+  var __defProp = Object.defineProperty;
+  var __defProps = Object.defineProperties;
+  var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
+  var __getOwnPropDescs = Object.getOwnPropertyDescriptors;
+  var __getOwnPropNames = Object.getOwnPropertyNames;
+  var __getOwnPropSymbols = Object.getOwnPropertySymbols;
+  var __hasOwnProp = Object.prototype.hasOwnProperty;
+  var __propIsEnum = Object.prototype.propertyIsEnumerable;
+  var __defNormalProp = (obj, key, value) => key in obj ? __defProp(obj, key, { enumerable: true, configurable: true, writable: true, value }) : obj[key] = value;
+  var __spreadValues = (a, b) => {
+    for (var prop in b || (b = {}))
+      if (__hasOwnProp.call(b, prop))
+        __defNormalProp(a, prop, b[prop]);
+    if (__getOwnPropSymbols)
+      for (var prop of __getOwnPropSymbols(b)) {
+        if (__propIsEnum.call(b, prop))
+          __defNormalProp(a, prop, b[prop]);
+      }
+    return a;
+  };
+  var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
+  var __export = (target, all) => {
+    for (var name in all)
+      __defProp(target, name, { get: all[name], enumerable: true });
+  };
+  var __copyProps = (to, from, except, desc) => {
+    if (from && typeof from === "object" || typeof from === "function") {
+      for (let key of __getOwnPropNames(from))
+        if (!__hasOwnProp.call(to, key) && key !== except)
+          __defProp(to, key, { get: () => from[key], enumerable: !(desc = __getOwnPropDesc(from, key)) || desc.enumerable });
+    }
+    return to;
+  };
+  var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+
+  // tools/importer/import-hero-landing.js
+  var import_hero_landing_exports = {};
+  __export(import_hero_landing_exports, {
+    default: () => import_hero_landing_default
+  });
+
+  // tools/importer/parsers/hero-search.js
+  function parse(element, { document }) {
+    const clean = (s) => (s || "").replace(/ /g, " ").replace(/\s+/g, " ").trim();
+    const hinted = (name, ...nodes) => {
+      const frag = document.createDocumentFragment();
+      frag.appendChild(document.createComment(` field:${name} `));
+      nodes.forEach((n) => frag.appendChild(typeof n === "string" ? document.createTextNode(n) : n));
+      return frag;
+    };
+    const cells = [];
+    const bg = element.querySelector('[class*="SearchModelsBox__bg"]');
+    let img = bg ? bg.querySelector("img") : null;
+    if (!img && bg) {
+      const styled = [bg, ...bg.querySelectorAll('[style*="background-image"]')].find((el) => /url\(/.test(el.getAttribute("style") || ""));
+      const m = styled && styled.getAttribute("style").match(/url\(\s*(?:&quot;|["'])?(.*?)(?:&quot;|["'])?\s*\)/);
+      if (m && m[1]) {
+        img = document.createElement("img");
+        img.src = m[1];
+        img.alt = "";
+      }
+    }
+    cells.push([img ? hinted("image", img) : ""]);
+    const form = element.querySelector('[class*="SearchModelsBox__form"]') || element;
+    const h1 = form.querySelector("h1");
+    const subtitle = form.querySelector("h2");
+    const textNodes = [];
+    if (h1 && clean(h1.textContent)) {
+      const h = document.createElement("h1");
+      h.textContent = clean(h1.textContent);
+      textNodes.push(h);
+    }
+    if (subtitle && clean(subtitle.textContent)) {
+      const p = document.createElement("p");
+      p.textContent = clean(subtitle.textContent);
+      textNodes.push(p);
+    }
+    cells.push([textNodes.length ? hinted("text", ...textNodes) : ""]);
+    const inputs = [...form.querySelectorAll("input")];
+    const placeholder = (input, fallback) => clean(
+      input && (input.getAttribute("placeholder") || input.getAttribute("aria-label"))
+    ) || fallback;
+    const modelPh = placeholder(inputs[0], "Cerca per modello");
+    const locationPh = placeholder(inputs[1], "Citt\xE0 o Concessionaria");
+    const submit = form.querySelector('a[class*="style__submit"]') || form.querySelector("a[href]");
+    if (submit) {
+      const a = document.createElement("a");
+      a.href = submit.getAttribute("href");
+      a.textContent = clean(submit.textContent) || "Visualizza i risultati";
+      cells.push([hinted("link", a)]);
+    } else {
+      cells.push([""]);
+    }
+    const countrySelect = form.querySelector('[class*="style__countrySelect"]');
+    const countries = countrySelect ? clean(countrySelect.textContent) : "";
+    const expandBtn = form.querySelector('button[class*="countriesAltBtn"]');
+    const expand = expandBtn ? clean(expandBtn.textContent) : "";
+    const searchCell = document.createDocumentFragment();
+    [
+      ["search_modelPlaceholder", modelPh],
+      ["search_locationPlaceholder", locationPh],
+      ["search_countries", countries],
+      ["search_expandLabel", expand]
+    ].forEach(([name, value]) => {
+      if (value) searchCell.appendChild(hinted(name, value));
+    });
+    cells.push([searchCell.childNodes.length ? searchCell : ""]);
+    const block = WebImporter.Blocks.createBlock(document, { name: "hero-search", cells });
+    element.replaceWith(block);
+  }
+
+  // tools/importer/parsers/cards-teaser.js
+  function parse2(element, { document }) {
+    const clean = (s) => (s || "").replace(/ /g, " ").replace(/\s+/g, " ").trim();
+    const hinted = (name, ...nodes) => {
+      const frag = document.createDocumentFragment();
+      frag.appendChild(document.createComment(` field:${name} `));
+      nodes.forEach((n) => frag.appendChild(n));
+      return frag;
+    };
+    const images = [...element.querySelectorAll('[class*="BoxGrid__image"] img')];
+    const titles = [...element.querySelectorAll('[class*="BoxGrid__itemTitle"]')];
+    const descs = [...element.querySelectorAll('[class*="BoxGrid__description"]')];
+    const ctas = [...element.querySelectorAll('[class*="BoxGrid__cta"]')];
+    const anchors = [...element.querySelectorAll('a[class*="BoxGrid__item__"]')];
+    const count = Math.max(images.length, titles.length, descs.length);
+    const cells = [];
+    for (let i = 0; i < count; i += 1) {
+      const img = images[i];
+      const imageCell = img ? hinted("image", img) : "";
+      const nodes = [];
+      const titleText = titles[i] ? clean(titles[i].textContent) : "";
+      if (titleText) {
+        const h = document.createElement("h3");
+        h.textContent = titleText;
+        nodes.push(h);
+      }
+      const descText = descs[i] ? clean(descs[i].textContent) : "";
+      if (descText) {
+        const p = document.createElement("p");
+        p.textContent = descText;
+        nodes.push(p);
+      }
+      const href = anchors[i] ? anchors[i].getAttribute("href") : "";
+      const ctaText = ctas[i] ? clean(ctas[i].textContent) : "";
+      if (href) {
+        const p = document.createElement("p");
+        const a = document.createElement("a");
+        a.setAttribute("href", href);
+        a.textContent = ctaText || titleText || href;
+        p.appendChild(a);
+        nodes.push(p);
+      }
+      const textCell = nodes.length ? hinted("text", ...nodes) : "";
+      cells.push([imageCell, textCell]);
+    }
+    const block = WebImporter.Blocks.createBlock(document, { name: "cards-teaser", cells });
+    element.replaceWith(block);
+  }
+
+  // tools/importer/parsers/cards-car-listing.js
+  function parse3(element, { document }) {
+    const clean = (s) => (s || "").replace(/ /g, " ").replace(/\s+/g, " ").trim();
+    const hinted = (name, ...nodes) => {
+      const frag = document.createDocumentFragment();
+      frag.appendChild(document.createComment(` field:${name} `));
+      nodes.forEach((n) => frag.appendChild(typeof n === "string" ? document.createTextNode(n) : n));
+      return frag;
+    };
+    const textOf = (root, sel) => {
+      const el = root.querySelector(sel);
+      return el ? clean(el.textContent) : "";
+    };
+    const cards = [...element.querySelectorAll('article[class*="VehicleCard__wrapper"]')];
+    const cells = [];
+    cards.forEach((card) => {
+      const img = card.querySelector('[class*="VehicleCardCarousel"] img[class*="Img__image"]') || card.querySelector(".carousel__item img");
+      const imageCell = img ? hinted("image", img) : "";
+      const badge = textOf(card, '[class*="VehicleCard__labelText"]');
+      const badgeCell = badge ? hinted("badge", badge) : "";
+      const nodes = [];
+      const year = textOf(card, '[class*="VehicleCard__year"]');
+      const odometer = textOf(card, '[class*="VehicleCard__odometer"]');
+      const meta = [year, odometer].filter(Boolean).join(" \xB7 ");
+      if (meta) {
+        const p = document.createElement("p");
+        p.textContent = meta;
+        nodes.push(p);
+      }
+      const name = textOf(card, '[class*="VehicleCard__carName"]');
+      if (name) {
+        const h = document.createElement("h3");
+        h.textContent = name;
+        nodes.push(h);
+      }
+      const price = textOf(card, '[class*="VehicleCard__specsHead__priceValue"]');
+      if (price) {
+        const p = document.createElement("p");
+        p.textContent = price;
+        nodes.push(p);
+      }
+      const specs = [...card.querySelectorAll('[class*="VehicleCard__specItem__"]')].filter((el) => !/specItem__(label|value)/.test(el.className));
+      if (specs.length) {
+        const ul = document.createElement("ul");
+        specs.forEach((spec) => {
+          const label = textOf(spec, '[class*="VehicleCard__specItem__label"]');
+          const value = textOf(spec, '[class*="VehicleCard__specItem__value"]');
+          if (!label && !value) return;
+          const li = document.createElement("li");
+          li.textContent = label ? `${label.charAt(0).toUpperCase()}${label.slice(1)}: ${value}` : value;
+          ul.appendChild(li);
+        });
+        if (ul.children.length) nodes.push(ul);
+      }
+      const detailsAnchor = card.querySelector('a[class*="VehicleCard__ctaDetails"]') || card.querySelector('[class*="VehicleCard__carousel"] a[href]');
+      const detailsHref = detailsAnchor ? detailsAnchor.getAttribute("href") : "";
+      if (detailsHref) {
+        const ctaBox = card.querySelector('[class*="VehicleCard__content__ctas"]');
+        const ctaTexts = ctaBox ? [...ctaBox.querySelectorAll('[class*="BtnCta__text"]')].map((t) => clean(t.textContent)).filter(Boolean) : [];
+        const contactText = ctaTexts.length > 1 ? ctaTexts[0] : "";
+        const detailsText = ctaTexts.length ? ctaTexts[ctaTexts.length - 1] : "Dettagli";
+        [contactText, detailsText].filter(Boolean).forEach((label) => {
+          const p = document.createElement("p");
+          const a = document.createElement("a");
+          a.setAttribute("href", detailsHref);
+          a.textContent = label;
+          p.appendChild(a);
+          nodes.push(p);
+        });
+      }
+      const textCell = nodes.length ? hinted("text", ...nodes) : "";
+      cells.push([imageCell, badgeCell, textCell]);
+    });
+    const block = WebImporter.Blocks.createBlock(document, { name: "cards-car-listing", cells });
+    element.replaceWith(block);
+  }
+
+  // tools/importer/parsers/cards-photo-overlay.js
+  function parse4(element, { document }) {
+    const clean = (s) => (s || "").replace(/ /g, " ").replace(/\s+/g, " ").trim();
+    const hinted = (name, ...nodes) => {
+      const frag = document.createDocumentFragment();
+      frag.appendChild(document.createComment(` field:${name} `));
+      nodes.forEach((n) => frag.appendChild(n));
+      return frag;
+    };
+    const items = [...element.querySelectorAll('[class*="SplitBanner__item__"]')];
+    const cells = [];
+    items.forEach((item) => {
+      const img = item.querySelector('[class*="SplitBanner__content-media"] img');
+      const imageCell = img ? hinted("image", img) : "";
+      const nodes = [];
+      const pre = item.querySelector('[class*="SplitBanner__pre-title"]');
+      const preText = pre ? clean(pre.textContent) : "";
+      if (preText) {
+        const p = document.createElement("p");
+        p.textContent = preText;
+        nodes.push(p);
+      }
+      const title = item.querySelector('[class*="SplitBanner__content-inside"] [class*="Title__title"]');
+      const titleText = title ? clean(title.textContent) : "";
+      if (titleText) {
+        const h = document.createElement("h3");
+        h.textContent = titleText;
+        nodes.push(h);
+      }
+      const cta = item.querySelector('[class*="SplitBanner__actions"] a[class*="BtnAction"]');
+      const hrefSource = cta || item.querySelector("a[href]");
+      const href = hrefSource ? hrefSource.getAttribute("href") : "";
+      if (href) {
+        const textEl = cta && cta.querySelector('[class*="BtnAction__text"]');
+        const label = clean(textEl ? textEl.textContent : cta ? cta.textContent : "") || cta && clean(cta.getAttribute("title")) || titleText || href;
+        const p = document.createElement("p");
+        const a = document.createElement("a");
+        a.setAttribute("href", href);
+        a.textContent = label;
+        p.appendChild(a);
+        nodes.push(p);
+      }
+      const textCell = nodes.length ? hinted("text", ...nodes) : "";
+      cells.push([imageCell, textCell]);
+    });
+    const block = WebImporter.Blocks.createBlock(document, { name: "cards-photo-overlay", cells });
+    element.replaceWith(block);
+  }
+
+  // tools/importer/transformers/ferrari-preowned-cleanup.js
+  var CHROME_BEFORE = [
+    // Page preloader (Ferrari logo splash) and custom cursor
+    '[class*="Preloader__"]',
+    '[class*="MainCursor__"]',
+    // Ferrari corporate top bar (super header) and "Ferrari Approved" channel header + nav
+    "#sh-ntw-ferrari",
+    ".fa-superheader",
+    "header",
+    '[class*="ChannelMenuHeader__"]',
+    '[class*="MenuHeader__"]',
+    "nav",
+    '[class*="Breadcrumb"]',
+    // Sticky chapter / scroll indicator
+    '[class*="ScrollIndicatorLandscape"]',
+    '[class*="ScrollIndicator__"]',
+    // Floating share widget
+    '[class*="Share__wrapper"]',
+    // Site footer (Ferrari super footer + channel footer)
+    "#sf-ntw-ferrari",
+    ".fa-superfooter",
+    "footer",
+    '[class*="Footer__wrapper"]',
+    '[class*="ChannelFooter__"]',
+    // Cookie banner / OneTrust
+    "#onetrust-consent-sdk",
+    "#onetrust-banner-sdk",
+    "#onetrust-pc-sdk",
+    '[id^="onetrust-"]',
+    ".optanon-alert-box-wrapper",
+    '[class*="CookieBanner"]',
+    '[class*="cookie-banner"]',
+    // Chat widgets (Genesys messenger, Salesforce)
+    "#genesys-thirdparty",
+    "#genesys-messenger",
+    ".genesys-app",
+    '[id^="genesys-"]',
+    ".embeddedServiceHelpButton",
+    ".embeddedServiceSidebar",
+    // Accessibility widget
+    "#userwayAccessibilityIcon",
+    ".uwy",
+    '[class*="userway"]',
+    "#accessibilityWidget",
+    '[class*="accessibility-widget"]',
+    '[class*="AccessibilityWidget"]',
+    // accessiBe widget and its screen-reader hint ("Premi Opzione+1 per la modalità lettore...")
+    '[class*="acsb"]',
+    '[id^="acsb"]',
+    "[data-acsb-hidden]",
+    // Modals / popups
+    "#popup-root",
+    '[class*="Modal__"]',
+    // Tracking / third-party iframes
+    'iframe[title="GPP Locator"]',
+    'iframe[src*="mypurecloud"]',
+    "iframe:not([src])"
+  ];
+  var CHROME_AFTER = [
+    "script",
+    "style",
+    "noscript",
+    "link",
+    "source",
+    'iframe:not([src*="youtube"]):not([src*="vimeo"])'
+  ];
+  function removeEmptyPreloader(element) {
+    const preloader = element.querySelector("#__next > div > div:first-child");
+    if (!preloader) return;
+    const imgs = [...preloader.querySelectorAll("img")];
+    const onlyDataSvg = imgs.length > 0 && imgs.every((img) => (img.getAttribute("src") || "").startsWith("data:image/svg"));
+    if (onlyDataSvg && !preloader.textContent.trim() && !preloader.querySelector(".page-menu-hook")) {
+      preloader.remove();
+    }
+  }
+  function removeAccessibilityHints(element) {
+    element.querySelectorAll('a[href*="accessibe.com"]').forEach((a) => {
+      (a.closest("p, div, span") || a).remove();
+    });
+  }
+  function normalizeChapterLabels(element, document) {
+    element.querySelectorAll('[class*="Chapter__chapter"]').forEach((chapter) => {
+      const num = chapter.querySelector('[class*="Chapter__prefix"]');
+      const title = [...chapter.querySelectorAll("strong")].find((s) => s !== num);
+      if (!num || !title) return;
+      const p = document.createElement("p");
+      const strong = document.createElement("strong");
+      strong.textContent = num.textContent.trim();
+      p.append(strong, ` ${title.textContent.trim()}`);
+      chapter.replaceWith(p);
+    });
+  }
+  function transform(hookName, element, payload) {
+    if (hookName === "beforeTransform") {
+      removeEmptyPreloader(element);
+      WebImporter.DOMUtils.remove(element, CHROME_BEFORE);
+      removeAccessibilityHints(element);
+      normalizeChapterLabels(element, payload.document);
+    }
+    if (hookName === "afterTransform") {
+      WebImporter.DOMUtils.remove(element, CHROME_AFTER);
+      element.querySelectorAll("*").forEach((el) => {
+        [...el.attributes].forEach((attr) => {
+          const n = attr.name;
+          if (n.startsWith("on") || n.startsWith("data-track") || n.startsWith("data-gtm") || n.startsWith("data-analytics") || n === "data-testid") {
+            el.removeAttribute(n);
+          }
+        });
+      });
+    }
+  }
+
+  // tools/importer/transformers/ferrari-preowned-sections.js
+  var MARKER = "data-excat-section-id";
+  function findSectionElement(root, section) {
+    const selectors = Array.isArray(section.selector) ? section.selector : [section.selector];
+    for (const sel of selectors) {
+      if (!sel) continue;
+      try {
+        const el = root.querySelector(sel);
+        if (el) return el;
+      } catch (e) {
+      }
+    }
+    return null;
+  }
+  function transform2(hookName, element, payload) {
+    const template = payload && payload.template;
+    const sections = template && Array.isArray(template.sections) ? template.sections : [];
+    if (sections.length < 2) return;
+    const document = element.ownerDocument;
+    if (hookName === "beforeTransform") {
+      for (let i = sections.length - 1; i >= 0; i -= 1) {
+        const section = sections[i];
+        const el = findSectionElement(element, section);
+        if (!el) continue;
+        el.setAttribute(`${MARKER}-el`, section.id);
+        if (i > 0 || section.style) {
+          const hr = document.createElement("hr");
+          if (section.style) hr.setAttribute(MARKER, section.id);
+          if (i === 0) hr.setAttribute(`${MARKER}-first`, "true");
+          el.parentNode.insertBefore(hr, el);
+        }
+      }
+    }
+    if (hookName === "afterTransform") {
+      for (let i = sections.length - 1; i >= 0; i -= 1) {
+        const section = sections[i];
+        const marker = element.querySelector(`hr[${MARKER}="${section.id}"]`);
+        const sectionEl = element.querySelector(`[${MARKER}-el="${section.id}"]`);
+        if (section.style && (sectionEl || marker)) {
+          const metaBlock = WebImporter.Blocks.createBlock(document, {
+            name: "Section Metadata",
+            cells: { style: section.style }
+          });
+          const anchor = sectionEl || marker;
+          anchor.after(metaBlock);
+        }
+        if (marker) {
+          if (marker.hasAttribute(`${MARKER}-first`)) {
+            marker.remove();
+          } else {
+            marker.removeAttribute(MARKER);
+          }
+        }
+        if (sectionEl) sectionEl.removeAttribute(`${MARKER}-el`);
+      }
+      element.querySelectorAll(`hr[${MARKER}-first]`).forEach((hr) => hr.remove());
+    }
+  }
+
+  // tools/importer/transformers/ferrari-preowned-links.js
+  var SOURCE_HOST = "preowned.ferrari.com";
+  var LOCALE_PREFIX = /^\/it-IT(?=\/|$)/i;
+  var MIGRATED = /^\/(|ferrari-approved(\/share\/.*)?|modelli-usato-ferrari|value-your-car|favorites|ad|r\/.+)$/i;
+  function toMigratedPath(path) {
+    const local = path.replace(LOCALE_PREFIX, "").replace(/\/$/, "") || "/";
+    if (!MIGRATED.test(local)) return null;
+    if (/^\/ferrari-approved\/share\//i.test(local)) return "/ferrari-approved";
+    return local.toLowerCase();
+  }
+  function transform3(hookName, element, payload) {
+    var _a;
+    if (hookName !== "afterTransform") return;
+    const base = ((_a = payload.params) == null ? void 0 : _a.originalURL) || payload.url;
+    element.querySelectorAll("a[href]").forEach((a) => {
+      const raw = (a.getAttribute("href") || "").trim();
+      if (!raw || raw.startsWith("#") || /^(mailto|tel|javascript):/i.test(raw)) return;
+      let u;
+      try {
+        u = new URL(raw, base);
+      } catch (e) {
+        return;
+      }
+      if (u.hostname !== SOURCE_HOST) return;
+      const migrated = toMigratedPath(u.pathname);
+      a.setAttribute("href", migrated ? `${migrated}${u.search}${u.hash}` : u.href);
+    });
+  }
+
+  // tools/importer/import-hero-landing.js
+  var PAGE_TEMPLATE = {
+    "name": "hero-landing",
+    "urls": [
+      "https://preowned.ferrari.com/it-IT"
+    ],
+    "coverageGaps": [],
+    "description": "Homepage: full-width hero with an embedded vehicle search form, followed by a dark overview band with teaser cards, a featured-vehicles grid and full-bleed photo promo tiles",
+    "blocks": [
+      {
+        "name": "hero-search",
+        "instances": [
+          '[class*="SearchModelsBox__wrapper"]'
+        ]
+      },
+      {
+        "name": "cards-teaser",
+        "instances": [
+          '[class*="BoxGrid__wrapper"]'
+        ]
+      },
+      {
+        "name": "cards-car-listing",
+        "instances": [
+          '[class*="VehicleCarousel__wrapper"]'
+        ]
+      },
+      {
+        "name": "cards-photo-overlay",
+        "instances": [
+          '[class*="SplitBanner__wrapper"]'
+        ]
+      }
+    ],
+    "sections": [
+      {
+        "id": "section-1",
+        "name": "Hero with car search",
+        "selector": [
+          '.page-menu-hook > div > div:has([class*="SearchModelsBox__wrapper"])',
+          "#__next > div:nth-of-type(1) > div.page-menu-hook > div > div:nth-of-type(1)"
+        ],
+        "style": null,
+        "blocks": [
+          "hero-search"
+        ],
+        "defaultContent": []
+      },
+      {
+        "id": "section-2",
+        "name": "Panoramica (overview) with teasers",
+        "selector": [
+          '.page-menu-hook > div > div:has([class*="BoxGrid__wrapper"])',
+          "#__next > div:nth-of-type(1) > div.page-menu-hook > div > div:nth-of-type(2)"
+        ],
+        "style": "dark",
+        "blocks": [
+          "cards-teaser"
+        ],
+        "defaultContent": [
+          '[class*="TextBlock__container"]'
+        ]
+      },
+      {
+        "id": "section-3",
+        "name": "Veicoli in evidenza (featured vehicles)",
+        "selector": [
+          '.page-menu-hook > div > div > div > div:has([class*="VehicleCarousel__wrapper"])',
+          "#__next > div:nth-of-type(1) > div.page-menu-hook > div > div:nth-of-type(3) > div > div:nth-of-type(1)"
+        ],
+        "style": "centered",
+        "blocks": [
+          "cards-car-listing"
+        ],
+        "defaultContent": [
+          '[class*="TextBlock__text_centered"]',
+          '[class*="style__footer"]'
+        ]
+      },
+      {
+        "id": "section-4",
+        "name": "Dealer and accessories promo tiles",
+        "selector": [
+          '.page-menu-hook > div > div > div > div:has(> [class*="SplitBanner__wrapper"])',
+          "#__next > div:nth-of-type(1) > div.page-menu-hook > div > div:nth-of-type(3) > div > div:nth-of-type(2)"
+        ],
+        "style": null,
+        "blocks": [
+          "cards-photo-overlay"
+        ],
+        "defaultContent": []
+      }
+    ]
+  };
+  var parsers = {
+    "hero-search": parse,
+    "cards-teaser": parse2,
+    "cards-car-listing": parse3,
+    "cards-photo-overlay": parse4
+  };
+  var transformers = [transform, transform2, transform3];
+  function executeTransformers(hookName, element, payload) {
+    const enhancedPayload = __spreadProps(__spreadValues({}, payload), { template: PAGE_TEMPLATE });
+    transformers.forEach((fn) => {
+      try {
+        fn(hookName, element, enhancedPayload);
+      } catch (e) {
+        console.error(`Transformer failed at ${hookName}:`, e);
+      }
+    });
+  }
+  function findBlocksOnPage(document, template) {
+    const pageBlocks = [];
+    template.blocks.forEach((blockDef) => {
+      blockDef.instances.forEach((selector) => {
+        document.querySelectorAll(selector).forEach((element) => {
+          pageBlocks.push({ name: blockDef.name, selector, element });
+        });
+      });
+    });
+    return pageBlocks;
+  }
+  var import_hero_landing_default = {
+    transform: (payload) => {
+      const { document, url, params } = payload;
+      const main = document.body;
+      executeTransformers("beforeTransform", main, payload);
+      const pageBlocks = findBlocksOnPage(document, PAGE_TEMPLATE);
+      pageBlocks.forEach((block) => {
+        if (!block.element.parentNode) return;
+        const parser = parsers[block.name];
+        if (!parser) return;
+        try {
+          parser(block.element, { document, url, params });
+        } catch (e) {
+          console.error(`Failed to parse ${block.name} (${block.selector}):`, e);
+        }
+      });
+      executeTransformers("afterTransform", main, payload);
+      main.appendChild(document.createElement("hr"));
+      WebImporter.rules.createMetadata(main, document);
+      WebImporter.rules.transformBackgroundImages(main, document);
+      WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
+      const rawPath = new URL(params.originalURL).pathname.replace(/^\/it-IT(?=\/|$)/i, "").replace(/\/$/, "").replace(/\.html?$/, "");
+      const path = WebImporter.FileUtils.sanitizePath(rawPath === "" ? "/index" : rawPath);
+      return [{
+        element: main,
+        path,
+        report: { title: document.title, template: PAGE_TEMPLATE.name, blocks: pageBlocks.map((b) => b.name) }
+      }];
+    }
+  };
+  return __toCommonJS(import_hero_landing_exports);
+})();

@@ -1,0 +1,211 @@
+/*
+ * cards-photo-overlay (source SplitBanner, item--double, theme-ferrari-dark)
+ * full-bleed photo tiles with white text over a dark overlay; whole tile clickable
+ * breakpoints follow the source: 601px (37.5625em), 961px (60.0625em), 1281px (80.0625em)
+ */
+
+/* full-bleed: drop the section container cap and gutters */
+main > .section > .cards-photo-overlay-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.cards-photo-overlay {
+  background-color: var(--dark-color);
+}
+
+.cards-photo-overlay > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0;
+}
+
+/* tile (source SplitBanner__item) */
+.cards-photo-overlay > ul > li {
+  position: relative;
+  display: flex;
+  height: 350px;
+  overflow: hidden;
+  background-color: rgb(64 64 64);
+}
+
+/* media (source SplitBanner__content-media) */
+.cards-photo-overlay .cards-photo-overlay-card-image {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+  line-height: 0;
+}
+
+/* mobile overlay (source SplitBanner__item::after) */
+.cards-photo-overlay .cards-photo-overlay-card-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    radial-gradient(circle at 25% 54%, rgb(0 0 0 / 40%), transparent),
+    linear-gradient(rgb(0 0 0 / 15%), rgb(0 0 0 / 15%));
+}
+
+.cards-photo-overlay .cards-photo-overlay-card-image p,
+.cards-photo-overlay .cards-photo-overlay-card-image picture {
+  display: block;
+  height: 100%;
+  margin: 0;
+}
+
+.cards-photo-overlay .cards-photo-overlay-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* source hover: slow zoom on the photo */
+.cards-photo-overlay > ul > li:hover .cards-photo-overlay-card-image img {
+  transform: scale(1.1);
+  transition: transform 3s ease-in;
+}
+
+/* text (source SplitBanner__content-text + content-inside) */
+.cards-photo-overlay .cards-photo-overlay-card-body {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex: 1 1 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 24px;
+  text-align: start;
+}
+
+.cards-photo-overlay .cards-photo-overlay-card-body > * {
+  width: 100%;
+  max-width: 450px;
+  margin: 0;
+}
+
+/* eyebrow (source SplitBanner__pre-title, hidden below 601px) */
+.cards-photo-overlay .cards-photo-overlay-card-eyebrow {
+  display: none;
+  margin: 0 0 16px;
+  color: var(--text-color-inverse);
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-s);
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.5em;
+}
+
+/* title (source Title__title--h1 uppercase) */
+.cards-photo-overlay .cards-photo-overlay-card-body :is(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  color: var(--text-color-inverse);
+  font-family: var(--heading-font-family);
+  font-size: var(--heading-font-size-xxl);
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 1.2em;
+  text-transform: uppercase;
+}
+
+/* actions row (source SplitBanner__actions) */
+main .cards-photo-overlay .cards-photo-overlay-card-body > .button-container,
+.cards-photo-overlay .cards-photo-overlay-card-body > p:has(> .cards-photo-overlay-card-cta) {
+  display: flex;
+  justify-content: flex-start;
+  margin: 24px 0 0;
+}
+
+/* circled-arrow CTA (source BtnAction: text + bordered icon) */
+main .cards-photo-overlay a.cards-photo-overlay-card-cta:any-link {
+  position: static;
+  display: inline-flex;
+  align-items: center;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-color-inverse);
+  font-family: var(--body-font-family);
+  font-size: var(--label-font-size);
+  font-weight: 400;
+  letter-spacing: var(--label-letter-spacing);
+  line-height: var(--label-line-height);
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: normal;
+}
+
+/* icon: 40px ring, 2px grey border, white chevron */
+main .cards-photo-overlay a.cards-photo-overlay-card-cta:any-link::before {
+  content: '';
+  order: 1;
+  flex: 0 0 auto;
+  width: 40px;
+  height: 40px;
+  margin-left: 8px;
+  border: 2px solid rgb(143 143 143);
+  border-radius: 100%;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 16' width='8' height='16'%3E%3Cpath fill='%23fff' d='M7.268 9.547L0 16l4-8-4-8 7.268 6.453C7.715 6.82 8 7.377 8 8c0 .623-.285 1.18-.732 1.547z'/%3E%3C/svg%3E") center / 8px 16px no-repeat;
+}
+
+/* whole tile clickable (source SplitBanner__full-link) */
+main .cards-photo-overlay a.cards-photo-overlay-card-cta:any-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+@media (width >= 601px) {
+  .cards-photo-overlay > ul {
+    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+  }
+
+  .cards-photo-overlay > ul > li {
+    height: 460px;
+  }
+
+  /* desktop overlay (source content-media::before) replaces the mobile one */
+  .cards-photo-overlay .cards-photo-overlay-card-image::after {
+    z-index: 2;
+    background: linear-gradient(transparent, rgb(0 0 0 / 70%));
+  }
+
+  .cards-photo-overlay .cards-photo-overlay-card-body {
+    justify-content: flex-end;
+    align-items: center;
+    padding: 48px;
+    text-align: center;
+  }
+
+  .cards-photo-overlay .cards-photo-overlay-card-body > * {
+    max-width: 600px;
+  }
+
+  .cards-photo-overlay .cards-photo-overlay-card-eyebrow {
+    display: block;
+  }
+
+  main .cards-photo-overlay .cards-photo-overlay-card-body > .button-container,
+  .cards-photo-overlay .cards-photo-overlay-card-body > p:has(> .cards-photo-overlay-card-cta) {
+    justify-content: center;
+    margin-top: 16px;
+  }
+}
+
+@media (width >= 1281px) {
+  .cards-photo-overlay > ul > li {
+    height: 650px;
+  }
+}

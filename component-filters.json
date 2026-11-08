@@ -24,13 +24,47 @@
       "table",
       "text",
       "title",
-      "video"
+      "video",
+      "active-filters",
+      "cards-car-listing",
+      "cards-model",
+      "cards-teaser",
+      "cards-photo-overlay",
+      "global-header",
+      "hero-banner",
+      "hero-search",
+      "model-filter",
+      "results-toolbar"
     ]
   },
   {
     "id": "accordion",
     "components": [
       "accordion-item"
+    ]
+  },
+  {
+    "id": "cards-car-listing",
+    "components": [
+      "cards-car-listing-card"
+    ]
+  },
+  {
+    "id": "cards-model",
+    "components": [
+      "cards-model-card"
+    ]
+  },
+  {
+    "id": "cards-photo-overlay",
+    "components": [
+      "cards-photo-overlay-card"
+    ]
+  },
+  {
+    "id": "cards-teaser",
+    "components": [
+      "cards-teaser-card"
     ]
   },
   {

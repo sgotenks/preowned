@@ -1,0 +1,63 @@
+.cards-model > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+/* image and text share one grid cell so the text overlays the photo */
+.cards-model > ul > li {
+  position: relative;
+  display: grid;
+  grid-template-areas: 'tile';
+  overflow: hidden;
+}
+
+.cards-model > ul > li[hidden] {
+  display: none;
+}
+
+.cards-model .cards-model-card-image,
+.cards-model .cards-model-card-body {
+  grid-area: tile;
+}
+
+.cards-model .cards-model-card-image {
+  line-height: 0;
+}
+
+.cards-model .cards-model-card-image img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.cards-model .cards-model-card-body {
+  align-self: end;
+  padding: 16px 24px;
+}
+
+.cards-model .cards-model-card-body > * {
+  margin: 0;
+}
+
+/* the tile link covers the whole card */
+.cards-model .cards-model-card-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+@media (width >= 600px) {
+  .cards-model > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-model > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
