@@ -42,7 +42,25 @@ async function fetchNav() {
   doc.querySelectorAll('img[src]').forEach((img) => {
     img.src = new URL(img.getAttribute('src'), resp.url).href;
   });
+  // AEM delivers a list item's label wrapped in a paragraph (<li><p>Label</p><ul>…);
+  // unwrap it so the label reads like the plain fragment (<li>Label<ul>…). Paragraphs
+  // holding preview images are content, not labels, and stay as they are.
+  doc.querySelectorAll('li > p:first-child').forEach((p) => {
+    if (!p.querySelector('img, picture')) p.replaceWith(...p.childNodes);
+  });
   return doc;
+}
+
+/**
+ * Logos are authored as a linked image; when the image does not come through (AEM drops
+ * images inside links), fall back to the logo kept with the code in /icons.
+ */
+function ensureLogo(link, icon, alt) {
+  if (!link || link.querySelector('img')) return;
+  const img = document.createElement('img');
+  img.src = `${window.hlx?.codeBasePath || ''}/icons/${icon}.svg`;
+  img.alt = alt;
+  link.append(img);
 }
 
 /** A link is "local" when it points to this site (relative in the fragment). */
@@ -392,6 +410,7 @@ export default async function decorate(block) {
   const superBar = el('div', 'nav-super-inner');
   superOuter.append(superBar);
   const brandLink = brandSec?.querySelector('a');
+  ensureLogo(brandLink, 'ferrari-horse', 'Ferrari');
   if (brandLink) superBar.append(Object.assign(brandLink.cloneNode(true), { className: 'nav-super-brand' }));
   const pillars = menuSec ? [...menuSec.querySelectorAll(':scope > ul > li')].map(parseItem) : [];
   const pillarList = el('ul', 'nav-pillars');
@@ -449,6 +468,7 @@ export default async function decorate(block) {
   if (channelMenu) hamburger.addEventListener('click', () => openOverlay(channelMenu, hamburger));
   channel.append(hamburger);
   const wordmark = channelSec?.querySelector(':scope > p a');
+  ensureLogo(wordmark, 'ferrari-approved-wordmark', 'Ferrari Approved');
   if (wordmark) channel.append(Object.assign(wordmark.cloneNode(true), { className: 'nav-channel-brand' }));
   const channelLinks = channelSec?.querySelector(':scope > ul');
   if (channelLinks) {
