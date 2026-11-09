@@ -55,6 +55,17 @@
   --nav-height: 40px;
   --breadcrumbs-height: 34px;
   --header-height: var(--nav-height);
+
+  /* viewport-tall layouts; fixed inside the Universal Editor frame (see below) */
+  --viewport-height: 100vh;
+}
+
+/*
+ * The Universal Editor sizes its frame to the page height, so 100vh inside it grows with the page
+ * and viewport-tall blocks grow forever. Use a fixed desktop viewport height there instead.
+ */
+html.ue-frame {
+  --viewport-height: 900px;
 }
 
 /* >= 601px (source 37.5625em) */

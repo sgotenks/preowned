@@ -9,7 +9,7 @@ main > .section > .hero-search-wrapper {
 .hero-search {
   position: relative;
   display: flex;
-  min-height: 100vh;
+  min-height: var(--viewport-height);
   padding: 150px 0 100px;
   isolation: isolate;
   overflow: hidden;
@@ -342,7 +342,7 @@ main > .section > .hero-search-wrapper {
 @media (width >= 961px) {
   .hero-search {
     align-items: center;
-    height: 100vh;
+    height: var(--viewport-height);
     padding: 0;
   }
 

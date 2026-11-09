@@ -194,6 +194,9 @@ export function decorateMain(main) {
  */
 async function loadEager(doc) {
   document.documentElement.lang = 'it';
+  // Framed (e.g. Universal Editor): the frame grows with the page, so 100vh layouts must not
+  // depend on it (see --viewport-height in brand.css)
+  if (window.self !== window.top) document.documentElement.classList.add('ue-frame');
   decorateTemplateAndTheme();
   if (getMetadata('breadcrumbs').toLowerCase() === 'true') {
     doc.body.dataset.breadcrumbs = true;

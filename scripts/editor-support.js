@@ -174,6 +174,9 @@ function attachEventListners(main) {
   main?.addEventListener('aue:ui-select', handleSelection);
 }
 
+// Viewport-tall layouts use a fixed height in the editor (see --viewport-height in brand.css)
+document.documentElement.classList.add('ue-frame');
+
 attachEventListners(document.querySelector('main'));
 
 // decorate rich text

@@ -117,7 +117,7 @@ main > .section > .vehicle-gallery-wrapper {
     gap: 4px;
     width: 100%;
     max-width: 100%;
-    max-height: calc(100vh - 334px);
+    max-height: calc(var(--viewport-height) - 334px);
     min-height: 260px;
     aspect-ratio: 9.3 / 3;
     overflow: hidden;

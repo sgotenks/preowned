@@ -950,7 +950,7 @@ main > .section.vehicle-hero > .default-content-wrapper {
   main > .section.vehicle-hero {
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    height: var(--viewport-height);
     min-height: 580px;
     padding: 0;
   }

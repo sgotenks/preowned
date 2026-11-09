@@ -170,7 +170,7 @@ main .vehicle-details-wrapper:has(> .vehicle-details:not(.consumption)) {
 }
 
 .vehicle-details .vehicle-details-equipment-list.is-clipped:not(.is-expanded) {
-  max-height: 60vh;
+  max-height: calc(var(--viewport-height) * 0.6);
 }
 
 .vehicle-details .vehicle-details-grid,
@@ -215,7 +215,7 @@ main .vehicle-details-wrapper:has(> .vehicle-details:not(.consumption)) {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 0 0 2vh;
+  margin: 0 0 calc(var(--viewport-height) * 0.02);
   padding: 0;
   list-style: none;
 }
@@ -223,7 +223,7 @@ main .vehicle-details-wrapper:has(> .vehicle-details:not(.consumption)) {
 .vehicle-details .vehicle-details-figures > li {
   flex: 1 0 auto;
   max-width: 100%;
-  margin-bottom: 5vh;
+  margin-bottom: calc(var(--viewport-height) * 0.05);
 }
 
 .vehicle-details .vehicle-details-figure-value {
